@@ -4,6 +4,7 @@ VALUES
   (USERS_PK.NEXTVAL, 'customer', 'customer', '홍길동', 'hong@example.com', '010-1234-5678', 'CUS'),
   (USERS_PK.NEXTVAL, 'store', 'store', '김철수', 'kim@example.com', '010-9876-5432', 'STR'),
   (USERS_PK.NEXTVAL, 'biz_user', 'pass456', '이상인', 'lee@example.com', '010-3210-4567', 'STR'),
+  (USERS_PK.NEXTVAL, 'customer2', 'customer2', '박민수', 'parkms@example.com', '010-4567-8901', 'CUS'),
   (USERS_PK.NEXTVAL, 'admin', 'admin', '관리자', 'kim@example.com', '010-0000-0000', 'ADM');
 
 -- store 테이블 더미 데이터
