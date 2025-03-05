@@ -1,0 +1,99 @@
+/* 리액트 탭 기본 스타일 */
+.react-tabs {
+    width: 80%;
+}
+
+
+.react-tabs__tab-list {
+    display: flex;
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+
+.react-tabs__tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+    color: #4b5563;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+
+.react-tabs__tab--selected {
+    background-color: #e11d48;
+    color: white;
+}
+
+/* 필터 컨테이너 */
+.tab-container {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 16px;
+}
+
+
+/* 좌측 대분류 필터 */
+.tab-menu {
+    width: 25%;
+    border-right: 1px solid #ddd;
+    padding: 16px;
+}
+
+.tab-menu button {
+    width: 60%;
+    border: none;
+    padding: 15px;
+    background-color: #dddddd96;
+    border-radius: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin: 0;
+    font-size: 15px;
+}
+
+.tab-menu button span {
+    margin: 0;
+}
+
+.tab-menu button:hover {
+    background-color: #e11d48;
+}
+
+.tab-menu button.active {
+    background-color: #e23b3b;
+    color: white;
+}
+
+
+/* 우측 소분류 필터 */
+.tab-content {
+    width: 75%;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.tab-content ul {
+    margin-top: 8px;
+}
+
+.tab-content li {
+    padding: 10px 20px;
+    list-style: none;
+    border-radius: 7px;
+    /* transition: background-color 0.1s; */
+    align-items: center;
+}
+
+.tab-content li:hover {
+    background-color: #e11d48;
+    color: white;
+}

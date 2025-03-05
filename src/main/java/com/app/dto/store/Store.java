@@ -13,4 +13,6 @@ public class Store {
     private int spoon;
     private int rateTotal;
     private int rateCount;
+    
+    private String bookingState; //예약가능여부
 }

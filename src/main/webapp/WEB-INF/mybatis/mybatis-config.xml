@@ -9,12 +9,9 @@
 	</settings>
 
 	<typeAliases>
-<!-- 		<typeAlias type="com.app.dto.user.User" alias="User" /> -->
-<!-- 		<typeAlias type="com.app.dto.task.Task" alias="Task" /> -->
-<!-- 		<typeAlias type="com.app.dto.board.Board" alias="Board" /> -->
-<!-- 		<typeAlias type="com.app.dto.address.Address" alias="Address"/> -->
-<!-- 		<typeAlias type="com.app.dto.notice.Notice" alias="Notice"/> -->
-<!-- 		<typeAlias type="com.app.dto.user.UserSearchCondition" alias="UserSearchCondition"/> -->
+		<typeAlias type="com.app.dto.menu.Menu" alias="Menu" />
+		<typeAlias type="com.app.dto.store.Store" alias="Store" />
+		<typeAlias type="com.app.dto.store.StoreDetail" alias="StoreDetail" />
 	</typeAliases>
 </configuration>
 

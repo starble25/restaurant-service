@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="subMain_mapper">
+
+
+	<insert id="saveStore" parameterType="Store">
+		MERGE INTO store s
+		USING (
+			SELECT
+				#{storeName} AS store_name,
+				#{address} AS address,
+				#{bookingState} AS bookingState
+			FROM DUAL
+		) d
+		ON (s.store_name = d.store_name AND s.address = d.address)
+		WHEN MATCHED THEN
+			UPDATE
+			SET s.bookingState = d.bookingState
+		WHEN NOT MATCHED THEN
+			INSERT (id, store_name, address, bookingState)
+			VALUES (STORE_PK.NEXTVAL, d.store_name, d.address, d.bookingState)
+	</insert>
+
+
+	<insert id="saveStoreDetail" parameterType="StoreDetail">
+		MERGE INTO store_detail sd
+	    USING (
+    	    SELECT
+        	    #{storeId} AS store_id,
+            	#{tel} AS tel,
+            	#{addressInfo} AS address_info,
+            	#{openTime} AS open_time,
+            	#{closeTime} AS close_time,
+            	#{menuDesc} AS menu_desc,
+            	#{runtime} AS runtime
+        	FROM DUAL
+    	) d
+    	ON (sd.store_id = d.store_id AND sd.tel = d.tel)
+   		WHEN MATCHED THEN
+        	UPDATE
+        	SET sd.address_info = d.address_info,
+	            sd.open_time = d.open_time,
+    	        sd.close_time = d.close_time,
+        	    sd.menu_desc = d.menu_desc,
+            	sd.runtime = d.runtime
+   		WHEN NOT MATCHED THEN
+        	INSERT (id, store_id, tel, address_info, open_time, close_time, menu_desc, runtime)
+        	VALUES (STORE_DETAIL_PK.NEXTVAL, d.store_id, d.tel, d.address_info, d.open_time, d.close_time, d.menu_desc, d.runtime)
+	</insert>
+
+
+	<insert id="saveMenu" parameterType="Menu">
+		MERGE INTO menu m
+   		USING (
+        	SELECT
+            	#{storeId} AS store_id,
+            	#{menuName} AS menu_name,
+            	#{price} AS price,
+            	#{menuType} AS menu_type
+        	FROM DUAL
+    	) d
+    	ON (m.store_id = d.store_id AND m.menu_name = d.menu_name)  <!-- 중복 조건 설정 -->
+   		WHEN MATCHED THEN
+        	UPDATE
+        	SET m.price = d.price,
+            	m.menu_type = d.menu_type  <!-- 업데이트할 컬럼 설정 -->
+    	WHEN NOT MATCHED THEN
+        	INSERT (id, store_id, menu_name, price, menu_type)
+        	VALUES (MENU_PK.NEXTVAL, d.store_id, d.menu_name, d.price, d.menu_type)
+	</insert>
+
+</mapper>
+
+
+
+
+
+
