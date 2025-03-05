@@ -4,7 +4,11 @@
 <mapper namespace="subMain_mapper">
 
 
+
 	<insert id="saveStore" parameterType="Store">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    	    SELECT STORE_PK.NEXTVAL FROM DUAL
+    	</selectKey>
 		MERGE INTO store s
 		USING (
 			SELECT
@@ -19,11 +23,14 @@
 			SET s.bookingState = d.bookingState
 		WHEN NOT MATCHED THEN
 			INSERT (id, store_name, address, bookingState)
-			VALUES (STORE_PK.NEXTVAL, d.store_name, d.address, d.bookingState)
+			VALUES (#{id}, d.store_name, d.address, d.bookingState)
 	</insert>
 
 
 	<insert id="saveStoreDetail" parameterType="StoreDetail">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		SELECT STORE_DETAIL_PK.NEXTVAL FROM DUAL
+		</selectKey>
 		MERGE INTO store_detail sd
 	    USING (
     	    SELECT
@@ -46,11 +53,14 @@
             	sd.runtime = d.runtime
    		WHEN NOT MATCHED THEN
         	INSERT (id, store_id, tel, address_info, open_time, close_time, menu_desc, runtime)
-        	VALUES (STORE_DETAIL_PK.NEXTVAL, d.store_id, d.tel, d.address_info, d.open_time, d.close_time, d.menu_desc, d.runtime)
+        	VALUES (#{id}, d.store_id, d.tel, d.address_info, d.open_time, d.close_time, d.menu_desc, d.runtime)
 	</insert>
 
 
 	<insert id="saveMenu" parameterType="Menu">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		SELECT MENU_PK.NEXTVAL FROM DUAL
+		</selectKey>
 		MERGE INTO menu m
    		USING (
         	SELECT
@@ -60,14 +70,14 @@
             	#{menuType} AS menu_type
         	FROM DUAL
     	) d
-    	ON (m.store_id = d.store_id AND m.menu_name = d.menu_name)  <!-- 중복 조건 설정 -->
+    	ON (m.store_id = d.store_id AND m.menu_name = d.menu_name)
    		WHEN MATCHED THEN
         	UPDATE
         	SET m.price = d.price,
-            	m.menu_type = d.menu_type  <!-- 업데이트할 컬럼 설정 -->
+            	m.menu_type = d.menu_type
     	WHEN NOT MATCHED THEN
         	INSERT (id, store_id, menu_name, price, menu_type)
-        	VALUES (MENU_PK.NEXTVAL, d.store_id, d.menu_name, d.price, d.menu_type)
+        	VALUES (#{id}, d.store_id, d.menu_name, d.price, d.menu_type)
 	</insert>
 
 </mapper>
