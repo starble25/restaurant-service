@@ -9,14 +9,6 @@ function Customer() {
 
     const [myInfo, setMyInfo] = useState(null);
 
-    // function myInfo() {
-    //     axios.post('api/users', {id})
-    //     .then( res => {
-    //         console.log(res.data);
-    //     })
-    //     .catch( error => console.log(error) )
-    // }
-
     function renderContent() {
         switch (activeMenu) {
             case 'myInfo':
@@ -62,6 +54,8 @@ function Customer() {
 
 // 내 정보
 function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
+    
+    const [modifyMyInfo, setModifyMyInfo] = useState(true);
 
     useEffect(() => {
         if( myInfo ) { // myInfo가 있으면 실행안함
@@ -74,6 +68,10 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
     }, [id, myInfo]);
 
     return (
+        myInfo ? 
+
+        modifyMyInfo ? 
+
         <div className='myInfo'>
             <div className='imgContainer'>
                 <img src={profileImagePath} alt='profileImage' />
@@ -96,10 +94,21 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
                     <div className='type'>전화번호</div>
                     <div>{myInfo.tel}</div>
                 </div>
-                <button>내정보 변경</button>
+                <button onClick={() => setModifyMyInfo(false)}>내정보 변경</button>
             </div>
         </div>
+
+        : <ModifyMyInfo />
+        
+        : <div> No data </div> // myInfo == null
     );
+}
+
+// 내정보 변경
+function ModifyMyInfo() {
+    return (
+        <div>ModifyMyInfo</div>
+    )
 }
 
 // 예약

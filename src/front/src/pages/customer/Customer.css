@@ -46,6 +46,7 @@
 .myInfo .imgContainer img {
     width: 100%;
     height: auto;
+    max-height: 85%;
     object-fit: cover;
 
     /* border: 1px solid green; */
@@ -64,6 +65,10 @@
 
     .content .myInfo div {
         width: 100%;
+    }
+
+    .myInfo .imgContainer button {
+        margin: 0 auto;
     }
 }
 
@@ -99,3 +104,5 @@
     display: block;
     margin: 0 0 0 auto;
 }
+
+/* 내정보 변경 */
