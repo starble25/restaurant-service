@@ -1,0 +1,101 @@
+.cusContainer {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    /* border: 1px solid black; */
+}
+
+.cusContainer .side {
+    width: 25%;
+    border: 1px solid red;
+}
+
+.cusContainer .side .sideMenu {
+    width: 100%;
+    height: 60px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+
+    border: 1px solid cyan;
+
+    &:hover {
+        background-color: gray;
+    }
+}
+
+.cusContainer .content {
+    width: 75%;
+    padding: 35px;
+    border: 1px solid blue;
+}
+
+/* 내 정보 */
+.content .myInfo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: 1px solid orange;
+}
+
+.content .myInfo div {
+    text-align: center;
+    width: 50%;
+}
+
+.myInfo .imgContainer img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    /* border: 1px solid green; */
+}
+
+.myInfo .imgContainer button {
+    display: block;
+    margin: 40px auto;
+}
+
+/* 반응형 스타일 추가 */
+@media (max-width: 550px) {
+    .content .myInfo {
+        flex-direction: column;
+    }
+
+    .content .myInfo div {
+        width: 100%;
+    }
+}
+
+.myInfo .itemContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 100%;
+}
+
+.myInfo .itemContainer .item {
+    width: 100%;
+    height: 25%;
+}
+
+.myInfo .itemContainer .item div {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border-bottom: 1px solid black; */
+}
+
+.myInfo .itemContainer .item .type {
+    background-color: rgb(213, 225, 231);
+}
+
+.myInfo .itemContainer button {
+    display: block;
+    margin: 0 0 0 auto;
+}
