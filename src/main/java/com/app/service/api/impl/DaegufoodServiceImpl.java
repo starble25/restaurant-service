@@ -46,12 +46,11 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 				store.setBookingState(convertValueToString(item.get("BKN_YN")));
 				
 				storeDAO.saveDaegufoodStores(store);
-
+				System.out.println("여기는store");
+				System.out.println(store.getId());
+				
 				// storeDetail 테이블
 				StoreDetail storeDetail = new StoreDetail();
-				
-//				System.out.println("디테일입니다");
-//				System.out.println(store.getId());
 				
 				storeDetail.setStoreId(store.getId());
 				storeDetail.setTel(convertValueToString(item.get("TLNO")));
@@ -80,6 +79,8 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 				storeDetail.setCloseTime(closeTime);
 
 				storeDAO.saveDaegufoodStoreDetail(storeDetail);
+				System.out.println("여기는storeDetail");
+				System.out.println(storeDetail.getStoreId());
 				
 				
 				// 메뉴 리스트 저장
@@ -121,6 +122,8 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 //							System.out.println(store.getId());
 							
 							storeDAO.saveDaegufoodMenu(menu);
+							System.out.println("여기는menu");
+							System.out.println(menu.getStoreId());
 						}									
 					}
 				}
