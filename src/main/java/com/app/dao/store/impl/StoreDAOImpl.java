@@ -1,5 +1,7 @@
 package com.app.dao.store.impl;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,25 +17,50 @@ public class StoreDAOImpl implements StoreDAO {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 
+	// api관련 메소드
 	@Override
 	public int saveDaegufoodStores(Store store) {
-
 		int result = sqlSessionTemplate.insert("subMain_mapper.saveStore", store);
 		return result;
 	}
 
 	@Override
 	public int saveDaegufoodStoreDetail(StoreDetail storeDetail) {
-
 		int result = sqlSessionTemplate.insert("subMain_mapper.saveStoreDetail", storeDetail);
 		return result;
 	}
 
 	@Override
 	public int saveDaegufoodMenu(Menu menu) {
-
 		int result = sqlSessionTemplate.insert("subMain_mapper.saveMenu", menu);
 		return result;
+	}
+
+	
+	
+	//전체 업소 조회
+	@Override
+	public List<Store> findStoreList() {
+		
+		List<Store>storeList = sqlSessionTemplate.selectList("subMain_mapper.findStoreList");
+		
+		return storeList;
+	}
+
+	//전체 storeDetail 조회
+	@Override
+	public List<StoreDetail> findStoreDetailList() {
+		
+		List<StoreDetail>storeDetailList = sqlSessionTemplate.selectList("subMain_mapper.findStoreDetailList");
+		
+		return storeDetailList;
+	}
+
+	//전체 메뉴 조회
+	@Override
+	public List<Menu> findMenuList() {
+		List<Menu>menuList = sqlSessionTemplate.selectList("subMain_mapper.findMenuList");
+		return menuList;
 	}
 
 }
