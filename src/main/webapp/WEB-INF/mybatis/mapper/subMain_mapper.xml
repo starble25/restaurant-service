@@ -7,83 +7,80 @@
 
 	<insert id="saveStore" parameterType="Store">
 		<selectKey keyProperty="id" resultType="int" order="BEFORE">
-    	    SELECT STORE_PK.NEXTVAL FROM DUAL
-    	</selectKey>
+			SELECT STORE_PK.NEXTVAL FROM DUAL
+		</selectKey>
+
 		MERGE INTO store s
 		USING (
-			SELECT
-				#{storeName} AS store_name,
-				#{address} AS address,
-				#{bookingState} AS bookingState
-			FROM DUAL
+		SELECT
+		#{storeName} AS store_name,
+		#{address} AS address,
+		#{bookingState} AS bookingState,
+		#{spoon} AS spoon,
+        #{rateTotal} AS rate_total,
+        #{rateCount} AS rate_count
+		FROM DUAL
 		) d
 		ON (s.store_name = d.store_name AND s.address = d.address)
 		WHEN MATCHED THEN
-			UPDATE
-			SET s.bookingState = d.bookingState
+		UPDATE
+		SET s.bookingState = d.bookingState,
+			s.spoon = d.spoon,
+            s.rate_total = d.rate_total,
+            s.rate_count = d.rate_count
 		WHEN NOT MATCHED THEN
-			INSERT (id, store_name, address, bookingState)
-			VALUES (#{id}, d.store_name, d.address, d.bookingState)
+		INSERT (id, store_name, address, bookingState, spoon, rate_total, rate_count)
+		VALUES (#{id}, d.store_name, d.address, d.bookingState, d.spoon, d.rate_total, d.rate_count)
 	</insert>
 
 
 	<insert id="saveStoreDetail" parameterType="StoreDetail">
-		<selectKey keyProperty="id" resultType="int" order="BEFORE">
-    		SELECT STORE_DETAIL_PK.NEXTVAL FROM DUAL
-		</selectKey>
-		MERGE INTO store_detail sd
-	    USING (
-    	    SELECT
-        	    #{storeId} AS store_id,
-            	#{tel} AS tel,
-            	#{addressInfo} AS address_info,
-            	#{openTime} AS open_time,
-            	#{closeTime} AS close_time,
-            	#{menuDesc} AS menu_desc,
-            	#{runtime} AS runtime
-        	FROM DUAL
-    	) d
-    	ON (sd.store_id = d.store_id AND sd.tel = d.tel)
-   		WHEN MATCHED THEN
-        	UPDATE
-        	SET sd.address_info = d.address_info,
-	            sd.open_time = d.open_time,
-    	        sd.close_time = d.close_time,
-        	    sd.menu_desc = d.menu_desc,
-            	sd.runtime = d.runtime
-   		WHEN NOT MATCHED THEN
-        	INSERT (id, store_id, tel, address_info, open_time, close_time, menu_desc, runtime)
-        	VALUES (#{id}, d.store_id, d.tel, d.address_info, d.open_time, d.close_time, d.menu_desc, d.runtime)
+		MERGE INTO
+		store_detail sd
+		USING (
+		SELECT
+		#{storeId} AS store_id,
+		#{tel} AS tel,
+		#{addressInfo} AS address_info,
+		#{openTime} AS open_time,
+		#{closeTime} AS close_time,
+		#{menuDesc} AS menu_desc,
+		#{runtime} AS runtime
+		FROM DUAL
+		) d
+		ON (sd.address_info = d.address_info AND sd.tel = d.tel)
+		WHEN MATCHED THEN
+		UPDATE
+		SET sd.open_time = d.open_time,
+		sd.close_time = d.close_time,
+		sd.menu_desc = d.menu_desc,
+		sd.runtime = d.runtime
+		WHEN NOT MATCHED THEN
+		INSERT (id, store_id, tel, address_info, open_time, close_time, menu_desc,
+		runtime)
+		VALUES (STORE_DETAIL_PK.NEXTVAL, d.store_id, d.tel, d.address_info,
+		d.open_time, d.close_time, d.menu_desc, d.runtime)
 	</insert>
 
 
 	<insert id="saveMenu" parameterType="Menu">
-		<selectKey keyProperty="id" resultType="int" order="BEFORE">
-    		SELECT MENU_PK.NEXTVAL FROM DUAL
-		</selectKey>
 		MERGE INTO menu m
-   		USING (
-        	SELECT
-            	#{storeId} AS store_id,
-            	#{menuName} AS menu_name,
-            	#{price} AS price,
-            	#{menuType} AS menu_type
-        	FROM DUAL
-    	) d
-    	ON (m.store_id = d.store_id AND m.menu_name = d.menu_name)
-   		WHEN MATCHED THEN
-        	UPDATE
-        	SET m.price = d.price,
-            	m.menu_type = d.menu_type
-    	WHEN NOT MATCHED THEN
-        	INSERT (id, store_id, menu_name, price, menu_type)
-        	VALUES (#{id}, d.store_id, d.menu_name, d.price, d.menu_type)
+		USING (
+		SELECT
+		#{storeId} AS store_id,
+		#{menuName} AS menu_name,
+		#{price} AS price,
+		#{menuType} AS menu_type
+		FROM DUAL
+		) d
+		ON (m.menu_name = d.menu_name)
+		WHEN MATCHED THEN
+		UPDATE
+		SET m.price = d.price,
+		m.menu_type = d.menu_type
+		WHEN NOT MATCHED THEN
+		INSERT (id, store_id, menu_name, price, menu_type)
+		VALUES (MENU_PK.NEXTVAL, d.store_id, d.menu_name, d.price, d.menu_type)
 	</insert>
 
 </mapper>
-
-
-
-
-
-

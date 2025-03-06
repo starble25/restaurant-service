@@ -2,6 +2,7 @@ package com.app.service.api.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -45,13 +46,16 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 				store.setAddress(convertValueToString(item.get("GNG_CS")));
 				store.setBookingState(convertValueToString(item.get("BKN_YN")));
 				
+				
+				Random random = new Random();
+				store.setSpoon(random.nextInt(4));
+				store.setRateTotal(random.nextInt(6));
+				store.setRateCount(1);
+				
 				storeDAO.saveDaegufoodStores(store);
 
 				// storeDetail 테이블
 				StoreDetail storeDetail = new StoreDetail();
-				
-//				System.out.println("디테일입니다");
-//				System.out.println(store.getId());
 				
 				storeDetail.setStoreId(store.getId());
 				storeDetail.setTel(convertValueToString(item.get("TLNO")));
@@ -116,9 +120,6 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 							menu.setMenuName(menuName);
 							menu.setPrice(price);
 							menu.setMenuType(convertValueToString(item.get("FD_CS")));
-							
-//							System.out.println("메뉴입니다");
-//							System.out.println(store.getId());
 							
 							storeDAO.saveDaegufoodMenu(menu);
 						}									
