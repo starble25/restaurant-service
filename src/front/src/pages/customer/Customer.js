@@ -1,6 +1,7 @@
 import './Customer.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import MyInfo from './MyInfo';
 
 function Customer() {
     const [activeMenu, setActiveMenu] = useState('myInfo'); // 현재 활성화된 메뉴
@@ -52,64 +53,6 @@ function Customer() {
     );
 }
 
-// 내 정보
-function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
-    
-    const [modifyMyInfo, setModifyMyInfo] = useState(true);
-
-    useEffect(() => {
-        if( myInfo ) { // myInfo가 있으면 실행안함
-            return;
-        }
-
-        axios.post('api/users', { id })
-            .then( res => setMyInfo(res.data) )
-            .catch( error => console.error(error) );
-    }, [id, myInfo]);
-
-    return (
-        myInfo ? 
-
-        modifyMyInfo ? 
-
-        <div className='myInfo'>
-            <div className='imgContainer'>
-                <img src={profileImagePath} alt='profileImage' />
-                <button>이미지 등록</button>
-            </div>
-            <div className='itemContainer'>
-                <div className='item'>
-                    <div className='type'>아이디</div>
-                    <div>{myInfo.userName}</div>
-                </div>
-                <div className='item'>
-                    <div className='type'>이름</div>
-                    <div>{myInfo.name}</div>
-                </div>
-                <div className='item'>
-                    <div className='type'>이메일</div>
-                    <div>{myInfo.email}</div>
-                </div>
-                <div className='item'>
-                    <div className='type'>전화번호</div>
-                    <div>{myInfo.tel}</div>
-                </div>
-                <button onClick={() => setModifyMyInfo(false)}>내정보 변경</button>
-            </div>
-        </div>
-
-        : <ModifyMyInfo />
-        
-        : <div> No data </div> // myInfo == null
-    );
-}
-
-// 내정보 변경
-function ModifyMyInfo() {
-    return (
-        <div>ModifyMyInfo</div>
-    )
-}
 
 // 예약
 function Booking() {

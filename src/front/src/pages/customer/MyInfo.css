@@ -1,0 +1,124 @@
+/* 내 정보 */
+.content .myInfo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: 1px solid orange;
+}
+
+.content .myInfo div {
+    text-align: center;
+    width: 50%;
+}
+
+.myInfo .imgContainer img {
+    width: 100%;
+    height: auto;
+    max-height: 85%;
+    object-fit: cover;
+
+    /* border: 1px solid green; */
+}
+
+.myInfo .imgContainer button {
+    display: block;
+    margin: 40px auto;
+}
+
+/* 반응형 스타일 추가 */
+@media (max-width: 550px) {
+    .content .myInfo {
+        flex-direction: column;
+    }
+
+    .content .myInfo div {
+        width: 100%;
+    }
+
+    .myInfo .imgContainer button {
+        margin: 0 auto;
+    }
+}
+
+.myInfo .itemContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 100%;
+}
+
+.myInfo .itemContainer .item {
+    width: 100%;
+    height: 25%;
+}
+
+.myInfo .itemContainer .item div {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border-bottom: 1px solid black; */
+}
+
+.myInfo .itemContainer .item .type {
+    background-color: rgb(213, 225, 231);
+}
+
+.myInfo .itemContainer button {
+    display: block;
+    margin: 0 0 0 auto;
+}
+
+/* 내정보 변경 */
+.modifyContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.modifyContainer .modify {
+    height: 15%;
+    margin-bottom: 10px;
+    display: flex;
+    color: #666666;
+    font-weight: bold;
+}
+
+.modifyContainer .\$title {
+    height: 10%;
+    display: block;
+    color: black;
+}
+
+.modifyContainer .modifyPw {
+    height: 30%;
+}
+
+.modifyContainer .\$title h3 {
+    font-size: 22px;
+    height: 50px;
+}
+
+.modifyContainer .modify .type {
+    width: 25%;
+    padding-top: 5px;
+}
+
+.modifyContainer .modify .inputText {
+    width: 75%;
+    
+    & input {
+        width: 100%;
+        height: 35px;
+        margin-bottom: 20px;
+        padding-left: 10px;
+    }
+}
+
+.modifyContainer .btnSubmit {
+    display: block;
+    margin: 0 auto;
+}
