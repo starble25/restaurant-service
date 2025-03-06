@@ -9,10 +9,10 @@ import StoreList from "../../components/store/StoreList";
 export default function SubmainPage() {
 
 
-    const [ storeData, setStoreData ] = useState('');
-    const [ storeList, setStoreList ] = useState([]);
-    const [ storeDetailList, setStoreDetailList ] = useState([]);
-    const [ menuList, setMenuList ] = useState([]);
+    const [storeData, setStoreData] = useState('');
+    const [storeList, setStoreList] = useState([]);
+    const [storeDetailList, setStoreDetailList] = useState([]);
+    const [menuList, setMenuList] = useState([]);
 
     useEffect(() => {
         axios
@@ -88,11 +88,13 @@ export default function SubmainPage() {
             </Tabs>
 
 
-            {
-                storeList.map((item, index) => {
-                    return <StoreList key={index} storeList={item} menuList={menuList} />
-                })
-            }
+            <div className="store-container">
+                {
+                    storeList.map((item, index) => {
+                        return <StoreList key={index} storeList={item} menuList={menuList} storeDetailList={storeDetailList} />
+                    })
+                }
+            </div>
         </>
     );
 }

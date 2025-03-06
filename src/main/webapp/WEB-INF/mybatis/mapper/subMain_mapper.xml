@@ -54,10 +54,8 @@
 		sd.menu_desc = d.menu_desc,
 		sd.runtime = d.runtime
 		WHEN NOT MATCHED THEN
-		INSERT (id, store_id, tel, address_info, open_time, close_time, menu_desc,
-		runtime)
-		VALUES (STORE_DETAIL_PK.NEXTVAL, d.store_id, d.tel, d.address_info,
-		d.open_time, d.close_time, d.menu_desc, d.runtime)
+		INSERT (id, store_id, tel, address_info, open_time, close_time, menu_desc,runtime)
+		VALUES (STORE_DETAIL_PK.NEXTVAL, d.store_id, d.tel, d.address_info, d.open_time, d.close_time, d.menu_desc, d.runtime)
 	</insert>
 
 
