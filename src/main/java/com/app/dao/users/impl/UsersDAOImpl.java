@@ -17,5 +17,11 @@ public class UsersDAOImpl implements UsersDAO {
 		Users user = sqlSessionTemplate.selectOne("users_mapper.findUserById", id);
 		return user;
 	}
+
+	@Override
+	public String findUserPasswordById(int id) {
+		String dbPassword = sqlSessionTemplate.selectOne("users_mapper.findUserPasswordById", id);
+		return dbPassword;
+	}
 	
 }

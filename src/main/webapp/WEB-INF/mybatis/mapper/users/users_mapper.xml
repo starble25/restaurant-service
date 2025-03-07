@@ -8,5 +8,11 @@
 		from USERS
 		WHERE id = #{id}	
 	</select>
+	
+	<select id="findUserPasswordById" resultType="String" parameterType="int">
+		select password
+		from USERS
+		WHERE id = #{id}
+	</select>
 
 </mapper>

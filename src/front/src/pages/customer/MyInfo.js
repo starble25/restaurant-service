@@ -4,7 +4,6 @@ import "./MyInfo.css";
 
 // 내 정보
 function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
-    
     const [isEditing, setIsEditing] = useState(true);
 
     useEffect(() => {
@@ -12,7 +11,7 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
             return;
         }
 
-        axios.post('api/users', { id })
+        axios.post('api/users/find-user', { id })
             .then( res => {
                 const data = res.data;
                 setMyInfo({ ...data, password: null }); // password는 null로 세팅
@@ -61,32 +60,54 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
 function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
     const [modifyInfo, setModifyInfo] = useState(myInfo);
 
+    console.log('modifyInfo');
+    console.log(modifyInfo);
+
     const handleSubmit = () => {
-        //검증 실행
         if ( !validateForm(modifyInfo) ) {
-            console.log("검증 실패");
             return;
         }
-    
-        axios.put('api/modifyUserInfo', modifyInfo)
-            .then(res => {
+
+        console.log('varifyPassword');
+        console.log(modifyInfo);
+        
+        if ( !verifyPassword(modifyInfo) ) {
+            return;
+        }
+
+        axios.put('api/users/modify', modifyInfo)
+            .then( res => {
                 console.log("정보 업데이트 성공:", res.data);
                 setMyInfo(res.data);
                 setIsEditing(false); // 편집 모드 종료
             })
-            .catch(err => {
-                console.error("업데이트 중 오류 발생:", err);
+            .catch( error => {
+                console.log("업데이트 중 오류 발생:", error);
             });
+    };
+
+    //Backend 비밀번호 검증
+    const verifyPassword = (modifyInfo) => {
+        axios.post('api/users/verify-password', modifyInfo)
+        .then( res => {
+            console.log("비밀번호 검증 성공:", res.data);
+            return true;
+        })
+        .catch( error => {
+            console.log("비밀번호 검증 실패", error);
+            return false;
+        })
     };
 
     // 입력 검증
     const validateForm = (modifyInfo) => {
-        const { name, email, tel, newPassword, confirmPassword } = modifyInfo;
+        const { name, email, tel, password, newPassword, confirmPassword } = modifyInfo;
 
-        console.log('validateForm 함수 실행됨');
-        console.log('newPass : ' + modifyInfo.newPassword);
-        console.log('confirmPass : ' + modifyInfo.confirmPassword);
-        console.log('123123');
+        // 현재 비밀번호 검증
+        if (!password || !password.trim()) {
+            alert("현재 비밀번호를 입력하세요.");
+            return false;
+        }
     
         // 이름 검증
         if (!name.trim()) {
@@ -108,7 +129,7 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
             return false;
         }
     
-        // 비밀번호 검증
+        // 새 비밀번호 검증
         if (newPassword || confirmPassword) {
             if (newPassword.length < 8) {
                 alert("비밀번호는 최소 8자 이상이어야 합니다.");
@@ -132,7 +153,11 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
             <div className='modify modifyPw'>
                 <div className='type'>비밀번호</div>
                 <div className='inputText'>
-                    <input type='password' placeholder='현재 비밀번호 입력'></input>
+                    <input 
+                        type='password' 
+                        placeholder='현재 비밀번호 입력' 
+                        onChange={(e) => setModifyInfo({ ...modifyInfo, password: e.target.value })}
+                    />
                     <br/>
                     <input 
                         type='password' 

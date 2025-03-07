@@ -18,4 +18,17 @@ public class UsersServiceImpl implements UsersService {
 		Users user = usersDAO.findUserById(id);
 		return user;
 	}
+
+	@Override
+	public boolean verifyPassword(Users users) {
+		int id = users.getId();
+		String userInputPassword = users.getPassword();
+		String dbPassword = usersDAO.findUserPasswordById(id);
+		
+		if( userInputPassword.equals(dbPassword) ) {
+			return true;
+		}
+		
+		return false;
+	}
 }
