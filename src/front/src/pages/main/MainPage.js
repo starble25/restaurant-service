@@ -79,6 +79,7 @@ export default function RedSpoon() {
                     <li className=''>
                         <a href="#" title="공지사항" className="collapsed">공지사항</a>
                     </li>
+
                     <li className=''>
                         <a href="#" title="독자 게시판" className="collapsed">독자 게시판</a>
                     </li>
