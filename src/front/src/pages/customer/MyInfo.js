@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./MyInfo.css";
+import verifyPassword from "./verifyPassword";
 
 // 내 정보
 function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
@@ -60,13 +61,18 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
 function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
     const [modifyInfo, setModifyInfo] = useState(myInfo);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if( !validateForm(modifyInfo) ) {
             return;
         }
         
-        if( !verifyPassword(modifyInfo) ) {
-            console.log('verify : ' + verifyPassword(modifyInfo));
+        // const verify = await verifyPassword(modifyInfo);
+        // if( !verify ) {
+        //     console.log('verify : ' + verifyPassword(modifyInfo));
+        //     return;
+        // }
+
+        if( !(await verifyPassword(modifyInfo) ) ) {
             return;
         }
 
@@ -75,31 +81,28 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
         }
         //모든 검증 완료
 
-
         axios.put('api/users/modify-user', modifyInfo)
             .then( res => {
                 console.log("정보 업데이트 성공:", res.data);
+                window.location.reload();
             })
             .catch( error => {
                 console.log("업데이트 중 오류 발생:", error);
                 setModifyInfo({ ...modifyInfo, password: '' });
             });
-
-        //모든 작업 완료 후 실행
-        window.location.reload();
     };
 
     //Backend 비밀번호 검증
-    const verifyPassword = async (modifyInfo) => {
-        try {
-            const res = await axios.post('api/users/verify-password', modifyInfo);
-            console.log("비밀번호 검증 성공:", res.data);
-            return true;
-        } catch (error) {
-            console.log("비밀번호 검증 실패", error);
-            return false;
-        }
-    };
+    // const verifyPassword = async (modifyInfo) => {
+    //     try {
+    //         const res = await axios.post('api/users/verify-password', modifyInfo);
+    //         console.log("비밀번호 검증 성공:", res.data);
+    //         return true;
+    //     } catch (error) {
+    //         console.log("비밀번호 검증 실패", error);
+    //         return false;
+    //     }
+    // };
     
 
     // 입력 검증

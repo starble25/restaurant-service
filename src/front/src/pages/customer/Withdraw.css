@@ -1,0 +1,46 @@
+.withdrawContainer {
+    height: 100%;
+}
+
+.withdrawContainer h3 {
+    font-size: 22px;
+    height: 50px;
+}
+
+.withdrawContainer .inputContainer {
+    display: flex;
+    height: 15%;
+}
+
+.withdrawContainer .inputContainer .type {
+    width: 25%;
+    color: #666666;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+}
+
+.withdrawContainer .inputContainer .inputWrapper {
+    width: 75%;
+
+    display: flex;
+    align-items: center;
+
+    & input {
+        width: 100%;
+        height: 35px;
+        padding-left: 10px;
+    }
+}
+
+.withdrawContainer .errorMessage {
+    position: absolute;
+    color: red;
+    margin-top: 70px;
+}
+
+.withdrawContainer .btnWithdraw {
+    display: block;
+    margin-top: 50px;
+}

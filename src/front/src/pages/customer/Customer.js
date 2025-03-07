@@ -2,6 +2,7 @@ import './Customer.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import MyInfo from './MyInfo';
+import Withdraw from './Withdraw';
 
 function Customer() {
     const [activeMenu, setActiveMenu] = useState('myInfo'); // 현재 활성화된 메뉴
@@ -24,7 +25,9 @@ function Customer() {
             case 'myReviews':
                 return <MyReviews />;
             case 'withdraw':
-                return <Withdraw />;
+                return <Withdraw 
+                id={id}
+                />;
             default:
                 return <div>content</div>;
         }
@@ -65,13 +68,6 @@ function Booking() {
 function MyReviews() {
     return (
         <div>내 글 목록입니다.</div>
-    );
-}
-
-// 회원 탈퇴
-function Withdraw() {
-    return (
-        <div>회원 탈퇴 화면입니다.</div>
     );
 }
 
