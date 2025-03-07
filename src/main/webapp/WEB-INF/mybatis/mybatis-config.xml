@@ -12,6 +12,7 @@
 		<typeAlias type="com.app.dto.menu.Menu" alias="Menu" />
 		<typeAlias type="com.app.dto.store.Store" alias="Store" />
 		<typeAlias type="com.app.dto.store.StoreDetail" alias="StoreDetail" />
+		<typeAlias type="com.app.dto.store.StoreFilter" alias="StoreFilter" />
 	</typeAliases>
 </configuration>
 

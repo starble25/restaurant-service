@@ -84,12 +84,14 @@
     width: 75%;
     padding: 16px;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
 .tab-content ul {
     margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .tab-content li {
@@ -99,6 +101,8 @@
     /* transition: background-color 0.1s; */
     align-items: center;
     cursor: pointer;
+    width: calc(33% - 15px);
+    box-sizing: border-box;
 }
 
 .tab-content li:hover {

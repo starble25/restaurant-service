@@ -10,6 +10,7 @@ import com.app.dao.store.StoreDAO;
 import com.app.dto.menu.Menu;
 import com.app.dto.store.Store;
 import com.app.dto.store.StoreDetail;
+import com.app.dto.store.StoreFilter;
 import com.app.service.store.StoreService;
 
 @Service
@@ -61,6 +62,13 @@ public class StoreServiceImpl implements StoreService {
 	public List<Menu> findMenuWithFilters(Map<String, Object> params) {
 		List<Menu> menuList = storeDAO.findMenuWithFilters(params);
 		return menuList;
+	}
+	
+
+	@Override
+	public List<StoreFilter> findSpoonNum() {
+		List<StoreFilter> spoonList = storeDAO.findSpoonNum();
+		return spoonList;
 	}
 
 	

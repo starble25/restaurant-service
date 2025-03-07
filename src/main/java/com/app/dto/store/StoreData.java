@@ -12,4 +12,5 @@ public class StoreData {
 	private List<Store> storeList;
     private List<StoreDetail> storeDetailList;
     private List<Menu> menuList;
+    private List<StoreFilter>storeFilterList;
 }

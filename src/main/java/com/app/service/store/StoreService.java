@@ -6,6 +6,7 @@ import java.util.Map;
 import com.app.dto.menu.Menu;
 import com.app.dto.store.Store;
 import com.app.dto.store.StoreDetail;
+import com.app.dto.store.StoreFilter;
 
 public interface StoreService {
 
@@ -18,4 +19,6 @@ public interface StoreService {
 	List<StoreDetail>findStoreDetailWithFilters(Map<String, Object> params);
 	List<Menu>findMenuWithFilters(Map<String, Object> params);
 
+	
+	List<StoreFilter>findSpoonNum();
 }

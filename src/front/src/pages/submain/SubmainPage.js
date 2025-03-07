@@ -9,9 +9,10 @@ import StoreList from "../../components/store/StoreList";
 export default function SubmainPage() {
 
 
-    const [ storeList, setStoreList ] = useState([]);
-    const [ storeDetailList, setStoreDetailList ] = useState([]);
-    const [ menuList, setMenuList ] = useState([]);
+    const [storeList, setStoreList] = useState([]);
+    const [storeDetailList, setStoreDetailList] = useState([]);
+    const [menuList, setMenuList] = useState([]);
+    const [spoonNumList, setSpoonNumList] = useState([]);
 
     const fetchStoreData = (spoonCount) => {
         axios
@@ -20,12 +21,14 @@ export default function SubmainPage() {
                 setStoreList(Response.data.storeList);
                 setStoreDetailList(Response.data.storeDetailList);
                 setMenuList(Response.data.menuList);
+                setSpoonNumList(Response.data.storeFilterList);
             })
             .catch((error) => {
                 console.log("error남", error);
             });
     };
 
+    console.log(spoonNumList);
 
     // 초기상태 스푼 3개로 세팅
     useEffect(() => {
@@ -62,42 +65,18 @@ export default function SubmainPage() {
 
                             {/* 우측 소분류 필터 */}
                             <div className="tab-content">
-                                <div>
-                                    <ul>
-                                        <li>전국 전체 (18,164)</li>
-                                        <li onClick={() => { fetchStoreData(1) }}>스푼 1개
-                                            <span>
-
-                                            </span>
+                                <ul>
+                                    <li>전국 전체 (18,164)</li>
+                                    {spoonNumList.map((item) => (
+                                        <li key={item.spoon} onClick={() => { fetchStoreData(item.spoon) }}>
+                                            스푼 {item.spoon}개 <span>({item.count})</span>
                                         </li>
-                                        <li>새로 오픈한 맛집 (준비중)</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <li onClick={() => { fetchStoreData(3) }}>스푼 3개
-                                            <span>
-
-                                            </span>
-                                        </li>
-                                        <li onClick={() => { fetchStoreData(0) }}>스푼 0개
-                                            <span>
-
-                                            </span>
-                                        </li>
-                                        <li>평가를 기다리는 곳 (준비중)</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <li onClick={() => { fetchStoreData(2) }}>스푼 2개
-                                            <span>
-
-                                            </span>
-                                        </li>
-                                        <li>주목할 만한 새 맛집 (준비중)</li>
-                                    </ul>
-                                </div>
+                                    ))}
+                                    <li>새로 오픈한 맛집 (준비중)</li>
+                                    <li>평가를 기다리는 곳 (준비중)</li>
+                                    <li>주목할 만한 새 맛집 (준비중)</li>
+                                    <li>구독자들의 추천 맛집 (준비중)</li>
+                                </ul>
                             </div>
                         </div>
                     </TabPanel>

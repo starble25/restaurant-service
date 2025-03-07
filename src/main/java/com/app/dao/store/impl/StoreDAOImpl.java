@@ -11,6 +11,7 @@ import com.app.dao.store.StoreDAO;
 import com.app.dto.menu.Menu;
 import com.app.dto.store.Store;
 import com.app.dto.store.StoreDetail;
+import com.app.dto.store.StoreFilter;
 
 @Repository
 public class StoreDAOImpl implements StoreDAO {
@@ -21,19 +22,19 @@ public class StoreDAOImpl implements StoreDAO {
 	// api관련 메소드
 	@Override
 	public int saveDaegufoodStores(Store store) {
-		int result = sqlSessionTemplate.insert("subMain_mapper.saveStore", store);
+		int result = sqlSessionTemplate.insert("getApiData_mapper.saveStore", store);
 		return result;
 	}
 
 	@Override
 	public int saveDaegufoodStoreDetail(StoreDetail storeDetail) {
-		int result = sqlSessionTemplate.insert("subMain_mapper.saveStoreDetail", storeDetail);
+		int result = sqlSessionTemplate.insert("getApiData_mapper.saveStoreDetail", storeDetail);
 		return result;
 	}
 
 	@Override
 	public int saveDaegufoodMenu(Menu menu) {
-		int result = sqlSessionTemplate.insert("subMain_mapper.saveMenu", menu);
+		int result = sqlSessionTemplate.insert("getApiData_mapper.saveMenu", menu);
 		return result;
 	}
 
@@ -81,6 +82,13 @@ public class StoreDAOImpl implements StoreDAO {
 	public List<Menu> findMenuWithFilters(Map<String, Object> params) {
 		List<Menu> menuList = sqlSessionTemplate.selectList("subMain_mapper.findMenuWithFilters", params);
 		return menuList;
+	}
+
+	
+	@Override
+	public List<StoreFilter> findSpoonNum() {
+		List<StoreFilter> spoonList = sqlSessionTemplate.selectList("subMain_mapper.findSpoonNum"); 
+		return spoonList;
 	}
 
 }
