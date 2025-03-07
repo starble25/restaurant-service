@@ -1,6 +1,7 @@
 package com.app.dao.store.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,25 @@ public class StoreDAOImpl implements StoreDAO {
 	@Override
 	public List<Menu> findMenuList() {
 		List<Menu>menuList = sqlSessionTemplate.selectList("subMain_mapper.findMenuList");
+		return menuList;
+	}
+
+	@Override
+	public List<Store> findStoreWithFilters(Map<String, Object> params) {
+		
+		List<Store> storeList = sqlSessionTemplate.selectList("subMain_mapper.findStoreWithFilters", params);
+		return storeList;
+	}
+
+	@Override
+	public List<StoreDetail> findStoreDetailWithFilters(Map<String, Object> params) {
+		List<StoreDetail> storeDetailList = sqlSessionTemplate.selectList("subMain_mapper.findStoreDetailWithFilters", params);
+		return storeDetailList;
+	}
+
+	@Override
+	public List<Menu> findMenuWithFilters(Map<String, Object> params) {
+		List<Menu> menuList = sqlSessionTemplate.selectList("subMain_mapper.findMenuWithFilters", params);
 		return menuList;
 	}
 

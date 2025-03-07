@@ -1,45 +1,61 @@
 .store-card {
-    width: 300px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(47% - 20px);
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
+    text-overflow: ellipsis;
+    margin-bottom: 40px;
+    padding: 20px;
 }
 
 .store-image {
     width: 100%;
-    height: 180px;
+    /* height: 40%; */
     object-fit: cover;
+    margin-bottom: 20px;
 }
 
-.store-content {
-    padding: 16px;
+.store-spoon {
+    width: 24px;
+    height: auto;
+    margin-right: 5px;
 }
 
-.spoon-icons {
-    color: #e11d48; /* 빨간색 */
-    font-size: 20px;
-    margin-bottom: 8px;
-}
+
 
 .store-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
+    color: #ec4a68;
+    border-bottom: 1px solid #ec4a68;
+    padding-bottom: 10px;
+}
+
+.store-header div {
+    width: 80%;
+}
+
+.empty-star {
+    color: gray;
+    opacity: 0.3;
+}
+
+.rating-container {
+    text-align: right;
 }
 
 .rating {
-    color: gray;
-    font-size: 14px;
+    color: #555;
+    font-size: 15px;
 }
 
 .store-info {
     margin-top: 10px;
     font-size: 14px;
+    border-bottom: 1px solid #ec4a6869;
+    padding-bottom: 10px;
 }
 
 .info-row {
@@ -49,20 +65,36 @@
 }
 
 .info-label {
+    width: 20%;
     font-weight: bold;
     color: #333;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+.icon-size {
+    font-size: 15px;
+}
+
+.info-label div {
+    margin-left: 0;
 }
 
 .info-value {
+    width: 80%;
     color: #555;
 }
 
 .store-menu {
     margin-top: 10px;
-    font-size: 14px;
-    color: #666;
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
 }
 
 .menu-item {
     margin-top: 4px;
+    margin-left: 15px;
 }

@@ -50,11 +50,9 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 				Random random = new Random();
 				store.setSpoon(random.nextInt(4));
 				store.setRateTotal(random.nextInt(6));
-				store.setRateCount(1);
+				store.setRateCount(random.nextInt(3));
 				
 				storeDAO.saveDaegufoodStores(store);
-				System.out.println("여기는store");
-				System.out.println(store.getId());
 				
 				// storeDetail 테이블
 				StoreDetail storeDetail = new StoreDetail();
@@ -86,8 +84,6 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 				storeDetail.setCloseTime(closeTime);
 
 				storeDAO.saveDaegufoodStoreDetail(storeDetail);
-				System.out.println("여기는storeDetail");
-				System.out.println(storeDetail.getStoreId());
 				
 				
 				// 메뉴 리스트 저장
@@ -126,8 +122,6 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 							menu.setMenuType(convertValueToString(item.get("FD_CS")));
 							
 							storeDAO.saveDaegufoodMenu(menu);
-							System.out.println("여기는menu");
-							System.out.println(menu.getStoreId());
 						}									
 					}
 				}
