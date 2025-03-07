@@ -31,4 +31,10 @@ public class UsersServiceImpl implements UsersService {
 		
 		return false;
 	}
+
+	@Override
+	public int modifyUser(Users user) {
+		int result = usersDAO.modifyUser(user);
+		return result;
+	}
 }

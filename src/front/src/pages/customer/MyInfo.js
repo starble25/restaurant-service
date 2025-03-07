@@ -60,44 +60,47 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
 function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
     const [modifyInfo, setModifyInfo] = useState(myInfo);
 
-    console.log('modifyInfo');
-    console.log(modifyInfo);
-
     const handleSubmit = () => {
-        if ( !validateForm(modifyInfo) ) {
+        if( !validateForm(modifyInfo) ) {
             return;
         }
-
-        console.log('varifyPassword');
-        console.log(modifyInfo);
         
-        if ( !verifyPassword(modifyInfo) ) {
+        if( !verifyPassword(modifyInfo) ) {
+            console.log('verify : ' + verifyPassword(modifyInfo));
             return;
         }
 
-        axios.put('api/users/modify', modifyInfo)
+        if( !modifyInfo.newPassword ) {
+            setModifyInfo({ ...modifyInfo, password: modifyInfo.newPassword });
+        }
+        //모든 검증 완료
+
+
+        axios.put('api/users/modify-user', modifyInfo)
             .then( res => {
                 console.log("정보 업데이트 성공:", res.data);
-                setMyInfo(res.data);
-                setIsEditing(false); // 편집 모드 종료
             })
             .catch( error => {
                 console.log("업데이트 중 오류 발생:", error);
+                setModifyInfo({ ...modifyInfo, password: '' });
             });
+
+        //모든 작업 완료 후 실행
+        window.location.reload();
     };
 
     //Backend 비밀번호 검증
-    const verifyPassword = (modifyInfo) => {
-        axios.post('api/users/verify-password', modifyInfo)
-        .then( res => {
+    const verifyPassword = async (modifyInfo) => {
+        try {
+            const res = await axios.post('api/users/verify-password', modifyInfo);
             console.log("비밀번호 검증 성공:", res.data);
             return true;
-        })
-        .catch( error => {
+        } catch (error) {
             console.log("비밀번호 검증 실패", error);
             return false;
-        })
+        }
     };
+    
 
     // 입력 검증
     const validateForm = (modifyInfo) => {
@@ -156,6 +159,7 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
                     <input 
                         type='password' 
                         placeholder='현재 비밀번호 입력' 
+                        value={modifyInfo.password || ''} 
                         onChange={(e) => setModifyInfo({ ...modifyInfo, password: e.target.value })}
                     />
                     <br/>

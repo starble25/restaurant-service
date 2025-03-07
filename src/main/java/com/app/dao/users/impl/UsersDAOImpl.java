@@ -23,5 +23,11 @@ public class UsersDAOImpl implements UsersDAO {
 		String dbPassword = sqlSessionTemplate.selectOne("users_mapper.findUserPasswordById", id);
 		return dbPassword;
 	}
+
+	@Override
+	public int modifyUser(Users user) {
+		int result = sqlSessionTemplate.update("users_mapper.modifyUser", user);
+		return result;
+	}
 	
 }

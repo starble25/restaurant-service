@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,6 @@ public class UsersController {
 	
 	@PostMapping("api/users/find-user")
 	public Users findUserById(@RequestBody Users users) {
-		System.out.println(users.getId());
 		Users user = usersService.findUserById(users.getId());
 		return user;
 	}
@@ -34,10 +34,24 @@ public class UsersController {
 		System.out.println("result : " + result);
 		
 		if( result ) {
-			return ResponseEntity.ok("verifiedPassword");
+			return ResponseEntity.ok("verified password!");
 		} else {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Password verification failed");
 		}
 
 	}
+	
+	@PutMapping("api/users/modify-user")
+	public ResponseEntity<String> modifyUser(@RequestBody Users user) {
+		int result = usersService.modifyUser(user);
+		
+		if( result > 0 ) {
+			return ResponseEntity.ok("updated user info!");
+		} else {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("update failed");
+		}
+
+	}
+	
+	
 }

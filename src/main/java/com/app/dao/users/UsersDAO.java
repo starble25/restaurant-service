@@ -7,5 +7,7 @@ public interface UsersDAO {
 	public Users findUserById(int id);
 	
 	public String findUserPasswordById(int id);
+	
+	public int modifyUser(Users user);
 
 }

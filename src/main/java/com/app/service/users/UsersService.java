@@ -7,5 +7,7 @@ public interface UsersService {
 	public Users findUserById(int id);
 	
 	public boolean verifyPassword(Users users);
+	
+	public int modifyUser(Users user);
 
 }

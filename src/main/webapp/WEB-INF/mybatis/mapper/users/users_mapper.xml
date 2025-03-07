@@ -4,15 +4,25 @@
 <mapper namespace="users_mapper">
 	
 	<select id="findUserById" resultType="Users" parameterType="int">
-		select *
-		from USERS
+		SELECT *
+		FROM USERS
 		WHERE id = #{id}	
 	</select>
 	
 	<select id="findUserPasswordById" resultType="String" parameterType="int">
-		select password
-		from USERS
+		SELECT password
+		FROM USERS
 		WHERE id = #{id}
 	</select>
-
+	
+	<update id="modifyUser" parameterType="Users">
+		UPDATE users
+		SET 
+		    password = #{password},
+		    name = #{name},
+		    email = #{email},
+		    tel = #{tel}
+		WHERE id = #{id}
+	</update>
+	
 </mapper>
