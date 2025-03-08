@@ -92,20 +92,26 @@
     margin-top: 8px;
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 .tab-content li {
+    flex: 1 0 30%;
     padding: 10px 20px;
     list-style: none;
     border-radius: 7px;
     /* transition: background-color 0.1s; */
     align-items: center;
     cursor: pointer;
-    width: calc(33% - 15px);
     box-sizing: border-box;
 }
 
 .tab-content li:hover {
+    background-color: #e11d48;
+    color: white;
+}
+
+.tab-content li.active {
     background-color: #e11d48;
     color: white;
 }
