@@ -22,13 +22,16 @@ function Withdraw({ id }) {
             return;
         }
         
+        console.log('myInfo');
+        console.log(myInfo);
         await axios.delete('api/users/delete-user', { data: myInfo })
         .then(res => {
             console.log("회원 탈퇴 성공:", res.data);
             window.location.href = '/'; //탈퇴 성공시 메인페이지로 이동시킬 예정
         })
         .catch(error => {
-            console.log("회원 탈퇴 중 오류 발생:", error);
+            console.log("회원 탈퇴 중 오류 발생:", error.response.data );
+            console.log(error);
             setMyInfo({ ...myInfo, password: '' });
         });
     };

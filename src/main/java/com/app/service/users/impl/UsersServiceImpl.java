@@ -20,9 +20,9 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public boolean verifyPassword(Users users) {
-		int id = users.getId();
-		String userInputPassword = users.getPassword();
+	public boolean verifyPassword(Users user) {
+		int id = user.getId();
+		String userInputPassword = user.getPassword();
 		String dbPassword = usersDAO.findUserPasswordById(id);
 		
 		if( userInputPassword.equals(dbPassword) ) {
@@ -35,6 +35,18 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public int modifyUser(Users user) {
 		int result = usersDAO.modifyUser(user);
+		return result;
+	}
+
+	@Override
+	public int deleteUser(Users user) {
+	    // 삭제 전 비밀번호 한번 더 검증
+	    if ( !verifyPassword(user) ) {
+	    	return -99;
+	    }
+		
+		int result = usersDAO.deleteUser(user);
+		System.out.println("delete result : " + result);
 		return result;
 	}
 }

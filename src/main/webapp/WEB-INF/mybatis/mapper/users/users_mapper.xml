@@ -25,4 +25,9 @@
 		WHERE id = #{id}
 	</update>
 	
+	<delete id="deleteUser" parameterType="Users">
+		DELETE FROM users
+		WHERE id = #{id}
+	</delete>
+	
 </mapper>

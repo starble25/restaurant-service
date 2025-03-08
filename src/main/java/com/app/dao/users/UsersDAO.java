@@ -9,5 +9,7 @@ public interface UsersDAO {
 	public String findUserPasswordById(int id);
 	
 	public int modifyUser(Users user);
+	
+	public int deleteUser(Users user);
 
 }

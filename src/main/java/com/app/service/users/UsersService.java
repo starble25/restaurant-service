@@ -6,8 +6,10 @@ public interface UsersService {
 	
 	public Users findUserById(int id);
 	
-	public boolean verifyPassword(Users users);
+	public boolean verifyPassword(Users user);
 	
 	public int modifyUser(Users user);
+	
+	public int deleteUser(Users user);
 
 }

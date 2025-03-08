@@ -29,5 +29,11 @@ public class UsersDAOImpl implements UsersDAO {
 		int result = sqlSessionTemplate.update("users_mapper.modifyUser", user);
 		return result;
 	}
+
+	@Override
+	public int deleteUser(Users user) {
+		int result = sqlSessionTemplate.delete("users_mapper.deleteUser", user);
+		return result;
+	}
 	
 }
