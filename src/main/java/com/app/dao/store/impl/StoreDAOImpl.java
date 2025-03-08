@@ -38,33 +38,8 @@ public class StoreDAOImpl implements StoreDAO {
 		return result;
 	}
 
-	
-	
-	//전체 업소 조회
-	@Override
-	public List<Store> findStoreList() {
-		
-		List<Store>storeList = sqlSessionTemplate.selectList("subMain_mapper.findStoreList");
-		
-		return storeList;
-	}
 
-	//전체 storeDetail 조회
-	@Override
-	public List<StoreDetail> findStoreDetailList() {
-		
-		List<StoreDetail>storeDetailList = sqlSessionTemplate.selectList("subMain_mapper.findStoreDetailList");
-		
-		return storeDetailList;
-	}
-
-	//전체 메뉴 조회
-	@Override
-	public List<Menu> findMenuList() {
-		List<Menu>menuList = sqlSessionTemplate.selectList("subMain_mapper.findMenuList");
-		return menuList;
-	}
-
+	//필터 기능 구현 관련 메소드
 	@Override
 	public List<Store> findStoreWithFilters(Map<String, Object> params) {
 		
@@ -89,6 +64,12 @@ public class StoreDAOImpl implements StoreDAO {
 	public List<StoreFilter> findSpoonNum() {
 		List<StoreFilter> spoonList = sqlSessionTemplate.selectList("subMain_mapper.findSpoonNum"); 
 		return spoonList;
+	}
+
+	@Override
+	public int findTotalStore() {
+		int result = sqlSessionTemplate.selectOne("subMain_mapper.findTotalStore"); 
+		return result;
 	}
 
 }

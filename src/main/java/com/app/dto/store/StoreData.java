@@ -13,4 +13,5 @@ public class StoreData {
     private List<StoreDetail> storeDetailList;
     private List<Menu> menuList;
     private List<StoreFilter>storeFilterList;
+    private int totalStore;
 }

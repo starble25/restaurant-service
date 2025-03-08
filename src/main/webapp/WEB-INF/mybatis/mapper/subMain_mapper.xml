@@ -3,21 +3,6 @@
 
 <mapper namespace="subMain_mapper">
 
-	<!-- 전체 업소 조회 리스트 -->
-	<select id="findStoreList" resultType="Store">
-		SELECT * FROM STORE
-	</select>
-
-	<select id="findStoreDetailList" resultType="StoreDetail">
-		SELECT * FROM
-		STORE_DETAIL
-	</select>
-
-	<select id="findMenuList" resultType="Menu">
-		SELECT * FROM MENU
-	</select>
-
-
 
 	<select id="findStoreWithFilters" resultType="Store" parameterType="hashmap">
 		SELECT * FROM STORE
@@ -55,6 +40,10 @@
 		FROM STORE
 		GROUP BY spoon
 		ORDER BY spoon
+	</select>
+	
+	<select id="findTotalStore" resultType="int">
+		SELECT COUNT(*) totalStore FROM STORE 
 	</select>
 
 </mapper>

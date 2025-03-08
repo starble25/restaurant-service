@@ -19,32 +19,7 @@ public class StoreServiceImpl implements StoreService {
 	@Autowired
 	StoreDAO storeDAO;
 
-	//전체 업소 조회
-	@Override
-	public List<Store> findStoreList() {
-		
-		List<Store> storeList = storeDAO.findStoreList();
-		
-		return storeList;
-	}
-
-	//전체 storeDetail 조회
-	@Override
-	public List<StoreDetail> findStoreDetailList() {
-		
-		List<StoreDetail> storeDetailList = storeDAO.findStoreDetailList();
-		
-		return storeDetailList;
-	}
-
-	//전체 메뉴 조회
-	@Override
-	public List<Menu> findMenuList() {
-		
-		List<Menu> menuList = storeDAO.findMenuList();
-		
-		return menuList;
-	}
+	//필터 기능 메소드
 
 	@Override
 	public List<Store> findStoreWithFilters(Map<String, Object> params) {
@@ -69,6 +44,12 @@ public class StoreServiceImpl implements StoreService {
 	public List<StoreFilter> findSpoonNum() {
 		List<StoreFilter> spoonList = storeDAO.findSpoonNum();
 		return spoonList;
+	}
+
+	@Override
+	public int findTotalStore() {
+		int result = storeDAO.findTotalStore();
+		return result;
 	}
 
 	
