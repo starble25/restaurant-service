@@ -6,6 +6,7 @@ import verifyPassword from "./verifyPassword";
 // 내 정보
 function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
     const [isEditing, setIsEditing] = useState(true);
+    const [reservation, setReservation] = useState(true);
 
     useEffect(() => {
         if( myInfo ) { // myInfo가 있으면 실행안함
@@ -26,28 +27,49 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
         isEditing ? 
 
         <div className='myInfo'>
-            <div className='imgContainer'>
-                <img src={profileImagePath} alt='profileImage' />
-                <button>이미지 등록</button>
+            <div className='myInfoHeader'>
+                <h3 className='myInfoHeaderTitle'>내 정보</h3>
+                <div className='activityContainer'>
+                    <div className='activity'>
+                        <div>예약 상태</div>
+                        <div className="status">{reservation ? '예약이 있습니다' : '예약이 없습니다'}</div>
+                    </div>
+                    <div className='activity'>
+                        <div>예약 횟수</div>
+                        <div className="status">2</div>
+                    </div>
+                    <div className='activity'>
+                        <div>리뷰 수</div>
+                        <div className="status">2</div>
+                    </div>
+                </div>
             </div>
-            <div className='itemContainer'>
-                <div className='item'>
-                    <div className='type'>아이디</div>
-                    <div>{myInfo.userName}</div>
+            <div className="itemContainerWrapper">
+                <div className='imgContainer'>
+                    <img src={profileImagePath} alt='profileImage' />
+                    <button>이미지 등록</button>
                 </div>
-                <div className='item'>
-                    <div className='type'>이름</div>
-                    <div>{myInfo.name}</div>
+                <div className='itemContainer'>
+                    <div className='item'>
+                        <div className='type'>아이디</div>
+                        <div className='typeValue'>{myInfo.userName}</div>
+                    </div>
+                    <div className='item'>
+                        <div className='type'>이름</div>
+                        <div className='typeValue'>{myInfo.name}</div>
+                    </div>
+                    <div className='item'>
+                        <div className='type'>이메일</div>
+                        <div className='typeValue'>{myInfo.email}</div>
+                    </div>
+                    <div className='item'>
+                        <div className='type'>전화번호</div>
+                        <div className='typeValue'>{myInfo.tel}</div>
+                    </div>
+                    <div className='btnWrapper'>
+                        <button onClick={() => setIsEditing(false)}>내정보 변경</button>
+                    </div>
                 </div>
-                <div className='item'>
-                    <div className='type'>이메일</div>
-                    <div>{myInfo.email}</div>
-                </div>
-                <div className='item'>
-                    <div className='type'>전화번호</div>
-                    <div>{myInfo.tel}</div>
-                </div>
-                <button onClick={() => setIsEditing(false)}>내정보 변경</button>
             </div>
         </div>
 
@@ -65,12 +87,6 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
         if( !validateForm(modifyInfo) ) {
             return;
         }
-        
-        // const verify = await verifyPassword(modifyInfo);
-        // if( !verify ) {
-        //     console.log('verify : ' + verifyPassword(modifyInfo));
-        //     return;
-        // }
 
         if( !(await verifyPassword(modifyInfo) ) ) {
             return;
@@ -91,19 +107,6 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
                 setModifyInfo({ ...modifyInfo, password: '' });
             });
     };
-
-    //Backend 비밀번호 검증
-    // const verifyPassword = async (modifyInfo) => {
-    //     try {
-    //         const res = await axios.post('api/users/verify-password', modifyInfo);
-    //         console.log("비밀번호 검증 성공:", res.data);
-    //         return true;
-    //     } catch (error) {
-    //         console.log("비밀번호 검증 실패", error);
-    //         return false;
-    //     }
-    // };
-    
 
     // 입력 검증
     const validateForm = (modifyInfo) => {
