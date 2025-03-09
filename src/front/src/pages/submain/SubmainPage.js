@@ -15,7 +15,8 @@ export default function SubmainPage() {
     const urlPath = "/main/store";
 
     //커스텀 훅
-    const {storeList, storeDetailList, menuList, spoonNumList, totalStore, loading, fetchStoreData } = useGet(urlPath, 3)
+    const {storeList, storeDetailList, menuList, spoonNumList, totalStore, loading, fetchStoreData } = useGet(urlPath, 3, 5)
+
 
 
     return (

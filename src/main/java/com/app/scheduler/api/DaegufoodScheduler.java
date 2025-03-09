@@ -16,7 +16,7 @@ public class DaegufoodScheduler {
 		
 		System.out.println("대구food api스케줄러 실행");		
 
-		//매월 1일 스케줄러 실행 -> 공공데이터 api값 db에 저장
+		//매월 금요일 밤12시 스케줄러 실행 -> 공공데이터 api값 db에 저장
 		daegufoodService.saveDaegufoodStores();
 		
 	}

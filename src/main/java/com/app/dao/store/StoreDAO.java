@@ -22,6 +22,7 @@ public interface StoreDAO {
 	
 	
 	List<StoreFilter>findSpoonNum();
+	List<StoreFilter>findRateCount();
 	int findTotalStore();
 	
 	

@@ -45,6 +45,12 @@ public class StoreServiceImpl implements StoreService {
 		List<StoreFilter> spoonList = storeDAO.findSpoonNum();
 		return spoonList;
 	}
+	
+	@Override
+	public List<StoreFilter> findRateCount() {
+		List<StoreFilter> rateCountList = storeDAO.findRateCount();
+		return rateCountList;
+	}
 
 	@Override
 	public int findTotalStore() {

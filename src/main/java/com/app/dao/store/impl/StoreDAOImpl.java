@@ -65,6 +65,13 @@ public class StoreDAOImpl implements StoreDAO {
 		List<StoreFilter> spoonList = sqlSessionTemplate.selectList("subMain_mapper.findSpoonNum"); 
 		return spoonList;
 	}
+	
+	@Override
+	public List<StoreFilter> findRateCount() {
+		List<StoreFilter> rateCountList = sqlSessionTemplate.selectList("subMain_mapper.findRateCount"); 
+		return rateCountList;
+	}
+	
 
 	@Override
 	public int findTotalStore() {

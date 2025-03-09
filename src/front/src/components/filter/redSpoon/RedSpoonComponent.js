@@ -1,13 +1,14 @@
 
 
-export default function RedSpoonComponent( {totalStore, spoonNumList, fetchStoreData}) {
+export default function RedSpoonComponent( {totalStore, spoonNumList, handleSpoonClick, resetFilters}) {
+
 
     return (
         <>
             <ul>
-                <li>전국 전체 ({totalStore})</li>
+                <li onClick={resetFilters}>전국 전체 ({totalStore})</li>
                 {spoonNumList.map((item) => (
-                    <li key={item.spoon} onClick={() => fetchStoreData(item.spoon)}>
+                    <li key={item.spoon} onClick={() => handleSpoonClick(item.spoon)}>
                         스푼 {item.spoon}개 <span>({item.count})</span>
                     </li>
                 ))}

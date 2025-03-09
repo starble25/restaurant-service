@@ -12,4 +12,7 @@ public class StoreFilter {
 	//필터에 개수보여주는 객체
 	private int spoon;
 	private int count;
+	
+	private int rate;
+	private int rateCount;
 }

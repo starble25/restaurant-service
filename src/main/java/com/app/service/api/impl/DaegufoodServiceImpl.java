@@ -50,7 +50,7 @@ public class DaegufoodServiceImpl implements DaegufoodService {
 				Random random = new Random();
 				store.setSpoon(random.nextInt(4));
 				store.setRateTotal(random.nextInt(6));
-				store.setRateCount(random.nextInt(3));
+				store.setRateCount(random.nextInt(2)+1);
 				
 				storeDAO.saveDaegufoodStores(store);
 				
