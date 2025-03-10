@@ -28,8 +28,10 @@ public class StoreController {
 	
 	@GetMapping("/main/store")
 	public StoreData getStoreData(@RequestParam(required = false) Integer spoon,
-									@RequestParam(required = false) Integer rateValue) {	
+									@RequestParam(required = false) Integer rateValue,
+									@RequestParam(required = false) String location) {	
 		
+		System.out.println("location : " + location);
 		
 		Map<String, Object> params = new HashMap<>();
 		
@@ -46,6 +48,11 @@ public class StoreController {
 			System.out.println("평점 "+ data.getRate() + "개 -> " + data.getRateCount() + "개");
 		}
 		
+		Map<String, Object> filterData = new HashMap<>();
+		filterData.put("spoonList", spoonList);
+		filterData.put("rateCountList", rateCountList);
+		
+		
 		// 웹에서 필터값 get후 해쉬맵 변환
 		if(spoon != null) {
 			params.put("spoon", spoon);
@@ -57,6 +64,13 @@ public class StoreController {
 			System.out.println("rateValue : " + rateValue);
 		}
 		
+		if(location != null) {
+			params.put("location", location);
+			System.out.println("params : " + params);
+//			System.out.println("location : " + rateValue);
+		}
+		
+		
 		//필터값 해쉬맵으로 넘겨서 받아옴
 		List<Store>storeList = storeService.findStoreWithFilters(params);
 		List<StoreDetail>storeDetailList = storeService.findStoreDetailWithFilters(params);
@@ -64,14 +78,14 @@ public class StoreController {
 		
 		System.out.println(storeList.size());
 		
+		
 		// storeData객체에 대입
 		StoreData storeData = new StoreData();
 		
 		storeData.setStoreList(storeList);
 		storeData.setStoreDetailList(storeDetailList);
 		storeData.setMenuList(menuList);
-		storeData.setStoreFilterList(spoonList);
-//		storeData.setStoreFilterList(rateCountList); spoon, 평점 개수 조정필요.
+		storeData.setStoreFilterList(filterData);
 		
 		storeData.setTotalStore(storeService.findTotalStore());
 		System.out.println("total store : " + storeData.getTotalStore()); //토탈 store 디버깅

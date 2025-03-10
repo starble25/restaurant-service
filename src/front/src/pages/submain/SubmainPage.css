@@ -48,10 +48,13 @@
     width: 25%;
     border-right: 1px solid #ddd;
     padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .tab-menu button {
-    width: 60%;
+    width: 45%;
     border: none;
     padding: 15px;
     background-color: #dddddd96;
@@ -63,6 +66,7 @@
     margin: 0;
     font-size: 15px;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .tab-menu button span {
@@ -86,6 +90,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    text-align: center;
 }
 
 .tab-content ul {

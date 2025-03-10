@@ -1,6 +1,7 @@
 package com.app.dto.store;
 
 import java.util.List;
+import java.util.Map;
 
 import com.app.dto.menu.Menu;
 
@@ -12,6 +13,6 @@ public class StoreData {
 	private List<Store> storeList;
     private List<StoreDetail> storeDetailList;
     private List<Menu> menuList;
-    private List<StoreFilter>storeFilterList;
+    private Map<String, Object>storeFilterList;
     private int totalStore;
 }

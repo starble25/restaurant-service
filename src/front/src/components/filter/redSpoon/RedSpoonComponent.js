@@ -1,17 +1,21 @@
 
 
-export default function RedSpoonComponent( {totalStore, spoonNumList, handleSpoonClick, resetFilters}) {
+export default function RedSpoonComponent( {totalStore, spoonCountList, handleSpoonClick, resetFilters}) {
 
 
     return (
         <>
             <ul>
                 <li onClick={resetFilters}>전국 전체 ({totalStore})</li>
-                {spoonNumList.map((item) => (
-                    <li key={item.spoon} onClick={() => handleSpoonClick(item.spoon)}>
-                        스푼 {item.spoon}개 <span>({item.count})</span>
-                    </li>
-                ))}
+                {
+                    spoonCountList.map( (item, index) => {
+                        return (
+                            <li key={index} onClick={() => handleSpoonClick(item.spoon)}>
+                                스푼 {item.spoon}개 <span>({item.count})</span>
+                            </li>
+                        )
+                    })
+                }
                 <li>새로 오픈한 맛집 (준비중)</li>
                 <li>평가를 기다리는 곳 (준비중)</li>
                 <li>주목할 만한 새 맛집 (준비중)</li>

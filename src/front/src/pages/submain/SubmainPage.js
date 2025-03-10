@@ -7,6 +7,9 @@ import Spinner from "../../components/reactLoader/reactLoader";
 import useGet from "../../hooks/useGet";
 import RedSpoonTab from "../../components/filter/redSpoon/RedSpoonTab";
 
+import locationData from "../../constants/LocationData";
+import LoactionTab from "../../components/filter/location/LocationTab";
+
 
 export default function SubmainPage() {
 
@@ -15,7 +18,16 @@ export default function SubmainPage() {
     const urlPath = "/main/store";
 
     //커스텀 훅
-    const {storeList, storeDetailList, menuList, spoonNumList, totalStore, loading, fetchStoreData } = useGet(urlPath, 3, 5)
+    const {
+        storeList,
+        storeDetailList,
+        menuList,
+        spoonCountList,
+        rateCountList,
+        totalStore,
+        loading,
+        fetchStoreData
+    } = useGet(urlPath, 3, 5, "대구광역시");
 
 
 
@@ -33,13 +45,14 @@ export default function SubmainPage() {
                         <Tab>특징</Tab>
                     </TabList>
 
-                    {/* 필터 컨테이너 */}
-                    <TabPanel>
-                        <RedSpoonTab totalStore={totalStore} spoonNumList={spoonNumList} fetchStoreData={fetchStoreData} />
-                    </TabPanel>
 
+                    {/* 레드스푼 필터 */}
                     <TabPanel>
-                        <RedSpoonTab totalStore={totalStore} spoonNumList={spoonNumList} fetchStoreData={fetchStoreData} />
+                        <RedSpoonTab totalStore={totalStore} spoonCountList={spoonCountList} rateCountList={rateCountList} fetchStoreData={fetchStoreData} />
+                    </TabPanel>
+                    {/* 지역 필터 */}
+                    <TabPanel>
+                        <LoactionTab totalStore={totalStore} locationData={locationData} fetchStoreData={fetchStoreData} />
                     </TabPanel>
                 </Tabs>
 

@@ -23,6 +23,10 @@
 					AND FLOOR(rate_total / rate_count) = #{rateValue}
 				</if>
 			</if>
+			
+			<if test="location != null">
+				AND address LIKE '%' || #{location} || '%'
+			</if>
 		</where>
 	</select>
 
@@ -55,6 +59,13 @@
 					AND FLOOR(s.rate_total / s.rate_count) = #{rateValue}
 					)
 				</if>
+			</if>
+			
+			<if test="location != null">
+				AND sd.store_id IN (
+					SELECT s.id FROM STORE s
+					WHERE s.address LIKE '%' || #{location} || '%'
+				)
 			</if>
 		</where>
 	</select>
@@ -89,6 +100,13 @@
 					#{rateValue}
 					)
 				</if>
+			</if>
+			
+			<if test="location != null">
+				AND m.store_id IN (
+					SELECT s.id FROM STORE s
+					WHERE s.address LIKE '%' || #{location} || '%'
+				)
 			</if>
 		</where>
 	</select>
