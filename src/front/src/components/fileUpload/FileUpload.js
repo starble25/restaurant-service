@@ -2,12 +2,22 @@ import { useState } from 'react';
 import axios from 'axios';
 import './FileUpload.css';
 
-const FileUpload = ( {fileCount, boxText} ) => {
+/**
+ *
+ * @param {string} uploadUrl - [필수!] 해당 url 경로로 post 요청 보냅니다
+ * @param {number} fileCount - 업로드할 파일의 최대 개수 (기본값: 1)
+ * @param {string} selectText - 파일 선택 버튼에 표시할 텍스트 (기본값: 'FILE UPLOAD')
+ * @param {string} submitText - 파일 업로드 버튼에 표시할 텍스트 (기본값: '업로드')
+ * @returns {JSX.Element} 파일 업로드 컴포넌트를 렌더링. 상위 태그의 크기에 맞게 크기가 조절됩니다
+ */
+const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText }) => {
     const [files, setFiles] = useState([]);
-    const [previews, setPreviews] = useState([]);
-    const maxFiles = fileCount ? fileCount : 3; // 최대 업로드 파일 수(기본 1)
-    const labalName = boxText ? boxText : '이미지 선택'; // 이미 선택상자 텍스트
+    const maxFiles = maxFileCount ? maxFileCount : 1; // 최대 업로드 파일 수(기본 1)
+    const uploadButtonName = selectText ? selectText : 'FILE UPLOAD'; // 이미 선택상자 텍스트
+    const submitButtonName = submitText ? submitText : 'SUBMIT'; // 이미 선택상자 텍스트
     const maxFileSize = 3 * 1024 * 1024; // 최대 파일 크기 (3MB)
+    const [showFileNames, setShowFileNames] = useState('');
+    //const [previews, setPreviews] = useState([]);
 
     const handleFileChange = (item) => {
         const selectedFiles = Array.from(item.target.files);
@@ -29,8 +39,11 @@ const FileUpload = ( {fileCount, boxText} ) => {
             }
 
             setFiles((prevFiles) => [...prevFiles, file]);
-            //이미지 파일 미리보기 설정
+            setShowFileNames((prevNames) => {
+                return prevNames ? `${prevNames}, ${file.name}` : file.name;
+            });
 
+            //이미지 파일 미리보기 설정
             // const reader = new FileReader();
             // reader.onloadend = () => {
             //     setPreviews((prevPreviews) => [...prevPreviews, reader.result]);
@@ -51,7 +64,7 @@ const FileUpload = ( {fileCount, boxText} ) => {
         });
 
         try {
-            const response = await axios.post('YOUR_UPLOAD_URL', formData, {
+            const response = await axios.post(uploadUrl, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -72,24 +85,19 @@ const FileUpload = ( {fileCount, boxText} ) => {
             />
 
             <div className='formWrapper'>
-                <label htmlFor='fileInput' className='custom-file-upload'>
+                <label htmlFor='fileInput' className='customfileInput'>
                     <div className='formContainer'>
                         <div className='fileUpload'>
-                            {labalName}
+                            {uploadButtonName}
                         </div>
-
                         <div className='fileNames'>
-                        {
-                            files.map((file, index) => (
-                                <span key={index}>{file.name}{index < files.length - 1 ? ', ' : ''}</span>
-                            ))
-                        }
+                            <span>{showFileNames}</span>
                         </div>
                     </div>
                 </label>
             </div>
             <div className='buttonWrapper'>
-                <button onClick={handleFileUpload}>업로드</button>
+                <button className='uploadButton' onClick={handleFileUpload}>{submitButtonName}</button>
             </div>
         </div>
     );

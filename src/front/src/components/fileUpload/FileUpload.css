@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fileUploadContainer {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.fileUploadContainer .formWrapper {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileUploadContainer .formWrapper .customfileInput {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    padding: 5px 3px 5px 3px;
+}
+
+.formWrapper .customfileInput .formContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px;
+    border: 1px solid #4b8fe9;
+    border-radius: 5px;
+}
+
+.formContainer .fileUpload {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #1351a1;
+    border-radius: 10px;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #4b8fe9;
+    }
+}
+
+.formContainer .fileNames {
+    width: 60%;
+    height: 100%;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & span {
+        color: #303030;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.fileUploadContainer .buttonWrapper {
+    width: 100%;
+    height: 40%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileUploadContainer .buttonWrapper .uploadButton {
+    width: 30%;
+    height: 85%;
+    font-size: 16px;
+    background-color: #1351a1;
+    border: none;
+    border-radius: 8px;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #4b8fe9;
+    }
+}

@@ -2,12 +2,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./MyInfo.css";
 import verifyPassword from "./verifyPassword";
-import FileUpload from "../../components/fileloader/FileUpload";
+import FileUpload from "../../components/fileUpload/FileUpload";
 
 // 내 정보
 function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
     const [isEditing, setIsEditing] = useState(true);
     const [reservation, setReservation] = useState(true);
+    const uploadUrl = 'api/file/upload';
 
     useEffect(() => {
         if( myInfo ) { // myInfo가 있으면 실행안함
@@ -52,7 +53,7 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
                         <img src={profileImagePath} alt='profileImage' />
                     </div>
                     <div className="fileUploadWrapper">
-                        <FileUpload boxText='내가입력한텍스트' />
+                        <FileUpload uploadUrl={uploadUrl}/>
                     </div>
                 </div>
                 <div className='itemContainer'>
