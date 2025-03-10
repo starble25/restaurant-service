@@ -40,4 +40,4 @@ public class NoticeDAOImpl implements NoticeDAO {
 	    public void deleteNotice(int id) {
 	        sqlSessionTemplate.delete("notice_mapper.deleteNotice", id);
 	    }
-	}
+	} 

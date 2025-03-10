@@ -6,6 +6,9 @@
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<setting name="jdbcTypeForNull" value="NULL" />
+		
+		  <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
 	</settings>
 
 	<typeAliases>
@@ -13,7 +16,7 @@
 <!-- 		<typeAlias type="com.app.dto.task.Task" alias="Task" /> -->
 <!-- 		<typeAlias type="com.app.dto.board.Board" alias="Board" /> -->
 <!-- 		<typeAlias type="com.app.dto.address.Address" alias="Address"/> -->
-		<typeAlias type="com.app.dto.notice.Notice" alias="Notice"/> 
+		<!-- <typeAlias type="com.app.dto.notice.Notice" alias="Notice"/>  -->
 <!-- 		<typeAlias type="com.app.dto.user.UserSearchCondition" alias="UserSearchCondition"/> -->
 	</typeAliases>
 </configuration>
