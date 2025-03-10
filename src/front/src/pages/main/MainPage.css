@@ -6,10 +6,23 @@
 }
 
 /* 헤더 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        transform: translateX(0);
+    }
+}
+
 .header {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     /* color: white; */
-    padding: 16px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,6 +37,11 @@
 .title {
     font-size: 24px;
     font-weight: bold;
+    animation: fadeIn 5s ease-in-out;
+}
+
+.subtitle{
+        animation: fadeIn 3s ease-in-out 1s;
 }
 
 .login-button {
@@ -61,16 +79,40 @@
     text-decoration: underline;
 }
 
+/* .navbar {
+    display: flex;
+} */
+
 .navbar {
     display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: black; /* 배경색 추가 (필요시 제거) */
 }
+
+.navbar li {
+    padding: 10px 20px;
+    position: relative;
+}
+
+.navbar li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background-color: white;
+}
+
 
 .collapsed {
     text-decoration: none;
     color: white;
     font-size: 20px;
-    font-family: "Gowun Dodum", sans-serif;
-    letter-spacing: 5px;
+    font-family: "Black Han Sans", sans-serif;
+    letter-spacing: 8px;
 
 }
 
@@ -183,7 +225,7 @@
 .search-container {
     display: flex;
     align-items: center;
-    width: 800px;
+    width: 900px;
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
@@ -192,8 +234,8 @@
 .search-input {
     flex-grow: 1;
     border: none;
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 25px 10px;
+    font-size: 20px;
     outline: none;
 }
 
@@ -201,7 +243,7 @@
     background-color: black;
     border: none;
     color: white;
-    padding: 8px;
+    padding: 27px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -214,14 +256,14 @@
 /* 카테고리 섹션 */
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
-    padding: 200px 20px;
+    padding: 200px 10px;
 }
 
 .category-card {
-    height: 180px;
-    width: 180px;
+    height: 170px;
+    width: 170px;
     background-color: #fff;
     color: #333;
     border-radius: 10px;
@@ -407,7 +449,7 @@
 .listing-container {
     position: relative;
     height: 100vh;
-    background: url('/restaurant-service/restaurant-service/src/front/public/images/logomain') no-repeat center center/cover;
+    background: url('/restaurant-service/restaurant-service/src/front/public/images/cookermain') no-repeat center center/cover ;
 }
 
 /* Overlay style */
@@ -417,25 +459,28 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0);
     color: white;
     text-align: center;
-    padding: 40px;
-}
+    padding: 200px;
+} 
+
 
 /* Title */
 .title {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 10px;
     font-family: "Francois One", sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
+    color: #463535;
 }
 
 /* Subtitle */
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 100px;
-    font-weight: 400;
+    font-weight: 500;
     font-family: "Francois One", sans-serif;
+    color: #463535;
 }

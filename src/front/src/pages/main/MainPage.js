@@ -19,23 +19,6 @@ export default function RedSpoon() {
     const [isOpen, setIsOpen] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
 
-
-    // const data = [
-    //     { id: 1, name: "맛집 A" },
-    //     { id: 2, name: "맛집 B" },
-    //     { id: 3, name: "맛집 C" },
-    //     { id: 4, name: "맛집 D" },
-    // ];
-
-    // const handleSearch = () => {
-    //     const results = data.filter((item) =>
-    //         item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    //     );
-    //     setSearchResults(results);
-    //     console.log("검색어:", searchTerm, "검색 결과:", results);
-    // }
-
-
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -117,64 +100,13 @@ export default function RedSpoon() {
                 </div>
             </header>
 
-
-            {/*검색 섹션*/}
-
-            {/* <div className="search-section">
-            <div className="logo-container">
-                {/* <img src="/images/mainlogo" alt="메인 페이지 로고" className="logo-image" /> */}
-            {/* <div className="overlay-content">
-                    <h2 className="search-title">안녕하세요, 레드스푼 입니다.</h2>
-                    <p className="search-description">어떤 맛집을 찾으시나요?</p>
-
-                <div className="search-bar">
-                    <Input
-                        type="text"
-                        placeholder="맛집 검색어 입력"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="search-input"
-                    /> */}
-            {/* <Button variant="solid" className="search-button">
-                        <Search className="search-icon" />
-                    </Button> */}
-            {/* <button onClick={handleSearch} className="search-button">
-                        🔍
-                    </button>
-                </div>
-
-                <div className="search-results">
-                    {searchResults.length > 0 ? (
-                        <ul>
-                            {searchResults.map((result) => (
-                                <li key={result.id}>{result.name}</li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>검색 결과가 없습니다.</p>
-                    )}
-                </div>
-            </div>
-            </div>
-            </div> */}
-
-
-
-            {/* 카테고리
-            <div className="category-section">
-                {["스푼 맛집 검색", "음식 종류별 검색", "지역별 검색", "스토어"].map(
-                    (category, index) => (
-                        <div key={index} className="category-item">
-                            {category}
-                        </div>
-                    )
-                )}
-            </div> */}
+                {/* 메인 페이지 가운데 소개 글 */}
 
             <div className="listing-container">
                 <div className="overlay">
                     <h1 className="title">BEST PLACE TO HAVE A HAPPY MEAL TIME</h1>
                     <p className="subtitle">Find Best Place, Restaurant, cafe and many more in just one click</p>
+
 
 
                     {/* 메인 페이지 가운데 검색 바 */}
@@ -199,12 +131,6 @@ export default function RedSpoon() {
                 </div>
             </div>
 
-
-
-
-
-
-
             {/* 매거진 섹션 */}
             <div className="magazine-section">
                 <h2 className="magazine-title">블루리본 매거진</h2>
@@ -218,22 +144,6 @@ export default function RedSpoon() {
                     ))}
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             {/*푸터*/}
             <footer className="footer">
@@ -270,9 +180,6 @@ export default function RedSpoon() {
                 </div>
                 <p className="copyright">©Copyright 2021 BR Media Inc. | All Rights Reserved</p>
 
-
-
-
                 {/* 오른쪽 하단 플로팅 버튼 */}
                 <div className="floating-buttons">
                     <button className="scroll-up-btn" onClick={scrollToTop}>
@@ -280,7 +187,6 @@ export default function RedSpoon() {
                     </button>
                 </div>
             </footer>
-
 
         </div>
     );
