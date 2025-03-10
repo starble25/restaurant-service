@@ -8,7 +8,7 @@ import useGet from "../../hooks/useGet";
 import RedSpoonTab from "../../components/filter/redSpoon/RedSpoonTab";
 
 import locationData from "../../constants/LocationData";
-import LoactionTab from "../../components/filter/location/LocationTab";
+import LocationTab from "../../components/filter/location/LocationTab";
 
 
 export default function SubmainPage() {
@@ -27,7 +27,7 @@ export default function SubmainPage() {
         totalStore,
         loading,
         fetchStoreData
-    } = useGet(urlPath, 3, 5, "대구광역시");
+    } = useGet(urlPath, null, null, null);
 
 
 
@@ -52,7 +52,7 @@ export default function SubmainPage() {
                     </TabPanel>
                     {/* 지역 필터 */}
                     <TabPanel>
-                        <LoactionTab totalStore={totalStore} locationData={locationData} fetchStoreData={fetchStoreData} />
+                        <LocationTab totalStore={totalStore} locationData={locationData} fetchStoreData={fetchStoreData} />
                     </TabPanel>
                 </Tabs>
 

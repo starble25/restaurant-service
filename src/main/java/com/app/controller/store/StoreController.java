@@ -14,14 +14,10 @@ import com.app.dto.store.Store;
 import com.app.dto.store.StoreData;
 import com.app.dto.store.StoreDetail;
 import com.app.dto.store.StoreFilter;
-import com.app.service.api.DaegufoodService;
 import com.app.service.store.StoreService;
 
 @RestController
 public class StoreController {
-
-	@Autowired
-	DaegufoodService daegufoodService;
 	
 	@Autowired
 	StoreService storeService;

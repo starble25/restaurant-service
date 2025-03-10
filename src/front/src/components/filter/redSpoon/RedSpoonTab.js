@@ -3,16 +3,17 @@ import "../../../pages/submain/SubmainPage.css"
 import RatingComponent from "./RatingComponent";
 import RedSpoonComponent from "./RedSpoonComponent";
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function RedSpoonTab({ totalStore, spoonCountList, rateCountList, fetchStoreData }) {
 
     //switch조건 상태관리
-    const [ tabSwitch, setTabSwitch ] = useState("redSpoon");
-    const [ spoonCount, setSpoonCount ] = useState(null); //spoon개수 상태
-    const [ rateValue, setRateValue ] = useState(null); //평점상태 (1~5)
+    const [tabSwitch, setTabSwitch] = useState("redSpoon");
+//    const [spoonCount, setSpoonCount] = useState(null); //spoon개수 상태
+//    const [rateValue, setRateValue] = useState(null); //평점상태 (1~5)
 
     const navigate = useNavigate();
+    const location = useLocation();
 
 
     //대분류 클릭시 소분류 변경
@@ -20,43 +21,51 @@ export default function RedSpoonTab({ totalStore, spoonCountList, rateCountList,
         setTabSwitch(tabName);
     }
 
-    //스푼 소분류 필터기능
     const handleSpoonClick = (spoonCount) => {
-        const queryParams = new URLSearchParams();
-        
+
+        const queryParams = new URLSearchParams(location.search);
+
+        queryParams.delete('location');
+
+        const currentRate = queryParams.get('rateValue');
+
         if (spoonCount !== null) {
             queryParams.set('spoon', spoonCount);
         }
-        if (rateValue !== null) {
-            queryParams.set('rateValue', rateValue);
+        if (currentRate !== null) {
+            queryParams.set('rateValue', currentRate);
         }
-        
+
+        fetchStoreData(spoonCount, currentRate, null);
+
         navigate(`/main/store?${queryParams.toString()}`);
-        
-        setSpoonCount(spoonCount);
-        fetchStoreData(spoonCount, rateValue);
     };
 
-    //평점 소분류 필터기능
+    // 평점 소분류 필터기능
     const handleRatingClick = (rating) => {
-        const queryParams = new URLSearchParams();
-        
-        if (spoonCount !== null) {
-            queryParams.set('spoon', spoonCount);
+
+        const queryParams = new URLSearchParams(location.search)
+
+        queryParams.delete('location');
+
+        const currentSpoon = queryParams.get('spoon');
+
+        if (currentSpoon !== null) {
+            queryParams.set('spoon', currentSpoon);
         }
-        if (rateValue !== null) {
+        if(rating !== null) {
             queryParams.set('rateValue', rating);
         }
-        
-        navigate(`/main/store?${queryParams.toString()}`);
 
-        setRateValue(rating);
-        fetchStoreData(spoonCount, rating);
+        fetchStoreData(currentSpoon, rating, null);
+
+        navigate(`/main/store?${queryParams.toString()}`);
     }
 
     //필터 초기화 기능
     const resetFilters = () => {
-        fetchStoreData(null, null);
+        fetchStoreData(null, null, null);
+        navigate("/main/store");
     };
 
 
