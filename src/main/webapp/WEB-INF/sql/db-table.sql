@@ -106,6 +106,14 @@ CREATE TABLE booking_menu (
   quantity NUMBER
 );
 
+CREATE TABLE board (
+    id NUMBER PRIMARY KEY,
+    title VARCHAR2(255) NOT NULL,
+    content CLOB NOT NULL,
+    writer VARCHAR2(100) NOT NULL,
+    reg_date DATE DEFAULT SYSDATE
+);
+
 --
 --
 --
@@ -156,6 +164,11 @@ START WITH 1
 INCREMENT BY 1
 NOCYCLE;
 
+CREATE SEQUENCE board_PK
+START WITH 1
+INCREMENT BY 1
+NOCYCLE;
+
 
 
 -- users 테이블 조회
@@ -180,3 +193,5 @@ SELECT * FROM review;
 SELECT * FROM review_image;
 -- booking_menu 테이블 조회
 SELECT * FROM booking_menu;
+--board 테이블 조회
+SELECT * FROM board;
