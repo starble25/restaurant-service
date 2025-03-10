@@ -73,22 +73,31 @@
 
 .myInfo .imgContainer {
     width: 50%;
-    padding: 20px;
+    height: 100%;
+    padding: 15px;
+}
+
+.myInfo .imgContainer .imgWrapper {
+    max-height: 80%;
+}
+
+.myInfo .imgContainer .fileUploadWrapper {
+    height: 20%;
 }
 
 .myInfo .imgContainer img {
     width: 100%;
-    height: auto;
+    /* height: auto; */
     max-height: 85%;
     object-fit: cover;
 
     border: 1px solid #3e2483;
 }
 
-.myInfo .imgContainer button {
+/* .myInfo .imgContainer button {
     display: block;
     margin: 20px auto;
-}
+} */
 
 .myInfo .itemContainer {
     width: 50%;

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "./MyInfo.css";
 import verifyPassword from "./verifyPassword";
+import FileUpload from "../../components/fileloader/FileUpload";
 
 // 내 정보
 function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
@@ -20,6 +21,7 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
             })
             .catch( error => console.error(error) )
     }, [id, myInfo]);
+
 
     return (
         myInfo ? 
@@ -46,8 +48,12 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
             </div>
             <div className="itemContainerWrapper">
                 <div className='imgContainer'>
-                    <img src={profileImagePath} alt='profileImage' />
-                    <button>이미지 등록</button>
+                    <div className="imgWrapper">
+                        <img src={profileImagePath} alt='profileImage' />
+                    </div>
+                    <div className="fileUploadWrapper">
+                        <FileUpload boxText='내가입력한텍스트' />
+                    </div>
                 </div>
                 <div className='itemContainer'>
                     <div className='item'>

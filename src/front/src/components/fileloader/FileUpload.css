@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.fileUploadContainer {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.fileUploadContainer .formWrapper {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid green;
+}
+
+.fileUploadContainer .buttonWrapper {
+    width: 100%;
+    height: 40%;
+
+    border: 1px solid blue;
+}
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fileUpload {
+    width: 40%;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.fileNames {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    /* height: 20px; */
+}
