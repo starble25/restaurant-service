@@ -11,7 +11,7 @@ export default function RedSpoonComponent( {totalStore, spoonCountList, handleSp
                     spoonCountList.map( (item, index) => {
                         return (
                             <li key={index} onClick={() => handleSpoonClick(item.spoon)}>
-                                스푼 {item.spoon}개 <span>({item.count})</span>
+                                스푼 {item.spoon}개 ({item.count})
                             </li>
                         )
                     })

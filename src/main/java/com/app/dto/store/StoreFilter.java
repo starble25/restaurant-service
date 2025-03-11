@@ -15,4 +15,7 @@ public class StoreFilter {
 	
 	private int rate;
 	private int rateCount;
+	
+	private String menuType;
+	private int menuCount;
 }

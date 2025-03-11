@@ -9,13 +9,10 @@ import RedSpoonTab from "../../components/filter/redSpoon/RedSpoonTab";
 
 import locationData from "../../constants/LocationData";
 import LocationTab from "../../components/filter/location/LocationTab";
+import MenuTypeTab from "../../components/filter/menuType/MenuTypeTab";
 
 
 export default function SubmainPage() {
-
-
-    //subMain페이지 경로
-    const urlPath = "/main/store";
 
     //커스텀 훅
     const {
@@ -24,10 +21,11 @@ export default function SubmainPage() {
         menuList,
         spoonCountList,
         rateCountList,
+        menuCountList,
         totalStore,
         loading,
         fetchStoreData
-    } = useGet(urlPath, null, null, null);
+    } = useGet(null, null, null, null);
 
 
 
@@ -45,7 +43,6 @@ export default function SubmainPage() {
                         <Tab>특징</Tab>
                     </TabList>
 
-
                     {/* 레드스푼 필터 */}
                     <TabPanel>
                         <RedSpoonTab totalStore={totalStore} spoonCountList={spoonCountList} rateCountList={rateCountList} fetchStoreData={fetchStoreData} />
@@ -53,6 +50,10 @@ export default function SubmainPage() {
                     {/* 지역 필터 */}
                     <TabPanel>
                         <LocationTab totalStore={totalStore} locationData={locationData} fetchStoreData={fetchStoreData} />
+                    </TabPanel>
+                    {/* 음식종류 */}
+                    <TabPanel>
+                        <MenuTypeTab totalStore={totalStore} menuCountList={menuCountList} fetchStoreData={fetchStoreData}/>
                     </TabPanel>
                 </Tabs>
 

@@ -25,6 +25,8 @@ public interface StoreDAO {
 	List<StoreFilter>findRateCount();
 	int findTotalStore();
 	
+	List<StoreFilter>findMenu();
+	
 	
 	
 }

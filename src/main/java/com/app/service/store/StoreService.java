@@ -19,4 +19,5 @@ public interface StoreService {
 	List<StoreFilter>findSpoonNum();
 	List<StoreFilter>findRateCount();
 	int findTotalStore();
+	List<StoreFilter>findMenu();
 }

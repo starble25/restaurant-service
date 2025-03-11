@@ -58,6 +58,12 @@ public class StoreServiceImpl implements StoreService {
 		return result;
 	}
 
+	@Override
+	public List<StoreFilter> findMenu() {
+		List<StoreFilter>menuList = storeDAO.findMenu();
+		return menuList;
+	}
+
 	
 
 	

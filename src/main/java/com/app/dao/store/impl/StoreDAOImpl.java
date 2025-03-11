@@ -79,4 +79,10 @@ public class StoreDAOImpl implements StoreDAO {
 		return result;
 	}
 
+	@Override
+	public List<StoreFilter> findMenu() {
+		List<StoreFilter> menuList = sqlSessionTemplate.selectList("subMain_mapper.findMenu");
+		return menuList;
+	}
+
 }
