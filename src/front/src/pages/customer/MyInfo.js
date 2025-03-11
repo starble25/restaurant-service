@@ -8,7 +8,7 @@ import FileUpload from "../../components/fileUpload/FileUpload";
 function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
     const [isEditing, setIsEditing] = useState(true);
     const [reservation, setReservation] = useState(true);
-    const uploadUrl = 'api/file/upload';
+    const uploadUrl = 'api/users/save-profile';
 
     useEffect(() => {
         if( myInfo ) { // myInfo가 있으면 실행안함
@@ -53,7 +53,7 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
                         <img src={profileImagePath} alt='profileImage' />
                     </div>
                     <div className="fileUploadWrapper">
-                        <FileUpload uploadUrl={uploadUrl}/>
+                        <FileUpload uploadUrl={uploadUrl} id={id} />
                     </div>
                 </div>
                 <div className='itemContainer'>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.users.UsersDAO;
+import com.app.dto.file.ImageFile;
 import com.app.dto.users.Users;
 
 @Repository
@@ -33,6 +34,12 @@ public class UsersDAOImpl implements UsersDAO {
 	@Override
 	public int deleteUser(Users user) {
 		int result = sqlSessionTemplate.delete("users_mapper.deleteUser", user);
+		return result;
+	}
+
+	@Override
+	public int saveProfileImage(ImageFile file) {
+		int result = sqlSessionTemplate.insert("users_mapper.saveProfileImage", file);
 		return result;
 	}
 	

@@ -91,6 +91,7 @@
     border: none;
     border-radius: 8px;
     color: white;
+    font-family: sans-serif;
 
     &:hover {
         cursor: pointer;

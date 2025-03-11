@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.users.Users;
 import com.app.service.users.UsersService;
@@ -68,7 +70,44 @@ public class UsersController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("delete failed");
 		}
 		
-		return ResponseEntity.ok("deleted user!");
+		return ResponseEntity.ok("delete user!");
 	}
 	
+	
+	// 유저 프로필 이미지
+	//
+	// 이미지 저장
+	@PostMapping("api/users/save-profile")
+	public ResponseEntity<String> saveProfileImage( 
+			@RequestParam("files") MultipartFile[] files, 
+			@RequestParam("id") int id ) {
+		
+		if ( files == null || files.length == 0 ) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("request file is empty");
+		}
+		
+		int result = usersService.saveProfileImage(files, id);
+		if( result > 0 ) {
+			String message = result + "개 이미지 저장완료";
+			return ResponseEntity.ok(message);			
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("이미지 저장 실패");
+		}
+	}
+	
+	// 이미지 가져오기
+	@PostMapping("api/users/find-profile")
+	public ResponseEntity<String> findProfileImage(@RequestBody Users user) {
+	    if (user == null) {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("users object is null");
+	    }
+	    
+	    String result = usersService.findProfileImageById(user.getId());
+	    
+	    if (result == null) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("profile image not found");
+	    }
+	    
+	    return ResponseEntity.ok(result);
+	}
 }

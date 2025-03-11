@@ -5,12 +5,13 @@ import './FileUpload.css';
 /**
  *
  * @param {string} uploadUrl - [필수!] 해당 url 경로로 post 요청 보냅니다
- * @param {number} fileCount - 업로드할 파일의 최대 개수 (기본값: 1)
+ * @param {int} id - [필수!] 참조 pk값
+ * @param {number} maxFileCount - 업로드할 파일의 최대 개수 (기본값: 1)
  * @param {string} selectText - 파일 선택 버튼에 표시할 텍스트 (기본값: 'FILE UPLOAD')
  * @param {string} submitText - 파일 업로드 버튼에 표시할 텍스트 (기본값: '업로드')
  * @returns {JSX.Element} 파일 업로드 컴포넌트를 렌더링. 상위 태그의 크기에 맞게 크기가 조절됩니다
  */
-const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText }) => {
+const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText, id }) => {
     const [files, setFiles] = useState([]);
     const maxFiles = maxFileCount ? maxFileCount : 1; // 최대 업로드 파일 수(기본 1)
     const uploadButtonName = selectText ? selectText : 'FILE UPLOAD'; // 이미 선택상자 텍스트
@@ -62,6 +63,7 @@ const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText }) => {
         files.forEach((file) => {
             formData.append('files', file);
         });
+        formData.append('id', id);
 
         try {
             const response = await axios.post(uploadUrl, formData, {
@@ -70,6 +72,10 @@ const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText }) => {
                 },
             });
             console.log('파일 업로드 성공' + response.data);
+
+            // 성공 후 초기화
+            setFiles([]);
+            setShowFileNames('');
         } catch (error) {
             console.error('파일 업로드 오류:', error);
         }

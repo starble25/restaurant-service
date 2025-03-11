@@ -1,5 +1,6 @@
 package com.app.dao.users;
 
+import com.app.dto.file.ImageFile;
 import com.app.dto.users.Users;
 
 public interface UsersDAO {
@@ -11,5 +12,7 @@ public interface UsersDAO {
 	public int modifyUser(Users user);
 	
 	public int deleteUser(Users user);
+	
+	public int saveProfileImage(ImageFile file);
 
 }

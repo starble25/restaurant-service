@@ -30,4 +30,17 @@
 		WHERE id = #{id}
 	</delete>
 	
+	
+	<insert id="saveProfileImage" parameterType="ImageFile">
+		INSERT INTO user_profile_image 
+		VALUES (
+			user_profile_image_pk.nextval, 
+			#{refId}, 
+			#{fileName}, 
+			#{originalFileName}, 
+			#{filePath}, 
+			#{urlFilePath}
+		)
+	</insert>
+	
 </mapper>

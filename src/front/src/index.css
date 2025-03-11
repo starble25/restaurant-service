@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "NanumGothic";
+  src: url('./fonts/NanumGothic.otf') format('opentype');
+  unicode-range: U+AC00-D7AF; /* 한글에만 적용 */
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "NanumGothic";
+  src: url('./fonts/NanumGothicBold.otf') format('opentype');
+  unicode-range: U+AC00-D7AF;
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "NanumGothic";
+  src: url('./fonts/NanumGothicExtraBold.otf') format('opentype');
+  unicode-range: U+AC00-D7AF;
+  font-style: normal;
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: "NanumGothic";
+  src: url('./fonts/NanumGothicLight.otf') format('opentype');
+  unicode-range: U+AC00-D7AF;
+  font-style: normal;
+  font-weight: lighter;
+}
