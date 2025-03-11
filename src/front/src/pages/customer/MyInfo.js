@@ -5,7 +5,7 @@ import verifyPassword from "./verifyPassword";
 import FileUpload from "../../components/fileUpload/FileUpload";
 
 // 내 정보
-function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
+function MyInfo({ id, myInfo, setMyInfo, profileImagePath, setProfileImagePath }) {
     const [isEditing, setIsEditing] = useState(true);
     const [reservation, setReservation] = useState(true);
     const uploadUrl = 'api/users/save-profile';
@@ -53,7 +53,11 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath }) {
                         <img src={profileImagePath} alt='profileImage' />
                     </div>
                     <div className="fileUploadWrapper">
-                        <FileUpload uploadUrl={uploadUrl} id={id} />
+                        <FileUpload 
+                            uploadUrl={uploadUrl} 
+                            id={id} 
+                            uploadSuccess={( urls ) => setProfileImagePath(urls[0])} 
+                        />
                     </div>
                 </div>
                 <div className='itemContainer'>

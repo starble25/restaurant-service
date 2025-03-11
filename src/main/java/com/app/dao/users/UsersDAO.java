@@ -14,5 +14,7 @@ public interface UsersDAO {
 	public int deleteUser(Users user);
 	
 	public int saveProfileImage(ImageFile file);
+	
+	public ImageFile findProfileImageByUserId(int id);
 
 }

@@ -9,16 +9,16 @@ import './FileUpload.css';
  * @param {number} maxFileCount - 업로드할 파일의 최대 개수 (기본값: 1)
  * @param {string} selectText - 파일 선택 버튼에 표시할 텍스트 (기본값: 'FILE UPLOAD')
  * @param {string} submitText - 파일 업로드 버튼에 표시할 텍스트 (기본값: '업로드')
+ * @param {function} uploadSuccess - 업로드 성공 시 호출되는 콜백 함수(업로드 성공한 파일url 배열 전달)
  * @returns {JSX.Element} 파일 업로드 컴포넌트를 렌더링. 상위 태그의 크기에 맞게 크기가 조절됩니다
  */
-const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText, id }) => {
+const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText, id, uploadSuccess }) => {
     const [files, setFiles] = useState([]);
     const maxFiles = maxFileCount ? maxFileCount : 1; // 최대 업로드 파일 수(기본 1)
     const uploadButtonName = selectText ? selectText : 'FILE UPLOAD'; // 이미 선택상자 텍스트
     const submitButtonName = submitText ? submitText : 'SUBMIT'; // 이미 선택상자 텍스트
     const maxFileSize = 3 * 1024 * 1024; // 최대 파일 크기 (3MB)
     const [showFileNames, setShowFileNames] = useState('');
-    //const [previews, setPreviews] = useState([]);
 
     const handleFileChange = (item) => {
         const selectedFiles = Array.from(item.target.files);
@@ -43,13 +43,6 @@ const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText, id }) => 
             setShowFileNames((prevNames) => {
                 return prevNames ? `${prevNames}, ${file.name}` : file.name;
             });
-
-            //이미지 파일 미리보기 설정
-            // const reader = new FileReader();
-            // reader.onloadend = () => {
-            //     setPreviews((prevPreviews) => [...prevPreviews, reader.result]);
-            // };
-            // reader.readAsDataURL(file);
         });
     };
 
@@ -71,7 +64,16 @@ const FileUpload = ({ uploadUrl, maxFileCount, selectText, submitText, id }) => 
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log('파일 업로드 성공' + response.data);
+            console.log('파일 업로드 성공 : ' + response.data);
+
+            // 업로드 성공 시 이미지 URL 받아오기
+            const uploadedImagePath = response.data; // 서버에서 반환하는 이미지 경로
+            console.log('파일 업로드 성공, 이미지 URL:', uploadedImagePath);
+
+            // 상위 컴포넌트로 전달
+            if (uploadSuccess) {
+                uploadSuccess(uploadedImagePath);
+            }
 
             // 성공 후 초기화
             setFiles([]);

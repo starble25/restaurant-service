@@ -1,10 +1,9 @@
 package com.app.service.users.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -58,29 +57,38 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public int saveProfileImage(MultipartFile[] files, int id) {
-		int result = 0;
+	public List<String> saveProfileImage(MultipartFile[] files, int id) {
+		List<String> savedFilePaths = new ArrayList<>();
 		
 		try {
 			List<ImageFile> storedFiles = ImageFileManager.storeFiles(files);
 			
 			for(ImageFile imageFile : storedFiles) {
 				imageFile.setRefId(id);
-				result += usersDAO.saveProfileImage(imageFile);
+				int result = usersDAO.saveProfileImage(imageFile);
+				
+				if( result > 0 ) {
+					savedFilePaths.add(imageFile.getUrlFilePath() + imageFile.getFileName()); // 저장 성공 시 파일 경로 추가
+				}
 			}
 		} catch (Exception e) {
 			System.out.println("UsersService - saveProfileImage() ERROR");
 			e.printStackTrace();
 		}
 		
-		return result;
+		return savedFilePaths;
 	}
 
 	@Override
-	public String findProfileImageById(int id) {
+	public String findProfileImageByUserId(int id) {
+		ImageFile file = usersDAO.findProfileImageByUserId(id);
 		
+		// 프로필사진 없으면 기본 이미지 return
+		if ( file == null ) {
+			return "/profile/profileImage.jpg";
+		}
 		
-		return null;
+		return file.getUrlFilePath();
 	}
 
 }

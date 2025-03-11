@@ -42,5 +42,11 @@ public class UsersDAOImpl implements UsersDAO {
 		int result = sqlSessionTemplate.insert("users_mapper.saveProfileImage", file);
 		return result;
 	}
+
+	@Override
+	public ImageFile findProfileImageByUserId(int id) {
+		ImageFile file = sqlSessionTemplate.selectOne("users_mapper.findProfileImageByUserId", id);
+		return file;
+	}
 	
 }

@@ -43,4 +43,10 @@
 		)
 	</insert>
 	
+	<select id="findProfileImageByUserId" parameterType="Integer" resultType="ImageFile">
+		SELECT * 
+		FROM user_profile_image
+		WHERE user_id = #{id}
+	</select>
+	
 </mapper>

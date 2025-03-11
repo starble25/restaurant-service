@@ -7,7 +7,7 @@ import Withdraw from './Withdraw';
 function Customer() {
     const [activeMenu, setActiveMenu] = useState('myInfo'); // 현재 활성화된 메뉴
     const id = 1; // users pk
-    const profileImagePath = '/profile/profileImage.jpg';
+    const [profileImagePath, setProfileImagePath] = useState('/profile/profileImage.jpg');
 
     const [myInfo, setMyInfo] = useState(null);
 
@@ -19,6 +19,7 @@ function Customer() {
                 myInfo={myInfo} 
                 setMyInfo={setMyInfo} 
                 profileImagePath={profileImagePath} 
+                setProfileImagePath={setProfileImagePath} 
                 />;
             case 'booking':
                 return <Booking />;
