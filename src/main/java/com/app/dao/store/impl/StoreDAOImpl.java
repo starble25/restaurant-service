@@ -85,4 +85,10 @@ public class StoreDAOImpl implements StoreDAO {
 		return menuList;
 	}
 
+	@Override
+	public List<Store> findFilteredTotalStore(Map<String, Object> params) {
+		List<Store> storeList = sqlSessionTemplate.selectList("subMain_mapper.findFilteredTotalStore", params); 
+		return storeList;
+	}
+
 }

@@ -26,11 +26,11 @@ public class StoreController {
 	public StoreData getStoreData(@RequestParam(required = false) Integer spoon,
 									@RequestParam(required = false) Integer rateValue,
 									@RequestParam(required = false) String location,
-									@RequestParam(required = false) String foodType) {	
+									@RequestParam(required = false) String foodType,
+									@RequestParam(defaultValue = "1") int page,
+									@RequestParam(defaultValue = "5") int pageSize) {	
 		
-		
-		Map<String, Object> params = new HashMap<>();
-		
+				
 		//db에서 spoon개수별 총 튜플개수 조회
 		List<StoreFilter>spoonList = storeService.findSpoonNum();
 		//db에서 평점 별 개수 조회
@@ -38,43 +38,32 @@ public class StoreController {
 		//db에서 메뉴, 메뉴별 데이터개수 조회
 		List<StoreFilter>menuFilterList = storeService.findMenu();
 		
-//		for(StoreFilter data : spoonList) {
-//			System.out.println("스푼 " + data.getSpoon() + "개 -> " + data.getCount() + "개");
-//		}
-//		
-//		for(StoreFilter data : rateCountList) {
-//			System.out.println("평점 "+ data.getRate() + "개 -> " + data.getRateCount() + "개");
-//		}
-//		
-//		for(StoreFilter data : menuFilterList) {
-//			System.out.println("메뉴 "+ data.getMenuType() + " -> " + data.getMenuCount() + "개");
-//		}
-		
 		Map<String, Object> filterData = new HashMap<>();
 		filterData.put("spoonList", spoonList);
 		filterData.put("rateCountList", rateCountList);
 		filterData.put("menuFilterList", menuFilterList);
 		
 		
+		Map<String, Object> params = new HashMap<>();
+		
+		params.put("offset", (page - 1) * pageSize);
+		params.put("limit", pageSize);
+		
 		// 웹에서 필터값 get후 해쉬맵 변환
 		if(spoon != null) {
 			params.put("spoon", spoon);
-//			System.out.println("spoon개수 : " + spoon);
 		}
 		
 		if(rateValue != null) {
 			params.put("rateValue", rateValue);
-//			System.out.println("rateValue : " + rateValue);
 		}
 		
 		if(location != null) {
 			params.put("location", location);
-//			System.out.println("location : " + location);
 		}
 		
 		if(foodType != null) {
 			params.put("foodType", foodType);
-			System.out.println("foodType : " + foodType);
 		}
 		
 		//필터값 해쉬맵으로 넘겨서 받아옴
@@ -82,7 +71,13 @@ public class StoreController {
 		List<StoreDetail>storeDetailList = storeService.findStoreDetailWithFilters(params);
 		List<Menu>menuList = storeService.findMenuWithFilters(params);
 		
-		System.out.println(storeList.size());
+		
+		List<Store> totalStoreList = storeService.findFilteredTotalStore(params);
+		int totalStores = totalStoreList.size();
+		int totalPages = (int) Math.ceil( (double) totalStores / pageSize);
+		
+		System.out.println("totalStores : " + totalStores);
+		
 		
 		// storeData객체에 대입
 		StoreData storeData = new StoreData();
@@ -91,8 +86,9 @@ public class StoreController {
 		storeData.setStoreDetailList(storeDetailList);
 		storeData.setMenuList(menuList);
 		storeData.setStoreFilterList(filterData);
-		
 		storeData.setTotalStore(storeService.findTotalStore());
+		storeData.setCurrentPage(page); // 현재 페이지
+		storeData.setTotalPages(totalPages); //총 페이지
 		
 		return storeData;
 	}

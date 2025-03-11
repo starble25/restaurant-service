@@ -36,8 +36,9 @@
 					AND m.menu_type = #{foodType}
 				)
 			</if>
-			
 		</where>
+		ORDER BY s.id
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
 	</select>
 
 	<select id="findStoreDetailWithFilters" resultType="StoreDetail"
@@ -87,6 +88,8 @@
 				)
 			</if>
 		</where>
+		ORDER BY sd.id
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
 	</select>
 
 	<select id="findMenuWithFilters" resultType="Menu"
@@ -131,10 +134,46 @@
 			<if test="foodType != null">
 				m.menu_type = #{foodType}
 			</if>
-			
 		</where>
+		ORDER BY m.id
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
 	</select>
 
+	
+	<select id="findFilteredTotalStore" resultType="Store"
+		parameterType="hashmap">
+		SELECT * FROM STORE s
+		<where>
+			<if test="spoon != null">
+				AND s.spoon = #{spoon}
+			</if>
+
+			<if test="rateValue != null">
+				<if test="rateValue == 0">
+					AND ((s.rate_count = 0	AND s.rate_total = 0)
+					OR (s.rate_count > 0 AND s.rate_total / s.rate_count &lt; 1))
+				</if>
+
+				<if test="rateValue >= 1">
+					AND s.rate_count > 0
+					AND FLOOR(s.rate_total / s.rate_count) = #{rateValue}
+				</if>
+			</if>
+			
+			<if test="location != null">
+				AND s.address LIKE '%' || #{location} || '%'
+			</if>
+			
+			<if test="foodType != null">
+				AND EXISTS (
+					SELECT 1
+					FROM menu m
+					WHERE m.store_id = s.id
+					AND m.menu_type = #{foodType}
+				)
+			</if>
+		</where>
+	</select>
 
 
 

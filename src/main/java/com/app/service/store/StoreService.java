@@ -20,4 +20,5 @@ public interface StoreService {
 	List<StoreFilter>findRateCount();
 	int findTotalStore();
 	List<StoreFilter>findMenu();
+	List<Store> findFilteredTotalStore(Map<String, Object> params);
 }

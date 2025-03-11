@@ -15,4 +15,6 @@ public class StoreData {
     private List<Menu> menuList;
     private Map<String, Object>storeFilterList;
     private int totalStore;
+    private int totalPages;
+    private int currentPage;
 }

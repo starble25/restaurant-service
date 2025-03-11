@@ -10,6 +10,7 @@ import RedSpoonTab from "../../components/filter/redSpoon/RedSpoonTab";
 import locationData from "../../constants/LocationData";
 import LocationTab from "../../components/filter/location/LocationTab";
 import MenuTypeTab from "../../components/filter/menuType/MenuTypeTab";
+import PagiNavi from "../../components/pagination/PagiNavi";
 
 
 export default function SubmainPage() {
@@ -24,6 +25,8 @@ export default function SubmainPage() {
         menuCountList,
         totalStore,
         loading,
+        currentPage,
+        totalPages,
         fetchStoreData
     } = useGet(null, null, null, null);
 
@@ -68,6 +71,8 @@ export default function SubmainPage() {
                             })
                         )}
                 </div>
+
+                <PagiNavi totalPages={totalPages} currentPage={currentPage}/>
             </div>
         </>
     );

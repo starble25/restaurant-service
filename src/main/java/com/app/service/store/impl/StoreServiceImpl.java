@@ -64,6 +64,12 @@ public class StoreServiceImpl implements StoreService {
 		return menuList;
 	}
 
+	@Override
+	public List<Store> findFilteredTotalStore(Map<String, Object> params) {
+		List<Store> storeList = storeDAO.findFilteredTotalStore(params);
+		return storeList;
+	}
+
 	
 
 	
