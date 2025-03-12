@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import MyInfo from './MyInfo';
 import Withdraw from './Withdraw';
+import Booking from './Booking';
 
 function Customer() {
     const [activeMenu, setActiveMenu] = useState('myInfo'); // 현재 활성화된 메뉴
@@ -19,7 +20,9 @@ function Customer() {
                 setMyInfo={setMyInfo} 
                 />;
             case 'booking':
-                return <Booking />;
+                return <Booking 
+                id={id}
+                />;
             case 'myReviews':
                 return <MyReviews />;
             case 'withdraw':
@@ -56,11 +59,11 @@ function Customer() {
 
 
 // 예약
-function Booking() {
-    return (
-        <div>예약 화면입니다.</div>
-    );
-}
+// function Booking() {
+//     return (
+//         <div>예약 화면입니다.</div>
+//     );
+// }
 
 // 내 글 목록
 function MyReviews() {

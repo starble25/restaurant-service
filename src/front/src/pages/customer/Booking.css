@@ -1,0 +1,58 @@
+.content .bookingContainer {
+    height: 100%;
+}
+
+/* booking title */
+.content .bookingContainer .titleWrapper {
+    width: 100%;
+    height: 10%;
+}
+
+.bookingContainer .titleWrapper h3 {
+    font-size: 22px;
+    height: 50px;
+}
+
+/* booking list 전체 컨테이너 */
+.bookingContainer .bookingListWrapper {
+    width: 100%;
+    height: 90%;
+}
+
+.bookingListWrapper ol {
+    list-style-type: none;
+}
+
+/* row 전체 스타일 */
+.bookingListWrapper ol .listContainer {
+    width: 100%;
+    display: flex;
+}
+
+/* row 제목 스타일 */
+.bookingListWrapper ol .listTitle {
+    background-color: #cde3ff;
+    font-family: NanumGothic;
+    font-weight: bold;
+
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+/* row 내용 스타일 */
+.bookingListWrapper ol .listContent {
+    background-color: #f0f0f0;
+    font-family: listContent;
+}
+
+/* row밑에 각 div 전체 스타일 */
+.listContainer .listStyle {
+    width: 20%;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
