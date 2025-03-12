@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchBoardList, fetchBoardDetail, saveBoard, deleteBoard } from "../../api/boardApi";
+import { fetchBoardList, fetchBoardDetail, saveBoard, deleteBoard } from "../../api/boardApi"; // API 호출 함수 import
 import "./Board.css";
 
 function BoardList({ setCurrentPage, setSelectedBoardId, boardList }) {
@@ -26,7 +26,13 @@ function BoardList({ setCurrentPage, setSelectedBoardId, boardList }) {
                                 <tr key={board.id}>
                                     <td>{board.id}</td>
                                     <td>
-                                        <a href="#!" onClick={() => { setSelectedBoardId(board.id); setCurrentPage('detail'); }}>
+                                        <a
+                                            href="#!"
+                                            onClick={() => {
+                                                setSelectedBoardId(board.id);
+                                                setCurrentPage('detail');
+                                            }}
+                                        >
                                             {board.title}
                                         </a>
                                     </td>
@@ -52,7 +58,7 @@ function BoardDetail({ setCurrentPage, boardId, refreshBoardList }) {
 
     useEffect(() => {
         if (boardId) {
-            fetchBoardDetail(boardId).then(setBoard);
+            fetchBoardDetail(boardId).then(setBoard); // 게시글 데이터 가져오기
         }
     }, [boardId]);
 
@@ -60,9 +66,13 @@ function BoardDetail({ setCurrentPage, boardId, refreshBoardList }) {
 
     const handleDelete = async () => {
         if (window.confirm("삭제하시겠습니까?")) {
-            await deleteBoard(boardId);
-            refreshBoardList(); // 삭제 후 목록 갱신
-            setCurrentPage('list');
+            const success = await deleteBoard(boardId);
+            if (success) {
+                refreshBoardList(); // 삭제 후 목록 갱신
+                setCurrentPage('list'); // 목록으로 돌아가기
+            } else {
+                alert("게시글 삭제에 실패했습니다.");
+            }
         }
     };
 
@@ -81,60 +91,16 @@ function BoardDetail({ setCurrentPage, boardId, refreshBoardList }) {
     );
 }
 
-function BoardForm({ setCurrentPage, refreshBoardList }) {
-    const [board, setBoard] = useState({ title: "", writer: "", content: "" });
-
-    const handleChange = (e) => {
-        setBoard({ ...board, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const newBoard = await saveBoard(board);
-
-            if ( !newBoard ) {
-                console.log(newBoard);
-                alert("게시글 저장에 실패했습니다.");
-                return;
-            }
-
-            await refreshBoardList(); // 저장 후 목록 갱신
-            setCurrentPage('list');
-        } catch (error) {
-            console.error("게시글 저장 중 오류 발생:", error);
-            alert("게시글 저장에 실패했습니다.");
-        }
-    };
-
-    return (
-        <div className="board-container">
-            <h2>게시글 작성</h2>
-            <form onSubmit={handleSubmit}>
-                <p>제목: <input type="text" name="title" value={board.title} onChange={handleChange} required /></p>
-                <p>작성자: <input type="text" name="writer" value={board.writer} onChange={handleChange} required /></p>
-                <p>내용: <textarea name="content" rows="5" value={board.content} onChange={handleChange} required /></p>
-                <button type="submit">저장</button>
-                <button type="button" onClick={() => setCurrentPage('list')}>취소</button>
-            </form>
-        </div>
-    );
-}
-
 function App() {
     const [currentPage, setCurrentPage] = useState("list");
     const [selectedBoardId, setSelectedBoardId] = useState(null);
     const [boardList, setBoardList] = useState([]);
+    const [board, setBoard] = useState({ title: "", writer: "", content: "" });
 
     const refreshBoardList = async () => {
         try {
             const data = await fetchBoardList();
-            if (Array.isArray(data)) {
-                setBoardList(data);
-            } else {
-                setBoardList([]);
-            }
+            setBoardList(Array.isArray(data) ? data : []);
         } catch (error) {
             console.error("게시판 목록 불러오기 실패:", error);
             setBoardList([]);
@@ -145,12 +111,61 @@ function App() {
         refreshBoardList();
     }, []);
 
+    const handleChange = (e) => {
+        setBoard({ ...board, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const savedBoard = await saveBoard(board); // API 호출
+            if (savedBoard) {
+                await refreshBoardList();
+                setCurrentPage("list");
+            } else {
+                alert("게시글 저장에 실패했습니다.");
+            }
+        } catch (error) {
+            console.error("게시글 저장 중 오류 발생:", error);
+            alert("게시글 저장에 실패했습니다.");
+        }
+    };
+
+    useEffect(() => {
+        if (currentPage === "edit" && selectedBoardId) {
+            fetchBoardDetail(selectedBoardId).then(setBoard); // 수정 페이지로 들어가면 기존 게시글 정보 가져오기
+        }
+    }, [currentPage, selectedBoardId]);
+
     return (
         <div>
-            {currentPage === 'list' && <BoardList setCurrentPage={setCurrentPage} setSelectedBoardId={setSelectedBoardId} boardList={boardList} />}
-            {currentPage === 'detail' && <BoardDetail setCurrentPage={setCurrentPage} boardId={selectedBoardId} refreshBoardList={refreshBoardList} />}
-            {currentPage === 'write' && <BoardForm setCurrentPage={setCurrentPage} refreshBoardList={refreshBoardList} />}
-            {currentPage === 'edit' && <BoardForm setCurrentPage={setCurrentPage} />}
+            {currentPage === "list" && <BoardList setCurrentPage={setCurrentPage} setSelectedBoardId={setSelectedBoardId} boardList={boardList} />}
+            {currentPage === "detail" && <BoardDetail setCurrentPage={setCurrentPage} boardId={selectedBoardId} refreshBoardList={refreshBoardList} />}
+            {currentPage === "write" && (
+                <div className="board-container">
+                    <h2>게시글 작성</h2>
+                    <form onSubmit={handleSubmit}>
+                        <p>제목: <input type="text" name="title" value={board.title} onChange={handleChange} required /></p>
+                        <p>작성자: <input type="text" name="writer" value={board.writer} onChange={handleChange} required /></p>
+                        <p>내용: <textarea name="content" rows="5" value={board.content} onChange={handleChange} required /></p>
+                        <button type="submit">저장</button>
+                        <button type="button" onClick={() => setCurrentPage("list")}>취소</button>
+                    </form>
+                </div>
+            )}
+            {currentPage === "edit" && (
+                <div className="board-container">
+                    <h2>게시글 수정</h2>
+                    <form onSubmit={handleSubmit}>
+                        <p>제목: <input type="text" name="title" value={board.title} onChange={handleChange} required /></p>
+                        <p>작성자: <input type="text" name="writer" value={board.writer} onChange={handleChange} required /></p>
+                        <p>내용: <textarea name="content" rows="5" value={board.content} onChange={handleChange} required /></p>
+                        <button type="submit">수정</button>
+                        <button type="button" onClick={() => setCurrentPage("list")}>취소</button>
+                    </form>
+                </div>
+            )}
         </div>
     );
 }
