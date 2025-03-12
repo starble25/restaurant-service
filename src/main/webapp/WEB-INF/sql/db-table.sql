@@ -3,9 +3,9 @@ CREATE TABLE users (
   id NUMBER PRIMARY KEY, 
   user_name VARCHAR2(32) UNIQUE, 
   password VARCHAR2(128), 
-  name VARCHAR2(32), 
-  email VARCHAR2(254), 
-  tel VARCHAR2(20), 
+  name VARCHAR2(32),
+  email VARCHAR2(254),
+  tel VARCHAR2(20),
   user_type VARCHAR2(20)
 );
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user_mapper">
+
+	<insert id="saveUser" parameterType="Users">
+		insert into USERS
+		values (
+		USERS_PK.NEXTVAL,
+		#{userName},
+		#{password},
+		#{name},
+		#{email},
+		#{tel},
+		#{userType}
+		)
+	</insert>
+
+	<select id="findUserList" resultType="Users">
+		select * from USERS
+	</select>
+
+	<select id="findUserByUserName" resultType="Users"
+		parameterType="String">
+		select *
+		FROM USERS
+		WHERE userName = #{userName}
+	</select>
+
+	<select id="checkUserLogin" resultType="Users"
+		parameterType="Users">
+		select *
+		from USERS
+		where userName = #{userName} AND
+		password =
+		#{password}
+	</select>
+
+	<update id="modifyUser" parameterType="Users">
+		UPDATE USERS
+		SET password =
+		#{password}
+		WHERE userName = #{userName}
+	</update>
+
+	<delete id="removeUser" parameterType="Users">
+		DELETE FROM USERS
+		WHERE userName
+		= #{userName} AND password = #{password}
+	</delete>
+
+
+</mapper>
