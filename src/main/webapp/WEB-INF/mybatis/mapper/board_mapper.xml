@@ -19,8 +19,8 @@
 
     <!-- 게시글 등록 -->
     <insert id="insertBoard" parameterType="com.app.dto.board.Board">
-        INSERT INTO board (title, content, writer, reg_date) 
-        VALUES (#{title}, #{content}, #{writer}, SYSDATE)
+        INSERT INTO board (id, title, content, writer, reg_date) 
+        VALUES (board_PK.nextval, #{title}, #{content}, #{writer}, SYSDATE)
     </insert>
 
     <!-- 게시글 수정 -->
