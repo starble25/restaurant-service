@@ -2,29 +2,16 @@ package com.app.dto.board;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data	
 public class Board {
-	 private int id;
-	    private String title;
-	    private String content;
-	    private String writer;
-	    private Date regDate;
+    private int id;
+    private String title;
+    private String content;
+    private String writer;
 
-	    // Getter & Setter
-//	    public int getId() { return id; }
-//	    public void setId(int id) { this.id = id; }
-//
-//	    public String getTitle() { return title; }
-//	    public void setTitle(String title) { this.title = title; }
-//
-//	    public String getContent() { return content; }
-//	    public void setContent(String content) { this.content = content; }
-//
-//	    public String getWriter() { return writer; }
-//	    public void setWriter(String writer) { this.writer = writer; }
-//
-//	    public Date getRegDate() { return regDate; }
-//	    public void setRegDate(Date regDate) { this.regDate = regDate; }
-	}
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+    private Date regDate; // 작성일 (날짜 변환 적용)
+}
