@@ -48,6 +48,7 @@ export default function RedSpoon() {
         { title: "기사 제목 18", description: "기사 요약 설명~!", image: "images/foodmain.png" },
         { title: "기사 제목 19", description: "기사 요약 설명~!", image: "images/foodmain.png" },
         { title: "기사 제목 20", description: "기사 요약 설명~!", image: "images/foodmain.png" },
+        { title: "기사 제목 21", description: "기사 요약 설명~!", image: "images/foodmain.png" },
     ];
 
     // 슬라이드 자동 전환 (4개씩 표시하므로 슬라이드 개수는 slides.length / 4)
