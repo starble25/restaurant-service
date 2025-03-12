@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './PagiNavi.css';
+
 
 
 export default function PagiNavi({ totalPages, currentPage }) {
@@ -7,14 +9,12 @@ export default function PagiNavi({ totalPages, currentPage }) {
     const { search } = useLocation();
     const navigate = useNavigate();
 
-    console.log("totalPages" + totalPages);
-
-    if (totalPages < 1) return null; //페이지없으면 렌더링없음
+    console.log("totalPages : " + totalPages);
+    console.log("currentPage : " + currentPage);
 
     const pageSize = 5; //한번에 보여줄 페이지 5개임
-    const totalItems = Math.ceil(totalPages / pageSize);
     const startPage = Math.floor((currentPage - 1) / pageSize) * pageSize + 1;
-    const endPage = Math.min(startPage + 4, totalPages);
+    const endPage = Math.min(startPage + pageSize - 1, totalPages);
 
     
 
@@ -47,7 +47,7 @@ export default function PagiNavi({ totalPages, currentPage }) {
                     <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
 
                         <button className="page-link rounded-pill" onClick={() => updatePage(currentPage - 1)} disabled={currentPage===1}>
-                            <span aria-hidden="true">&laquo;</span>
+                            <span aria-hidden="true">이전</span>
                         </button>
                     </li>
 
@@ -57,7 +57,7 @@ export default function PagiNavi({ totalPages, currentPage }) {
                     {/* 다음페이지 */}
                     <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
                         <button className="page-link rounded-pill" onClick={() => updatePage(currentPage + 1)} disabled={currentPage === totalPages}>
-                            <span aria-hidden="true">&raquo;</span>
+                            <span aria-hidden="true">다음</span>
                         </button>
                     </li>
                 </ul>

@@ -26,15 +26,16 @@ export default function LocationTab({ totalStore, locationData, fetchStoreData }
         }
 
         fetchStoreData(null, null, location, null);
+        queryParams.set('page', 1);
 
         navigate(`/main/store?${queryParams.toString()}`);
     }
 
     //필터 초기화 기능
     const resetFilters = () => {
-        fetchStoreData(null, null, null, null);
+        fetchStoreData(null, null, null, null, 1);
         navigate("/main/store");
-    };
+    }
 
 
 

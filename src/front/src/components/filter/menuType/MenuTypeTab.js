@@ -25,6 +25,7 @@ export default function MenuTypeTab({ menuCountList, totalStore, fetchStoreData 
         queryParams.delete('location');
         queryParams.delete('spoon');
         queryParams.delete('rateValue');
+        queryParams.delete('page');
 
         // queryParams.delete('');
         if (foodType !== null) {
@@ -34,9 +35,7 @@ export default function MenuTypeTab({ menuCountList, totalStore, fetchStoreData 
         }
 
         fetchStoreData(null, null, null, foodType);
-
-        console.log('foodType : ' + foodType);
-        console.log(foodType);
+        queryParams.set('page', 1);
 
         navigate(`/main/store?${queryParams.toString()}`);
     }
@@ -45,7 +44,7 @@ export default function MenuTypeTab({ menuCountList, totalStore, fetchStoreData 
 
     //필터 초기화 기능
     const resetFilters = () => {
-        fetchStoreData(null, null, null, null);
+        fetchStoreData(null, null, null, null, 1);
         navigate("/main/store");
     }
 

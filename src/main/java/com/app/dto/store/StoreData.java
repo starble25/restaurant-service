@@ -17,4 +17,6 @@ public class StoreData {
     private int totalStore;
     private int totalPages;
     private int currentPage;
+    
+
 }

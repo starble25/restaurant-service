@@ -27,8 +27,8 @@ public class StoreController {
 									@RequestParam(required = false) Integer rateValue,
 									@RequestParam(required = false) String location,
 									@RequestParam(required = false) String foodType,
-									@RequestParam(defaultValue = "1") int page,
-									@RequestParam(defaultValue = "5") int pageSize) {	
+									@RequestParam(defaultValue = "1") Integer page,
+									@RequestParam(defaultValue = "5") Integer pageSize) {	
 		
 				
 		//db에서 spoon개수별 총 튜플개수 조회

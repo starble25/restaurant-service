@@ -3,10 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function StoreList({ storeList, menuList, storeDetailList }) {
+
+
+    const navigate = useNavigate();
+
 
 
     const storeFoodImgPath = "/store/sample.jpg";
@@ -50,7 +55,7 @@ export default function StoreList({ storeList, menuList, storeDetailList }) {
 
     return (
 
-        <div className="store-card">
+        <div className="store-card" onClick={() => navigate(`/main/store/${storeList.id}`)}>
             {/* 이미지 */}
             <img src={storeFoodImgPath} className="store-image"></img>
 

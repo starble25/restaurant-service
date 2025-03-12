@@ -15,20 +15,11 @@ import PagiNavi from "../../components/pagination/PagiNavi";
 
 export default function SubmainPage() {
 
+
     //커스텀 훅
-    const {
-        storeList,
-        storeDetailList,
-        menuList,
-        spoonCountList,
-        rateCountList,
-        menuCountList,
-        totalStore,
-        loading,
-        currentPage,
-        totalPages,
-        fetchStoreData
-    } = useGet(null, null, null, null);
+    const { storeList, storeDetailList, menuList, spoonCountList, rateCountList, menuCountList, totalStore,
+        loading, currentPage, totalPages, fetchStoreData } = useGet(null, null, null, null);
+
 
 
 
@@ -56,7 +47,7 @@ export default function SubmainPage() {
                     </TabPanel>
                     {/* 음식종류 */}
                     <TabPanel>
-                        <MenuTypeTab totalStore={totalStore} menuCountList={menuCountList} fetchStoreData={fetchStoreData}/>
+                        <MenuTypeTab totalStore={totalStore} menuCountList={menuCountList} fetchStoreData={fetchStoreData} />
                     </TabPanel>
                 </Tabs>
 
@@ -71,8 +62,10 @@ export default function SubmainPage() {
                             })
                         )}
                 </div>
+            </div>
 
-                <PagiNavi totalPages={totalPages} currentPage={currentPage}/>
+            <div className="pagiNav-container">
+                <PagiNavi totalPages={totalPages} currentPage={currentPage} />
             </div>
         </>
     );

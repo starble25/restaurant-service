@@ -25,7 +25,9 @@ export default function RedSpoonTab({ totalStore, spoonCountList, rateCountList,
 
         const currentRate = queryParams.get('rateValue');
 
+        queryParams.delete('location');
         queryParams.delete('foodType');
+        queryParams.delete('page');
 
 
         if (spoonCount !== null) {
@@ -37,6 +39,7 @@ export default function RedSpoonTab({ totalStore, spoonCountList, rateCountList,
         
 
         fetchStoreData(spoonCount, currentRate, null, null);
+        queryParams.set('page', 1);
 
         navigate(`/main/store?${queryParams.toString()}`);
     };
@@ -48,7 +51,9 @@ export default function RedSpoonTab({ totalStore, spoonCountList, rateCountList,
 
         const currentSpoon = queryParams.get('spoon');
         
+        queryParams.delete('location');
         queryParams.delete('foodType');
+        queryParams.delete('page');
 
         if (currentSpoon !== null) {
             queryParams.set('spoon', currentSpoon);
@@ -58,15 +63,16 @@ export default function RedSpoonTab({ totalStore, spoonCountList, rateCountList,
         }
 
         fetchStoreData(currentSpoon, rating, null, null);
+        queryParams.set('page', 1);
 
         navigate(`/main/store?${queryParams.toString()}`);
     }
 
     //필터 초기화 기능
     const resetFilters = () => {
-        fetchStoreData(null, null, null, null);
+        fetchStoreData(null, null, null, null, 1);
         navigate("/main/store");
-    };
+    }
 
 
 

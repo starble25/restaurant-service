@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="storeDetail_mapper">
+
+
+	<select id="findStoreById" resultType="Store" parameterType="int">
+		SELECT * FROM STORE
+		WHERE id = #{storeIdInt}
+	</select>
+	
+	<select id="findStoreDetailById" resultType="StoreDetail" parameterType="int">
+		SELECT * FROM STORE_DETAIL sd
+		WHERE sd.store_id = #{storeIdInt}
+	</select>
+	
+	<select id="findMenuById" resultType="Menu" parameterType="int">
+		SELECT * FROM menu m
+		WHERE m.store_id = #{storeIdInt}
+	</select>
+	
+	
+	
+
+</mapper>

@@ -16,7 +16,7 @@ export default function useGet(initialSpoonCount, initialRateValue, initialLocat
     const [ loading, setLoading ] = useState(true);
 
     const [ currentPage, setCurrentPage ] = useState(0);
-    const [ totalPages, setTotalPages] = useState(0);
+    const [ totalPages, setTotalPages ] = useState(0);
 
 
     const { search } = useLocation();
@@ -31,8 +31,20 @@ export default function useGet(initialSpoonCount, initialRateValue, initialLocat
         const locationParam = params.get("location") || initialLocation;
         const foodType = params.get("foodType") || initialFoodType;
 
-        const page = parseInt(params.get("page") || "1", 10);
-        const pageSize = parseInt(params.get("pageSize") || "5", 10);
+        // 기존 page 값 또는 1로 설정
+        const page = params.get("page") ? parseInt(params.get("page"), 10) : 1;
+        const pageSize = 6;
+
+        // 필터 값이 변경되었는지 확인
+        const isFilterChanged = spoon !== initialSpoonCount || rateValue !== initialRateValue || locationParam !== initialLocation || foodType !== initialFoodType;
+
+        // 필터가 변경되면 page 파라미터를 제거하고 데이터를 불러옴
+        const paramsWithoutPage = new URLSearchParams(search);
+        if (isFilterChanged) {
+            paramsWithoutPage.delete("page"); // page 파라미터 삭제
+        }
+
+        // setCurrentPage(page);
 
         fetchStoreData(spoon, rateValue, locationParam, foodType, page, pageSize);
     }, [ search ]);
@@ -64,8 +76,8 @@ export default function useGet(initialSpoonCount, initialRateValue, initialLocat
                 setTotalStore(Response.data.totalStore);
 
                 setCurrentPage(Response.data.currentPage);
-                setTotalPages(Response.data.totalPages);
-                
+                setTotalPages(Response.data.totalPages > 0 ? Response.data.totalPages : 1);
+
                 console.log(Response.data);
 
             })
