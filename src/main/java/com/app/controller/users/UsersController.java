@@ -75,46 +75,4 @@ public class UsersController {
 		return ResponseEntity.ok("delete user!");
 	}
 	
-	
-	// 유저 프로필 이미지
-	//
-	// 이미지 저장
-	@PostMapping("api/users/save-profile")
-	public ResponseEntity<?> saveProfileImage( 
-			@RequestParam("files") MultipartFile[] files, 
-			@RequestParam("id") int id ) {
-		
-		if ( files == null || files.length == 0 ) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("request file is empty");
-		}
-		
-	    List<String> savedFilePaths = usersService.saveProfileImage(files, id);
-	    
-	    // 저장성공 : 이미지 urlpath 리스트 반환
-	    if ( !savedFilePaths.isEmpty() ) {
-	        return ResponseEntity.ok(savedFilePaths);
-	    } else {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("이미지 저장 실패");
-	    }
-		
-//		int result = usersService.saveProfileImage(files, id);
-//		if( result > 0 ) {
-//			String message = result + "개 이미지 저장완료";
-//			return ResponseEntity.ok(message);			
-//		} else {
-//			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("이미지 저장 실패");
-//		}
-	}
-	
-	// 이미지 URL 가져오기
-	@PostMapping("api/users/find-profile")
-	public ResponseEntity<String> findProfileImage(@RequestBody Users user) {
-	    if (user == null) {
-	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("users object is null");
-	    }
-	    
-	    String result = usersService.findProfileImageByUserId(user.getId());
-	    
-	    return ResponseEntity.ok(result);
-	}
 }

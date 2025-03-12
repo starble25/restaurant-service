@@ -3,7 +3,7 @@ import axios from 'axios';
 import './FileUpload.css';
 
 /**
- *
+ * 이미지 파일 업로드 컴포넌트
  * @param {string} uploadUrl - [필수!] 해당 url 경로로 post 요청 보냅니다
  * @param {int} id - [필수!] 참조 pk값
  * @param {number} maxFileCount - 업로드할 파일의 최대 개수 (기본값: 1)

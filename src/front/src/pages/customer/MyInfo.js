@@ -5,10 +5,11 @@ import verifyPassword from "./verifyPassword";
 import FileUpload from "../../components/fileUpload/FileUpload";
 
 // 내 정보
-function MyInfo({ id, myInfo, setMyInfo, profileImagePath, setProfileImagePath }) {
+function MyInfo({ id, myInfo, setMyInfo }) {
     const [isEditing, setIsEditing] = useState(true);
     const [reservation, setReservation] = useState(true);
     const uploadUrl = 'api/users/save-profile';
+    const [profileImagePath, setProfileImagePath] = useState('/profile/profileImage.jpg');
 
     useEffect(() => {
         if( myInfo ) { // myInfo가 있으면 실행안함
@@ -23,6 +24,13 @@ function MyInfo({ id, myInfo, setMyInfo, profileImagePath, setProfileImagePath }
             .catch( error => console.error(error) )
     }, [id, myInfo]);
 
+    axios.post('api/users/find-profile', { id })
+    .then ( res => {
+        setProfileImagePath(res.data);
+        console.log(res);
+        console.log(res.data);
+    })
+    .catch( error => console.log(error) );
 
     return (
         myInfo ? 

@@ -48,5 +48,11 @@ public class UsersDAOImpl implements UsersDAO {
 		ImageFile file = sqlSessionTemplate.selectOne("users_mapper.findProfileImageByUserId", id);
 		return file;
 	}
+
+	@Override
+	public int modifyProfileImageByUserId(ImageFile file) {
+		int result = sqlSessionTemplate.update("users_mapper.modifyProfileImageByUserId", file);
+		return result;
+	}
 	
 }
