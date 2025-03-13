@@ -54,7 +54,7 @@ function Withdraw({ id }) {
             <div className='btnWrapper'>
                 <button 
                     type='submit' 
-                    className='btnWithdraw' 
+                    className='btnStyle btnWithdraw' 
                     onClick={handleSubmit} 
                 >회원 탈퇴</button>
             </div>

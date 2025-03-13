@@ -38,12 +38,21 @@
     height: 70px;
     display: flex;
     align-items: center;
+    border: 1px solid #9eb5d3;
 }
 
 /* row 내용 스타일 */
 .bookingListWrapper ol .listContent {
-    background-color: #f0f0f0;
-    font-family: listContent;
+    background-color: #f8f8f8;
+    font-family: Roboto;
+    font-weight: 300;
+
+    border: 1px solid #9eb5d3;
+    border-top: none;
+
+    &:hover {
+        background-color: #dee9f7;
+    }
 }
 
 /* row밑에 각 div 전체 스타일 */
@@ -54,5 +63,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* &:nth-child(1) {
+        width: 10%;
+    }
+
+    &:nth-child(3) {
+        width: 15%;
+    } */
 }
 

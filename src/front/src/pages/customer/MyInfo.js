@@ -5,8 +5,7 @@ import verifyPassword from "./verifyPassword";
 import FileUpload from "../../components/fileUpload/FileUpload";
 
 // 내 정보
-function MyInfo({ id, myInfo, setMyInfo }) {
-    const [isEditing, setIsEditing] = useState(true);
+function MyInfo({ id, myInfo, setMyInfo, isEditing, setIsEditing }) {
     const [reservation, setReservation] = useState(true);
     const uploadUrl = 'api/users/save-profile';
     const [profileImagePath, setProfileImagePath] = useState('/profile/profileImage.jpg');
@@ -35,7 +34,7 @@ function MyInfo({ id, myInfo, setMyInfo }) {
     return (
         myInfo ? 
 
-        isEditing ? 
+        !isEditing ? 
 
         <div className='myInfo'>
             <div className='myInfoHeader'>
@@ -65,6 +64,8 @@ function MyInfo({ id, myInfo, setMyInfo }) {
                             uploadUrl={uploadUrl} 
                             id={id} 
                             uploadSuccess={( urls ) => setProfileImagePath(urls[0])} 
+                            selectText={'이미지 선택'}
+                            submitText={'적용하기'}
                         />
                     </div>
                 </div>
@@ -86,7 +87,7 @@ function MyInfo({ id, myInfo, setMyInfo }) {
                         <div className='typeValue'>{myInfo.tel}</div>
                     </div>
                     <div className='btnWrapper'>
-                        <button onClick={() => setIsEditing(false)}>내정보 변경</button>
+                        <button className="btnStyle" onClick={() => setIsEditing(true)}>내정보 변경</button>
                     </div>
                 </div>
             </div>
@@ -243,7 +244,7 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
                 />
                 </div>
             </div>
-            <button type='submit' className='btnSubmit' onClick={handleSubmit}>회원정보 수정</button>
+            <button type='submit' className='btnStyle btnSubmit' onClick={handleSubmit}>회원정보 수정</button>
         </div>
     )
 }

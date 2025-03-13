@@ -11,6 +11,8 @@
 	<typeAliases>
 		<typeAlias type="com.app.dto.users.Users" alias="Users" />
 		<typeAlias type="com.app.dto.file.ImageFile" alias="ImageFile" />
+		<typeAlias type="com.app.dto.booking.Booking" alias="Booking" />
+		<typeAlias type="com.app.dto.store.Store" alias="Store" />
 	</typeAliases>
 </configuration>
 

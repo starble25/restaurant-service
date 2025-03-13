@@ -40,6 +40,11 @@
     margin-top: 70px;
 }
 
+.withdrawContainer .btnWrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .withdrawContainer .btnWithdraw {
     display: block;
     margin-top: 50px;

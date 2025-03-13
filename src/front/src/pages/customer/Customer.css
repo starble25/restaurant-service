@@ -3,6 +3,7 @@
     height: 85vh;
     padding: 0 7% 0 7%;
     display: flex;
+    background-color: #eeeeee;
     /* border: 1px solid black; */
 }
 
@@ -30,4 +31,21 @@
     width: 75%;
     padding: 5%;
     border: 1px solid blue;
+}
+
+/* 버튼 스타일 */
+.cusContainer .btnStyle {
+    width: 120px;
+    height: 37px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1351a1;
+    color: white;
+    font-size: 16px;
+    font-family:Impact;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #4b8fe9;
+    }
 }

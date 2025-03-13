@@ -7,9 +7,11 @@ import Booking from './Booking';
 
 function Customer() {
     const [activeMenu, setActiveMenu] = useState('myInfo'); // 현재 활성화된 메뉴
+    const [isEditing, setIsEditing] = useState(false);
     const id = 1; // users pk
 
     const [myInfo, setMyInfo] = useState(null);
+    console.log('myInfo : ' + myInfo);
 
     function renderContent() {
         switch (activeMenu) {
@@ -18,9 +20,12 @@ function Customer() {
                 id={id} 
                 myInfo={myInfo} 
                 setMyInfo={setMyInfo} 
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
                 />;
             case 'booking':
                 return <Booking 
+                myInfo={myInfo}
                 id={id}
                 />;
             case 'myReviews':
@@ -37,7 +42,10 @@ function Customer() {
     return (
         <div className='cusContainer'>
             <div className='side'>
-                <div className='sideMenu' onClick={() => setActiveMenu('myInfo')}>
+                <div className='sideMenu' onClick={() => {
+                    setActiveMenu('myInfo');
+                    setIsEditing(false);
+                }}>
                     내 정보
                 </div>
                 <div className='sideMenu' onClick={() => setActiveMenu('booking')}>
@@ -56,14 +64,6 @@ function Customer() {
         </div>
     );
 }
-
-
-// 예약
-// function Booking() {
-//     return (
-//         <div>예약 화면입니다.</div>
-//     );
-// }
 
 // 내 글 목록
 function MyReviews() {
