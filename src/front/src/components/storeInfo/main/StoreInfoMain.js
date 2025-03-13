@@ -17,7 +17,7 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
 
         const spoonImg = [];
         for (let i = 0; i < spoonCount; i++) {
-            spoonImg.push(<img src={storeSpoonImgPath} className="store-spoon" style={{ width: '15px' }} />);
+            spoonImg.push(<img src={storeSpoonImgPath} className='store-spoon' />);
         }
         return spoonImg;
     }
@@ -68,7 +68,7 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
                     <div>
                         <div>{store.storeName} {renderSpoons(store.spoon)}</div>
                     </div>
-                    <div className='rating'>{renderStars()}
+                    <div className='rating'>평점 : {renderStars()}
                         <span>({store.rateCount}명의 평가)</span>
                     </div>
                 </div>

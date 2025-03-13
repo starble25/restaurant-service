@@ -14,21 +14,25 @@
 }
 
 .full-star {
-    color: #ec4a68; /* 채워진 별은 금색 */
+    color: #ec4a68;
 }
 
 .half-star {
-    color: #ec4a68; /* 반별은 금색 */
+    color: #ec4a68;
 }
 
-
+.store-spoon {
+    width: 15px;
+}
 
 .storeInfo-main {
     background-color: white;
     margin-right: 15px;
+    margin-left: 15px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    width: 70%;
 }
 
 /* 상단 사진 컨테이너 */

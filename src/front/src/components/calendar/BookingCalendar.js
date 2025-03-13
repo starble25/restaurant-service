@@ -5,19 +5,20 @@ import './BookingCalendar.css';
 
 
 
-export default function BookingCalendar({ onChange, selectedDate }) {
+export default function BookingCalendar({ onChange, selectedDate, activateFlag }) {
 
 
     const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
 
-    const formattedDate = `${selectedDate.getMonth()+1}.${selectedDate.getDate()}(${daysOfWeek[selectedDate.getDay()]})`;
+    const formattedDate = `${selectedDate.getMonth() + 1}.${selectedDate.getDate()}(${daysOfWeek[selectedDate.getDay()]})`;
 
 
     return (
         <div className="bookingCalendar-container">
             <div>{formattedDate} 시간을 선택해 주세요</div>
-            <Calendar onChange={onChange} value={selectedDate} />
+            <Calendar onChange={onChange} value={selectedDate} onClickDay={activateFlag} />
             <p>선택된 날짜 : {selectedDate.toDateString()}</p>
+
         </div>
     )
 }

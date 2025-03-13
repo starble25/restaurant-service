@@ -1,6 +1,12 @@
-.storeInfo-sub {
-    padding: 15px;
+.storeInfo-sub-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30%;
+}
+
+.storeInfo-sub-con {
     background-color: white;
+    padding: 15px;
     border-radius: 15px;
 }
 
