@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './Booking.css';
 import axios from 'axios';
 
-function Booking({ id, myInfo }) {
+function Booking({ myInfo }) {
 
     const [bookingInfo, setBookingInfo] = useState([]);
     // bookingInfo = {
