@@ -12,8 +12,6 @@ export default function StoreList({ storeList, menuList, storeDetailList }) {
 
     const navigate = useNavigate();
 
-
-
     const storeFoodImgPath = "/store/sample.jpg";
     const storeSpoonImgPath = "/store/spoon.png";
 

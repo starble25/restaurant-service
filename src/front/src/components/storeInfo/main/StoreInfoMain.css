@@ -1,21 +1,191 @@
-.storeInfo-main {
-    width: 70%;
-    background-color: white;
-    margin-right: 30px;
-    padding: 15px;
-    border-radius: 15px;
+/* 평점 css */
+.rating {
+    color: #555;
+    text-align: center;
 }
 
+.rating span {
+    font-size: 13px;
+}
+
+.empty-star {
+    color: gray;
+    opacity: 0.3;
+}
+
+.full-star {
+    color: #ec4a68; /* 채워진 별은 금색 */
+}
+
+.half-star {
+    color: #ec4a68; /* 반별은 금색 */
+}
+
+
+
+.storeInfo-main {
+    background-color: white;
+    margin-right: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 상단 사진 컨테이너 */
 .storeInfo_main_img_container {
     display: flex;
     flex-direction: row;
-    gap: 7px;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .storeInfo_main_img_container img {
     width: 48%;
     max-width: 100%;
     object-fit: cover;
-    height: auto;
+    height: 200px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
+
+.storeInfo_main_img_container img:hover {
+    transform: scale(1.05);
+}
+
+
+/* 식당 이름,평점,오시는길 섹션 */
+.storeInfo_main_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.storeInfo_main_title > div:nth-child(1) {
+    width: 45%;
+    font-size: 14px;
+}
+
+.storeInfo_main_title > div:nth-child(2) {
+    width: 55%;
+    font-size: 14px;
+}
+
+
+.storeInfo_main_title > div > div:nth-child(1) {
+    display: flex;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.storeInfo_main_title > div:nth-child(2) p {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+/* 식당 번호, 메뉴 섹션 */
+.storeInfo_main_contact,
+.storeInfo_main_menuCon {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+
+.icon-size {
+    margin-right: 10px;
+}
+
+
+.storeInfo_main_menuCon div {
+    text-align: center;
+    font-size: 14px;
+}
+
+.storeInfo_main_menuCon > div:nth-child(1) {
+    width: 50%;
+}
+
+.storeInfo_main_menuCon > div:nth-child(2),
+.storeInfo_main_menuCon > div:nth-child(3) {
+    width: 25%;
+}
+
+.storeInfo_main_contact div,
+.storeInfo_main_menuCon div {
+    padding: 15px;
+    font-size: 14px;
+}
+
+.storeInfo_main_contact > div:first-child {
+    width: 60%;    
+}
+
+.storeInfo_main_contact > div:last-child {
+    width: 40%;
+}
+
+.storeInfo_main_menuCon > div {
+    width: 30%;
+}
+
+.storeInfo_main_menuCon div>div:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+
+
+/* 식당 요약섹션 */
+.storeInfo_main_desc {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+}
+
+.storeInfo_main_desc div {
+    background: white;
+    padding: 15px;
+}
+
+.storeInfo_main_desc > div > div:nth-child(1),
+.storeInfo_main_reviewCon > div > div:nth-child(1) {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.storeInfo_main_desc > div > div:nth-child(2) {
+    font-size: 14px;
+    text-align: left;
+}
+
+/* 식당 리뷰 섹션 */
+.storeInfo_main_reviewCon {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+}
+
+
+
+

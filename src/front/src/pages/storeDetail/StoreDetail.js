@@ -46,7 +46,7 @@ export default function StoreDetail() {
                         <Spinner />
                     ) : (
                         store.map((item, index) => {
-                            return <StoreInfo store={item} storeDetail={storeDetail} menu={menu} />
+                            return <StoreInfo store={item} storeDetail={storeDetail[0]} menu={menu} />
                         })
                     )
                 }
