@@ -9,6 +9,7 @@ export default function RedSpoon() {
     const [searchResults, setSearchResults] = useState([]);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showAll, setShowAll] = useState(false); // 더보기 상태 관리
+    const [scrollProgress, setScrollProgress] = useState(0); // 스크롤 진행률 상태
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -61,6 +62,49 @@ export default function RedSpoon() {
         setShowAll(!showAll);
         setCurrentSlide(0); // 더보기 상태 변경 시 슬라이드 초기화
     };
+
+    // 스크롤 이벤트 핸들러
+    useEffect(() => {
+        let timeout;
+        const handleScroll = () => {
+            if (timeout) clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                const textRevealElement = document.querySelector('.text-reveal-container');
+                if (textRevealElement) {
+                    const rect = textRevealElement.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const elementTop = rect.top + window.scrollY;
+                    const elementHeight = rect.height;
+                    const scrollPosition = window.scrollY + windowHeight;
+                    const progress = Math.min(
+                        Math.max(
+                            (scrollPosition - elementTop) / (elementHeight + windowHeight),
+                            0
+                        ),
+                        1
+                    );
+                    setScrollProgress(progress);
+                }
+            }, 10); // 10ms 디바운스
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // 초기 렌더링 시 한 번 호출
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (timeout) clearTimeout(timeout);
+        };
+    }, []);
+
+    //글자 -> 배열 전환
+    const text1 = "레드스푼으로" ;
+    const text2 = "만족스러운 식사를,";
+    const text1Array = text1.split('');
+    const text2Array = text2.split('');
+
+    // 전체 글자 수 계산 (두 줄 합쳐서)
+    const totalChars = text1Array.length + text2Array.length;
 
     return (
         <div className="container">
@@ -138,6 +182,99 @@ export default function RedSpoon() {
                         ))}
                     </div>
                 </div>
+            </div>
+
+            {/* 스크롤 애니메이션 텍스트 섹션 */}
+            <div className="text-reveal-container">
+                <h2>
+                    <div className="text-line">
+                        {text1Array.map((char, index) => {
+                            const charProgress = Math.min(
+                                Math.max(
+                                    (scrollProgress - (index / totalChars)) * totalChars,
+                                    0
+                                ),
+                                1
+                            );
+                            return (
+                                <span
+                                    key={index}
+                                    className="char"
+                                    style={{
+                                        color: `rgb(${255 * (1 - charProgress)}, ${255 * (1 - charProgress)}, ${255 * (1 - charProgress)})`, // 흰색(#FFFFFF)에서 시작
+                                    }}
+                                >
+                                    {char}
+                                </span>
+                            );
+                        })}
+                        {text1Array.map((char, index) => {
+                            const charProgress = Math.min(
+                                Math.max(
+                                    (scrollProgress - (index / totalChars)) * totalChars,
+                                    0
+                                ),
+                                1
+                            );
+                            return (
+                                <span
+                                    key={`red-${index}`}
+                                    className="char"
+                                    style={{
+                                        color: `rgb(${255 * charProgress}, ${0}, ${0})`, // 흰색에서 빨간색(#FF0000)으로
+                                    }}
+                                >
+                                    {char}
+                                </span>
+                            );
+                        })}
+                    </div>
+                    <br /><br />
+                    <div className="text-line">
+                        {text2Array.map((char, index) => {
+                            const charIndex = index + text1Array.length;
+                            const charProgress = Math.min(
+                                Math.max(
+                                    (scrollProgress - (charIndex / totalChars)) * totalChars,
+                                    0
+                                ),
+                                1
+                            );
+                            return (
+                                <span
+                                    key={index}
+                                    className="char colored-char"
+                                    style={{
+                                        color: `rgb(${255 * (1 - charProgress)}, ${255 * (1 - charProgress)}, ${255 * (1 - charProgress)})`, // 흰색(#FFFFFF)에서 시작
+                                    }}
+                                >
+                                    {char}
+                                </span>
+                            );
+                        })}
+                        {text2Array.map((char, index) => {
+                            const charIndex = index + text1Array.length;
+                            const charProgress = Math.min(
+                                Math.max(
+                                    (scrollProgress - (charIndex / totalChars)) * totalChars,
+                                    0
+                                ),
+                                1
+                            );
+                            return (
+                                <span
+                                    key={`black-${index}`}
+                                    className="char colored-char"
+                                    style={{
+                                        color: `rgb(${0}, ${0}, ${0})`, // 흰색에서 검정색(#000000)으로
+                                    }}
+                                >
+                                    {char}
+                                </span>
+                            );
+                        })}
+                    </div>
+                </h2>
             </div>
 
             {/* 매거진 섹션 */}

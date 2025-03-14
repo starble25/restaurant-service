@@ -303,6 +303,27 @@
     color: #777;
 }
 
+/*스크롤 색 변화 관련 섹션*/
+.text-reveal-container {
+    text-align: center;
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.text-reveal-container h2 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.text-line {
+    display: block; /* 각 줄을 블록 요소로 설정하여 줄바꿈 */
+}
+
+.char {
+    transition: none; /* 색상은 JS로 직접 제어 */
+}
+
 /* 매거진 섹션 */
 .magazine-section {
     padding: 100px;
