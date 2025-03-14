@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './StoreInfoSub.css';
 import KakaoMap from '../../kakamap/KakaoMap';
 import BookingCalendar from '../../calendar/BookingCalendar';
+import BookingFlag from '../../bookingFlag/BookingFlag';
+
 
 export default function StoreInfoSub({ store, storeDetail, menu, storeAddress }) {
 
@@ -11,6 +13,7 @@ export default function StoreInfoSub({ store, storeDetail, menu, storeAddress })
     const storeMapImgPath = "/store/map.jpg";
 
     const [date, setDate] = useState(new Date());
+    
 
     //캘린더 날짜
     const onChange = (newDate) => {
@@ -35,9 +38,9 @@ export default function StoreInfoSub({ store, storeDetail, menu, storeAddress })
             <div className='storeInfo-sub-con'>
                 <img src={storeMapImgPath} className='open-modal-btn' onClick={() => setKakaoMapFlag(true)}></img>
 
-                <BookingCalendar onChange={onChange} selectedDate={date} activateFlag={activateFlag} deactivateFlag={deactivateFlag}/>
+                <BookingCalendar onChange={onChange} date={date} activateFlag={activateFlag} deactivateFlag={deactivateFlag}/>
                 {
-                    bookingFlag && (<div>ddd <button onClick={deactivateFlag}>닫기</button></div>)
+                    bookingFlag && (<BookingFlag date={date} deactivateFlag={deactivateFlag}/>)
                 }
 
                 {kakaoMapFlag && (

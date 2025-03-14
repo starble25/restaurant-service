@@ -84,22 +84,22 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
                 <div>
                     <div>
                         <FontAwesomeIcon icon={faPhone} className="icon-size" />
-                        <strong>{storeDetail.tel}</strong>
+                        <strong>전화번호 : </strong>{storeDetail.tel}
                     </div>
                     <div>
                         <FontAwesomeIcon icon={faLocationDot} className="icon-size" />
-                        <strong>{store.address}</strong>
+                        <strong>주소 : </strong>{store.address}
                     </div>
                     <div>
                         <FontAwesomeIcon icon={faCalendar} className="icon-size" />
-                        예약 : <strong>{store.bookingState}</strong>
+                        <strong>예약 : </strong>{store.bookingState}
                     </div>
                 </div>
 
                 <div>
                     <div>
                         <FontAwesomeIcon icon={faClock} className="icon-size" />
-                        <strong>{storeDetail.runtime}</strong>
+                        <strong> 영업시간 : </strong>{storeDetail.runtime}
                     </div>
                     <div>
                         <FontAwesomeIcon icon={faSquareInstagram} className="icon-size" />

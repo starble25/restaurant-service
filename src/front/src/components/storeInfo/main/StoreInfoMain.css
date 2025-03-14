@@ -134,11 +134,11 @@
 }
 
 .storeInfo_main_contact > div:first-child {
-    width: 60%;    
+    width: 50%;    
 }
 
 .storeInfo_main_contact > div:last-child {
-    width: 40%;
+    width: 50%;
 }
 
 .storeInfo_main_menuCon > div {
