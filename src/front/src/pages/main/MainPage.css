@@ -20,7 +20,7 @@
 }
 
 .header {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255 255 255);
     /* color: white; */
     padding: 10px;
     display: flex;
@@ -30,7 +30,7 @@
 
 .logo img {
     position: relative;
-    width: 100px;
+    width: 160px;
     height: 100px;
 }
 
@@ -88,11 +88,10 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    background-color: black; /* 배경색 추가 (필요시 제거) */
 }
 
 .navbar li {
-    padding: 10px 20px;
+    padding: 10px 32px;
     position: relative;
 }
 
@@ -109,11 +108,12 @@
 
 .collapsed {
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 20px;
-    font-family: "Black Han Sans", sans-serif;
-    letter-spacing: 8px;
-
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-family: NanumGothic;
+    /* font-family: "Gowun Dodum", sans-serif; */
 }
 
 /*메인 페이지 가운데 로고*/
@@ -139,7 +139,7 @@
     align-items: center;
     justify-content: center;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url(/restaurant-service/restaurant-service/src/front/public/images/logomain) no-repeat;
+        url(/restaurant-service/restaurant-service/src/front/public/images/redspoonlogo.png) no-repeat;
     background-size: contain;
     background-position: center;
 }
@@ -169,7 +169,9 @@
     border: none;
     cursor: pointer;
 }
-
+.user-icon-button:hover{
+    background:black;
+}
 .user-menu-modal {
     position: absolute;
     right: 0;
@@ -303,7 +305,7 @@
 
 /* 매거진 섹션 */
 .magazine-section {
-    padding: 24px;
+    padding: 100px;
 }
 
 .magazine-header {
@@ -321,13 +323,14 @@
 .more-button {
     background: none;
     border: none;
-    color: #007bff;
+    color: #546475;
     cursor: pointer;
     font-size: 16px;
 }
 
 .more-button:hover {
     text-decoration: underline;
+    background: none;
 }
 
 .magazine-slider {
@@ -355,10 +358,11 @@
     width: 25%; /* 4개씩 표시하므로 25% */
     height: 400px;
     margin: 0 8px;
+    flex-shrink: 0; /* 크기 고정 */
 }
 
 .magazine-image {
-    height: 160px;
+    height: 250px;
     background: #d1d5db;
     margin-bottom: 8px;
     background-size: cover;
@@ -423,9 +427,11 @@
 
 /* 더보기 상태의 그리드 */
 .magazine-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
+    display: flex; /* flex 유지 */
+    flex-wrap: wrap; /* 줄바꿈 허용 */
+    gap: 16px; /* 아이템 간 간격 */
+    width: 100%;
+    justify-content: center; /* 가운데 정렬로 변경 (기존: flex-start) */
 }
 
 /* 푸터 섹션*/
@@ -564,7 +570,7 @@
     font-family: "Francois One", sans-serif;
     font-weight: 600;
     font-style: normal;
-    color: #463535;
+    color: #202863;
 }
 
 /* Subtitle */
@@ -573,5 +579,5 @@
     margin-bottom: 100px;
     font-weight: 500;
     font-family: "Francois One", sans-serif;
-    color: #463535;
+    color: #3a6899;
 }

@@ -43,12 +43,7 @@ export default function RedSpoon() {
         { title: "기사 제목 13", description: "기사 요약 설명~!", image: "images/foodmain.png" },
         { title: "기사 제목 14", description: "기사 요약 설명~!", image: "images/foodmain.png" },
         { title: "기사 제목 15", description: "기사 요약 설명~!", image: "images/foodmain.png" },
-        { title: "기사 제목 16", description: "기사 요약 설명~!", image: "images/foodmain.png" },
-        { title: "기사 제목 17", description: "기사 요약 설명~!", image: "images/foodmain.png" },
-        { title: "기사 제목 18", description: "기사 요약 설명~!", image: "images/foodmain.png" },
-        { title: "기사 제목 19", description: "기사 요약 설명~!", image: "images/foodmain.png" },
-        { title: "기사 제목 20", description: "기사 요약 설명~!", image: "images/foodmain.png" },
-        { title: "기사 제목 21", description: "기사 요약 설명~!", image: "images/foodmain.png" },
+        { title: "기사 제목 16", description: "기사 요약 설명~!", image: "images/foodmain.png" }
     ];
 
     // 슬라이드 자동 전환 (4개씩 표시하므로 슬라이드 개수는 slides.length / 4)
@@ -72,7 +67,7 @@ export default function RedSpoon() {
             {/* 헤더 바 */}
             <header className="header">
                 <a href="#" className="logo">
-                    <img src="/images/logo" alt="레드스푼 로고"></img>
+                    <img src="/images/redspoonlogo.png" alt="레드스푼 로고"></img>
                 </a>
                 <nav className="navbar">
                     <li className=''>
@@ -148,7 +143,7 @@ export default function RedSpoon() {
             {/* 매거진 섹션 */}
             <div className="magazine-section">
                 <div className="magazine-header">
-                    <h2 className="magazine-title">블루리본 매거진</h2>
+                    <h2 className="magazine-title">레드스푼 매거진</h2>
                     <button className="more-button" onClick={toggleShowAll}>
                         {showAll ? "접기" : "더보기 >"}
                     </button>
