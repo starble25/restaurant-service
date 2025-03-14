@@ -15,4 +15,10 @@
 		WHERE id=#{id}
 	</select>
 	
+	<select id="findStoreById" parameterType="Integer" resultType="Store">
+		SELECT *
+		FROM store
+		WHERE id = #{id}
+	</select>
+	
 </mapper>

@@ -7,4 +7,6 @@ public interface StoreDAO {
 	public Store findStoreByUserId(int id);
 	
 	public Store findStoreNameById(int id);
+	
+	public Store findStoreById(int id);
 }

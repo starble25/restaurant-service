@@ -24,6 +24,12 @@ public class StoreDAOImpl implements StoreDAO {
 		Store store = sqlSessionTemplate.selectOne("store_mapper.findStoreNameById", id);
 		return store;
 	}
+
+	@Override
+	public Store findStoreById(int id) {
+		Store store = sqlSessionTemplate.selectOne("store_mapper.findStoreById", id);
+		return store;
+	}
 	
 	
 }
