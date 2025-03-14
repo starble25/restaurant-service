@@ -30,11 +30,14 @@ public class BookingServiceImpl implements BookingService {
 		if( user.getUserType().equals(CommonCode.USERS_USERTYPE_CUSTOMER) ) {
 			int refId = user.getId();
 			bookingList = bookingDAO.findBookingByUserId(refId);
+			
 		} else if( user.getUserType().equals(CommonCode.USERS_USERTYPE_STORE) ) {
 			int userId = user.getId();
 			int refId = storeDAO.findStoreByUserId(userId).getId();
 			bookingList = bookingDAO.findBookingByStoreId(refId);
 		}
+		
+		convertCommonCode(bookingList);
 		
 		return bookingList;
 	}
@@ -43,6 +46,19 @@ public class BookingServiceImpl implements BookingService {
 	public Store findStoreNameById(int id) {
 		Store store = storeDAO.findStoreNameById(id);
 		return store;
+	}
+	
+	
+	private List<Booking> convertCommonCode(List<Booking> bookingList) {
+		for( Booking booking : bookingList ) {
+			if( booking.getState().equals(CommonCode.BOOKING_FINISH) ) {
+				booking.setState("정상종료");
+			} else if ( booking.getState().equals(CommonCode.BOOKING_CONFIRM )) {
+				booking.setState("예약됨");
+			}
+		}
+		
+		return bookingList;
 	}
 
 }

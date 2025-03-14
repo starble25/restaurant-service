@@ -7,4 +7,8 @@ public interface CommonCode {
 	public String USERS_USERTYPE_STORE = "STR";
 	public String USERS_USERTYPE_ADMIN = "ADM";
 	
+	//Booking
+	public String BOOKING_FINISH = "FIN";
+	public String BOOKING_CONFIRM = "CFM";
+	
 }
