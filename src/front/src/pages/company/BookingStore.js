@@ -1,7 +1,26 @@
 import './BookingStore.css';
 import { DataTable, TitleRow, TitleCol, ContentRow, ContentCol } from './DataTable';
+import CustomBtn from '../../components/common/CustomBtn';
 
 function BookingStore({ bookingData }) {
+    // bookingData = {
+    //     "id": 1,
+    //     "userId": 1,
+    //     "storeId": 1,
+    //     "totalPeople": 4,
+    //     "bookingRegTime": 1741755600000,
+    //     "bookingTime": 1742029200000,
+    //     "state": "예약완료"
+    // }
+
+    function convertButton( text ) {
+        if( text === '정상종료' ) {
+            return <CustomBtn label={'정상종료'}/>
+        }
+        if( text === '예약됨' ) {
+            return <CustomBtn label={'예약됨'}/>
+        }
+    }
 
     return (
         <div className='bookingListContainer'>
@@ -17,13 +36,27 @@ function BookingStore({ bookingData }) {
                         <TitleCol>예약인원</TitleCol>
                         <TitleCol>상태</TitleCol>
                     </TitleRow>
-                    <ContentRow>
-                        <ContentCol>1</ContentCol>
-                        <ContentCol>{bookingData && bookingData.bookingTime}</ContentCol>
-                        <ContentCol>3</ContentCol>
-                        <ContentCol>4</ContentCol>
-                        <ContentCol>5</ContentCol>
-                    </ContentRow>
+                    {bookingData && bookingData.map((data, index) => {
+                        return (
+                            <ContentRow key={data.id}>
+                                <ContentCol>{index + 1}</ContentCol>
+                                <ContentCol>
+                                    {new Date(data.bookingTime).getFullYear()}&ndash;
+                                    {new Date(data.bookingTime).getMonth() + 1}&ndash;
+                                    {new Date(data.bookingTime).getDate()}
+                                </ContentCol>
+                                <ContentCol>
+                                    {new Date(data.bookingTime).toLocaleTimeString('ko-KR', {
+                                        hour: 'numeric',
+                                        minute: 'numeric',
+                                        hour12: true // 12시간제 (오전/오후)
+                                    })}
+                                </ContentCol>
+                                <ContentCol>{data.totalPeople}</ContentCol>
+                                <ContentCol>{convertButton(data.state)}</ContentCol>
+                            </ContentRow>
+                        )
+                    })}
                 </DataTable>
             </div>
         </div>

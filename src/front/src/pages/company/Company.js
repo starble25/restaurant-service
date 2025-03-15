@@ -2,10 +2,10 @@ import './Company.css';
 import axios from 'axios';
 import { Activity, ActContainer } from './Activity';
 import { useState, useEffect } from 'react';
-import useFetchStore from './useFetchStore';
-import useFetchBooking from './useFetchBooking';
-import useFetchUser from './useFetchUser';
-
+import useFetchStore from '../../hooks/useFetchStore';
+import useFetchBooking from '../../hooks/useFetchBooking';
+import useFetchUser from '../../hooks/useFetchUser';
+import StoreInfo from './StoreInfo';
 import BookingStore from './BookingStore';
 
 function Company() {
@@ -14,14 +14,25 @@ function Company() {
     //const [userData, setUserData] = useState(null);
     const {userData} = useFetchUser(id);
     const {storeData} = useFetchStore(storeId);
-    console.log('userData : ', userData);
     const {bookingData} = useFetchBooking(userData);
-    console.log('bookingData : ' + bookingData);
+    console.table(userData);
+    console.table(bookingData);
+    console.table(storeData);
 
     return (
         <div className='compContainer'>
             <div className='titleContainer'>
                 <h2><span>{storeData && storeData.storeName}</span> 관리페이지</h2>
+            </div>
+            <div className='activityWrapper'>
+                <Activity>
+                    <ActContainer title={'SPOON'} text={storeData && storeData.spoon} />
+                    <ActContainer title={'별점'} text={storeData && (storeData.rateTotal/storeData.rateCount).toFixed(2)} />
+                    <ActContainer title={'리뷰 수'} text={storeData && storeData.rateCount+'개'} />
+                </Activity>
+            </div>
+            <div className='storeInfoWrapper'>
+                <StoreInfo storeData={storeData} />
             </div>
             <div className='activityWrapper'>
                 <Activity>
@@ -31,9 +42,11 @@ function Company() {
                 </Activity>
             </div>
             <div className='bookingStoreWrapper'>
-                <BookingStore 
-                    bookingData={bookingData}
-                />
+                {bookingData ? (
+                    <BookingStore bookingData={bookingData} />
+                ) : (
+                    <p>Loading bookings...</p>
+                )}
             </div>
         </div>
     )

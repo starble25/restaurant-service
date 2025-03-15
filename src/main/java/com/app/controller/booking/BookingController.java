@@ -21,11 +21,8 @@ public class BookingController {
 	@PostMapping("api/booking/find-booking")
 	public List<Booking> findBookingByRefId(@RequestBody Users user) {
 		System.out.println("find-booking request");
-		System.out.println("booking request user : " + user.toString());
 		
 		List<Booking> bookingList = bookingService.findBookingByRefId(user);
-		
-		System.out.println("find-booking : " + bookingList.toString());
 		
 		return bookingList;
 	}

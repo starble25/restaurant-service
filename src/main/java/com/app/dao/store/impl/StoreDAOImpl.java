@@ -15,7 +15,7 @@ public class StoreDAOImpl implements StoreDAO {
 
 	@Override
 	public Store findStoreByUserId(int id) {
-		Store store = sqlSessionTemplate.selectOne("store_mapper.getStoreByUserId", id);
+		Store store = sqlSessionTemplate.selectOne("store_mapper.findStoreByUserId", id);
 		return store;
 	}
 
