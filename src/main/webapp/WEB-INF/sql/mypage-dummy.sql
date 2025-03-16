@@ -30,3 +30,17 @@ SET
     rate_count = 15, 
     rate_total = 71
 WHERE id = 1;
+
+
+INSERT INTO store_detail ( id, store_id, tel, address_info, open_time, close_time, menu_desc, note, main_image ) 
+VALUES (
+    store_detail_pk.nextval, 
+    1, 
+    '010-1234-5678', 
+    '충청남도 천안시 123번지', 
+    900, 
+    2100, 
+    '일식', 
+    '오마카세급 일식 전문. 제주도에서 직접 공수한 최고급 품질만 사용합니다.', 
+    '/images/store_main.jpg' 
+);

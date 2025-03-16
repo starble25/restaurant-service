@@ -13,6 +13,7 @@
 		<typeAlias type="com.app.dto.file.ImageFile" alias="ImageFile" />
 		<typeAlias type="com.app.dto.booking.Booking" alias="Booking" />
 		<typeAlias type="com.app.dto.store.Store" alias="Store" />
+		<typeAlias type="com.app.dto.store.StoreDetail" alias="StoreDetail" />
 	</typeAliases>
 </configuration>
 

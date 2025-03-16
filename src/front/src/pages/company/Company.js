@@ -7,6 +7,7 @@ import useFetchBooking from '../../hooks/useFetchBooking';
 import useFetchUser from '../../hooks/useFetchUser';
 import StoreInfo from './StoreInfo';
 import BookingStore from './BookingStore';
+import StoreDetailInfo from './StoreDetailInfo';
 
 function Company() {
     const storeId = 1;
@@ -18,6 +19,10 @@ function Company() {
     console.table(userData);
     console.table(bookingData);
     console.table(storeData);
+
+    function renderContent() {
+        
+    }
 
     return (
         <div className='compContainer'>
@@ -32,8 +37,13 @@ function Company() {
                 </Activity>
             </div>
             <div className='storeInfoWrapper'>
-                <StoreInfo storeData={storeData} />
+                <StoreInfo store={storeData} />
             </div>
+
+            <div className='storeDetailWrapper'>
+                <StoreDetailInfo store={storeData} />
+            </div>
+
             <div className='activityWrapper'>
                 <Activity>
                     <ActContainer title={'오늘 예약'} text={'3개'} />
@@ -43,7 +53,7 @@ function Company() {
             </div>
             <div className='bookingStoreWrapper'>
                 {bookingData ? (
-                    <BookingStore bookingData={bookingData} />
+                    <BookingStore booking={bookingData} />
                 ) : (
                     <p>Loading bookings...</p>
                 )}

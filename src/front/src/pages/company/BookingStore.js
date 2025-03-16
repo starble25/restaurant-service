@@ -2,8 +2,8 @@ import './BookingStore.css';
 import { DataTable, TitleRow, TitleCol, ContentRow, ContentCol } from './DataTable';
 import CustomBtn from '../../components/common/CustomBtn';
 
-function BookingStore({ bookingData }) {
-    // bookingData = {
+function BookingStore({ booking }) {
+    // booking = {
     //     "id": 1,
     //     "userId": 1,
     //     "storeId": 1,
@@ -36,7 +36,7 @@ function BookingStore({ bookingData }) {
                         <TitleCol>예약인원</TitleCol>
                         <TitleCol>상태</TitleCol>
                     </TitleRow>
-                    {bookingData && bookingData.map((data, index) => {
+                    {booking && booking.map((data, index) => {
                         return (
                             <ContentRow key={data.id}>
                                 <ContentCol>{index + 1}</ContentCol>
