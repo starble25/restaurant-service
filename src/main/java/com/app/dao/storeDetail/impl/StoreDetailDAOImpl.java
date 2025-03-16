@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.storeDetail.StoreDetailDAO;
+import com.app.dto.booking.Booking;
+import com.app.dto.booking.BookingMenu;
 import com.app.dto.menu.Menu;
 import com.app.dto.store.Store;
 import com.app.dto.store.StoreDetail;
@@ -35,6 +37,19 @@ public class StoreDetailDAOImpl implements StoreDetailDAO {
 	public List<Menu> findMenuById(int storeIdInt) {
 		List<Menu> menu = sqlSessionTemplate.selectList("storeDetail_mapper.findMenuById", storeIdInt);
 		return menu;
+	}
+
+	@Override
+	public int saveBookingInfo(Booking booking) {
+		
+		int result = sqlSessionTemplate.insert("storeDetail_mapper.saveBookingInfo", booking);
+		return result;
+	}
+
+	@Override
+	public int saveBookingMenuInfo(BookingMenu bookingMenu) {
+		int result = sqlSessionTemplate.insert("storeDetail_mapper.saveBookingMenuInfo", bookingMenu);
+		return result;
 	}
 	
 	

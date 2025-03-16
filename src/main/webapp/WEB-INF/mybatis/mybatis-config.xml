@@ -13,6 +13,8 @@
 		<typeAlias type="com.app.dto.store.Store" alias="Store" />
 		<typeAlias type="com.app.dto.store.StoreDetail" alias="StoreDetail" />
 		<typeAlias type="com.app.dto.store.StoreFilter" alias="StoreFilter" />
+		<typeAlias type="com.app.dto.booking.Booking" alias="Booking" />
+		<typeAlias type="com.app.dto.booking.BookingMenu" alias="BookingMenu" />
 	</typeAliases>
 </configuration>
 

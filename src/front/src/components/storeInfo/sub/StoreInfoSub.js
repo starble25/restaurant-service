@@ -40,7 +40,7 @@ export default function StoreInfoSub({ store, storeDetail, menu, storeAddress })
 
                 <BookingCalendar onChange={onChange} date={date} activateFlag={activateFlag} deactivateFlag={deactivateFlag}/>
                 {
-                    bookingFlag && (<BookingFlag date={date} deactivateFlag={deactivateFlag}/>)
+                    bookingFlag && (<BookingFlag date={date} deactivateFlag={deactivateFlag} menu={menu}/>)
                 }
 
                 {kakaoMapFlag && (

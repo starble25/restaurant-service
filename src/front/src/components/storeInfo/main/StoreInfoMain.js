@@ -50,7 +50,9 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
     //메뉴섹션 리팩토링
     const menuMap = (key) => {
         return menu.map((item, index) => (
-            <div>{item[key]}</div>
+            <div key={index}>
+                {key == "price" ? item[key].toLocaleString() : item[key]}
+            </div>
         ))
     }
 
@@ -99,7 +101,7 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
                 <div>
                     <div>
                         <FontAwesomeIcon icon={faClock} className="icon-size" />
-                        <strong> 영업시간 : </strong>{storeDetail.runtime}
+                        <strong>영업시간 : </strong>{storeDetail.runtime}
                     </div>
                     <div>
                         <FontAwesomeIcon icon={faSquareInstagram} className="icon-size" />

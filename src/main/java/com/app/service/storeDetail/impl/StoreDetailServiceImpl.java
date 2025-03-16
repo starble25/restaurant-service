@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dao.storeDetail.StoreDetailDAO;
+import com.app.dto.booking.Booking;
+import com.app.dto.booking.BookingMenu;
 import com.app.dto.menu.Menu;
 import com.app.dto.store.Store;
 import com.app.dto.store.StoreDetail;
@@ -34,6 +36,18 @@ public class StoreDetailServiceImpl implements StoreDetailService {
 	public List<Menu> findMenuById(int storeIdInt) {
 		List<Menu> menu = storeDetailDAO.findMenuById(storeIdInt);
 		return menu;
+	}
+
+	@Override
+	public int saveBookingInfo(Booking booking) {
+		int result = storeDetailDAO.saveBookingInfo(booking);
+		return result;
+	}
+
+	@Override
+	public int saveBookingMenuInfo(BookingMenu bookingMenu) {
+		int result = storeDetailDAO.saveBookingMenuInfo(bookingMenu);
+		return result;
 	}
 
 	

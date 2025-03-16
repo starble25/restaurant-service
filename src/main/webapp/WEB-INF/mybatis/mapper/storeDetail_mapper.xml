@@ -21,5 +21,16 @@
 	
 	
 	
+	<insert id="saveBookingInfo" parameterType="Booking">
+		INSERT INTO booking (id, store_id, total_people, booking_time, booking_reg_time, state)
+    	VALUES (BOOKING_PK.NEXTVAL, #{storeId}, #{totalPeople}, #{bookingTime}, SYSDATE, #{state})
+    	RETURNING id INTO #{id}
+	</insert>
+	
+	<insert id="saveBookingMenuInfo" parameterType="BookingMenu">
+    	INSERT INTO booking_menu (id, booking_id, menu_id, quantity)
+    	VALUES (BOOKING_MENU_PK.NEXTVAL, #{bookingId}, #{menuId}, #{quantity})
+	</insert>
+	
 
 </mapper>
