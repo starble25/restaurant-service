@@ -29,7 +29,7 @@ export default function RedSpoon() {
 
     // 매거진 데이터 (이미지에 맞게 4개씩 표시하도록 수정)
     const slides = [
-        { title: "[블루리본스토어] 창업 프로그램 비어파티", description: "2024년 2월 15일부터 2월 24일까지, 블루리본스토어에서 창업 프로그램 비어파티가 열립니다.", image: "images/foodmain.png" },
+        { title: "[블루리본스토어] 창업 프로그램 비어파티", description: "2024년 2월 15일부터 2월 24일까지, 블루리본스토어에서 창업 프로그램 비어파티가 열립니다.", image: "/resources/images/foodmain.png" },
         { title: "[블루리본스토어] 2023 블루포인샵", description: "2024 블루리본스토어에서 열리는 연수 과정의 1차 특별한 기회!", image: "images/foodmain.png" },
         { title: "[블루리본스토어] 2024 베이커리 트렌드", description: "미쉐린 우승자 안티가 특별한 도전!", image: "images/foodmain.png" },
         { title: "간단한 한입 양식 - 김해로 등 내 반려견 Ep. 10", description: "새로운 요리법! 김치와 함께하는 맛있는 나들이.", image: "images/foodmain.png" },
@@ -107,7 +107,7 @@ export default function RedSpoon() {
     const totalChars = text1Array.length + text2Array.length;
 
     return (
-        <div className="container">
+        <div className="maincontainer">
             {/* 헤더 바 */}
             <header className="header">
                 <a href="#" className="logo">
