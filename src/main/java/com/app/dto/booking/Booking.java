@@ -1,6 +1,7 @@
 package com.app.dto.booking;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -13,4 +14,6 @@ public class Booking {
     private Date bookingRegTime; // 예약등록시간
     private Date bookingTime;    // 예약시간
     private String state;
+    
+    private List<BookingMenu>menuItems;
 }

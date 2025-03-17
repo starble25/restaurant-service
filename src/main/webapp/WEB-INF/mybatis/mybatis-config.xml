@@ -9,11 +9,14 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.app.dto.users.Users" alias="Users" />
-		<typeAlias type="com.app.dto.file.ImageFile" alias="ImageFile" />
-		<typeAlias type="com.app.dto.booking.Booking" alias="Booking" />
+		<typeAlias type="com.app.dto.menu.Menu" alias="Menu" />
 		<typeAlias type="com.app.dto.store.Store" alias="Store" />
 		<typeAlias type="com.app.dto.store.StoreDetail" alias="StoreDetail" />
+		<typeAlias type="com.app.dto.store.StoreFilter" alias="StoreFilter" />
+		<typeAlias type="com.app.dto.booking.Booking" alias="Booking" />
+		<typeAlias type="com.app.dto.booking.BookingMenu" alias="BookingMenu" />
+		<typeAlias type="com.app.dto.users.Users" alias="Users" />
+		<typeAlias type="com.app.dto.file.ImageFile" alias="ImageFile" />
 	</typeAliases>
 </configuration>
 

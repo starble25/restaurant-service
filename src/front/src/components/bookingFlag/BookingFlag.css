@@ -1,0 +1,150 @@
+/* 인원 부분 */
+.totalPeople-container {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.totalPeople-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.totalPeople-header button {
+    border-radius: 25%;
+    text-align: center;
+    background-color: #ec4a68;
+    color: white;
+    font-weight: bold;
+    border: #f0f0f3;
+    cursor: pointer;
+}
+
+.totalPeople-section {
+    display: flex;
+    gap: 10px;
+    margin: 0 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.totalPeople-section>div {
+    padding: 3px 8px;
+    border-radius: 15px;
+    border: 1px solid #f0f0f3;
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+
+/* 예약 메뉴 부분 */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-container>div:nth-child(1),
+.menu-container>div:nth-child(2),
+.menu-container>div:nth-child(3) {
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu-container-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.menu-container-item>div {
+    margin-top: 5px;
+    text-align: left;
+}
+
+.menu-container-item>div:nth-child(1) {
+    width: 45%;
+}
+
+.menu-container-item>div:nth-child(2) {
+    width: 27%;
+}
+
+.menu-container-item>div:nth-child(3) {
+    width: 28%;
+}
+
+
+.menu-container-item span {
+    padding: 0 5px 0 5px;
+}
+
+.menu-container-item button {
+    background-color: white;
+    border-radius: 25%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.menu-container-item button:hover {
+    background-color: #e34a33;
+}
+
+/* 예약일, 총인원 등 섹션 */
+.cal-container {
+    margin-top: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cal-container > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.cal-container > div > div:first-child {
+    width: 30%;
+}
+
+.cal-container > div > div:last-child {
+    width: 70%;
+    font-weight: bold;
+}
+
+
+/* 마지막 예약하기 버튼 */
+.booking-btn {
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 100%;
+}
+
+.booking-btn button {
+    width: 40%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #ec4a68;
+    color: white;
+    font-weight: bold;
+    border: #f0f0f3;
+    gap: 20px;
+}

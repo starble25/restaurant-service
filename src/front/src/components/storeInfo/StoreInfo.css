@@ -1,0 +1,7 @@
+body {
+    background-color: #f0f0f3;
+}
+
+.storeInfo-content-container {
+    display: flex;
+}

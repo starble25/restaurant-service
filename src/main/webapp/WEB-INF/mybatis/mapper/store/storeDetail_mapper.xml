@@ -9,4 +9,34 @@
 		WHERE store_id = #{storeId}
 	</select>
 
+	<select id="findStoreById" resultType="Store" parameterType="int">
+		SELECT * FROM STORE
+		WHERE id = #{storeIdInt}
+	</select>
+	
+	<select id="findStoreDetailById" resultType="StoreDetail" parameterType="int">
+		SELECT * FROM STORE_DETAIL sd
+		WHERE sd.store_id = #{storeIdInt}
+	</select>
+	
+	<select id="findMenuById" resultType="Menu" parameterType="int">
+		SELECT * FROM menu m
+		WHERE m.store_id = #{storeIdInt}
+	</select>
+	
+	
+	
+	<insert id="saveBookingInfo" parameterType="Booking">
+		INSERT INTO booking (id, user_id, store_id, total_people, booking_time, booking_reg_time, state)
+    	VALUES (BOOKING_PK.NEXTVAL, #{userId}, #{storeId}, #{totalPeople}, #{bookingTime}, SYSDATE, #{state})
+	</insert>
+	
+	<insert id="saveBookingMenuInfo" parameterType="BookingMenu">
+    	INSERT INTO booking_menu (id, booking_id, menu_id, quantity)
+    	VALUES (BOOKING_MENU_PK.NEXTVAL, #{bookingId}, #{menuId}, #{quantity})
+	</insert>
+	
+	<select id="getBookingId" resultType="int">
+		SELECT BOOKING_PK.CURRVAL FROM dual
+	</select>
 </mapper>
