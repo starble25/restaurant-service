@@ -1,4 +1,5 @@
 import './App.css';
+import Board from './pages/board/Board';
 import MainPage from './pages/main/MainPage';
 import StoreDetail from './pages/storeDetail/StoreDetail';
 import SubmainPage from './pages/submain/SubmainPage';
@@ -18,6 +19,8 @@ function App() {
       {/* <MainPage /> */}
       <Route path='/customer/mypage' element={<Customer />} />
       <Route path='/store/mypage' element={<Company/>} />
+      <Route path='/main' element={<MainPage />} />
+      <Route path='/board' element={<Board />} />
     </Routes>
   );
 }
