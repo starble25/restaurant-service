@@ -99,7 +99,7 @@ export default function StoreList({ storeList, menuList, storeDetailList }) {
                     storeDetailList
                         .filter(detail => detail.storeId == storeList.id)
                         .map((item, index) => (
-                            <div className="menu-item" key={index} dangerouslySetInnerHTML={{ __html: item.menuDesc }} ></div>
+                            <div className="store-menu-item" key={index} dangerouslySetInnerHTML={{ __html: item.menuDesc }} ></div>
                         ))
                 }
             </div>

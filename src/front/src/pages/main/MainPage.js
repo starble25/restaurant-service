@@ -4,12 +4,12 @@ import { faUser, faCartShopping, faGift } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function RedSpoon() {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
-    const [searchResults, setSearchResults] = useState([]);
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [showAll, setShowAll] = useState(false); // 더보기 상태 관리
-    const [scrollProgress, setScrollProgress] = useState(0); // 스크롤 진행률 상태
+    const [ searchTerm, setSearchTerm ] = useState("");
+    const [ isOpen, setIsOpen ] = useState(false);
+    const [ searchResults, setSearchResults ] = useState([]);
+    const [ currentSlide, setCurrentSlide ] = useState(0);
+    const [ showAll, setShowAll ] = useState(false); // 더보기 상태 관리
+    const [ scrollProgress, setScrollProgress ] = useState(0); // 스크롤 진행률 상태
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -55,7 +55,7 @@ export default function RedSpoon() {
             }, 5000); // 5초마다 전환
             return () => clearInterval(interval);
         }
-    }, [showAll]);
+    }, [ showAll ]);
 
     // 더보기/접기 토글
     const toggleShowAll = () => {
@@ -98,7 +98,7 @@ export default function RedSpoon() {
     }, []);
 
     //글자 -> 배열 전환
-    const text1 = "레드스푼으로" ;
+    const text1 = "레드스푼으로";
     const text2 = "만족스러운 식사를,";
     const text1Array = text1.split('');
     const text2Array = text2.split('');
@@ -186,63 +186,63 @@ export default function RedSpoon() {
 
             {/* 스크롤 애니메이션 텍스트 섹션 */}
             <div className="text-reveal-container">
-    <h2>
-        <div className="text-line">
-            {text1Array.map((char, index) => {
-                const charProgress = Math.min(
-                    Math.max(
-                        (scrollProgress - (index / totalChars)) * totalChars,
-                        0
-                    ),
-                    1
-                );
-                return (
-                    <span
-                        key={index}
-                        className="char"
-                        style={{
-                            color: `rgb(
+                <h2>
+                    <div className="text-line">
+                        {text1Array.map((char, index) => {
+                            const charProgress = Math.min(
+                                Math.max(
+                                    (scrollProgress - (index / totalChars)) * totalChars,
+                                    0
+                                ),
+                                1
+                            );
+                            return (
+                                <span
+                                    key={index}
+                                    className="char"
+                                    style={{
+                                        color: `rgb(
                                 ${255}, 
                                 ${255 * (1 - charProgress)}, 
                                 ${255 * (1 - charProgress)}
                             )`, // 흰색(#FFFFFF)에서 빨간색(#FF0000)으로
-                        }}
-                    >
-                        {char}
-                    </span>
-                );
-            })}
-        </div>
-        <br /><br />
-        <div className="text-line">
-            {text2Array.map((char, index) => {
-                const charIndex = index + text1Array.length;
-                const charProgress = Math.min(
-                    Math.max(
-                        (scrollProgress - (charIndex / totalChars)) * totalChars,
-                        0
-                    ),
-                    1
-                );
-                return (
-                    <span
-                        key={index}
-                        className="char colored-char"
-                        style={{
-                            color: `rgb(
+                                    }}
+                                >
+                                    {char}
+                                </span>
+                            );
+                        })}
+                    </div>
+                    <br /><br />
+                    <div className="text-line">
+                        {text2Array.map((char, index) => {
+                            const charIndex = index + text1Array.length;
+                            const charProgress = Math.min(
+                                Math.max(
+                                    (scrollProgress - (charIndex / totalChars)) * totalChars,
+                                    0
+                                ),
+                                1
+                            );
+                            return (
+                                <span
+                                    key={index}
+                                    className="char colored-char"
+                                    style={{
+                                        color: `rgb(
                                 ${255 * (1 - charProgress)}, 
                                 ${255 * (1 - charProgress)}, 
                                 ${255 * (1 - charProgress)}
                             )`, // 흰색(#FFFFFF)에서 검정색(#000000)으로
-                        }}
-                    >
-                        {char}
-                    </span>
-                );
-            })}
-        </div>
-    </h2>
-</div>
+                                    }}
+                                >
+                                    {char}
+                                </span>
+                            );
+                        })}
+                    </div>
+                </h2>
+            </div>
 
             {/* 매거진 섹션 */}
             <div className="magazine-section">

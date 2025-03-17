@@ -10,6 +10,7 @@ export default function BookingFlag({ date, deactivateFlag, menu }) {
     const [index, setIndex] = useState(0); //예약기능 인원수 상태관리
     const [calculate, setCalculate] = useState(0); //합계 상태관리
     const [countPeople, setCountPeople] = useState(0);
+    const [selected, setSelected] = useState(null);
 
     const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
     const totalPeople = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //예약인원 토탈 10명까지
@@ -39,7 +40,9 @@ export default function BookingFlag({ date, deactivateFlag, menu }) {
     //총 인원수 상태관리
     const handlePeople = (people) => {
         setCountPeople(people);
-    }
+        setSelected(people);
+    };
+
 
     // 이전 || 다음 버튼
     function handleBox(type) {
@@ -113,7 +116,7 @@ export default function BookingFlag({ date, deactivateFlag, menu }) {
                         <div className='totalPeople-section'>
                             {
                                 visibleBox.map((item) => (
-                                    <div onClick={() => handlePeople(item)}>{item}명</div>
+                                    <div onClick={() => handlePeople(item)} className={selected == item ? "active" : ""}>{item}명</div>
                                 ))
                             }
                         </div>

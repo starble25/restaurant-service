@@ -24,8 +24,8 @@
 }
 
 .react-calendar__tile--now {
-    background-color: red !important;
-    color: white !important;
+    background-color: white !important;
+    border: 1px solid #ec4a68 !important;
 }
 
 
@@ -33,6 +33,9 @@
 .react-calendar__tile--active {
     background-color: #ec4a68 !important; /* 원하는 색상으로 변경 */
     color: white !important; /* 텍스트 색상도 변경 */
+    border-radius: 50%;
+    border: 1px solid #ec4a68;
+    font-weight: bold;
 }
 
 /* 선택된 날짜가 포커스되었을 때의 색상 수정 (파란색 방지) */
