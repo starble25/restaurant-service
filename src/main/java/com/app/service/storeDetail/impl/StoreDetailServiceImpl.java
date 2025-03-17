@@ -50,6 +50,12 @@ public class StoreDetailServiceImpl implements StoreDetailService {
 		return result;
 	}
 
+	@Override
+	public int getBookingId() {
+		int result = storeDetailDAO.getBookingId();
+		return result;
+	}
+
 	
 	
 	

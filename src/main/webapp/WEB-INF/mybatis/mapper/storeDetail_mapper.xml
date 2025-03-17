@@ -22,9 +22,8 @@
 	
 	
 	<insert id="saveBookingInfo" parameterType="Booking">
-		INSERT INTO booking (id, store_id, total_people, booking_time, booking_reg_time, state)
-    	VALUES (BOOKING_PK.NEXTVAL, #{storeId}, #{totalPeople}, #{bookingTime}, SYSDATE, #{state})
-    	RETURNING id INTO #{id}
+		INSERT INTO booking (id, user_id, store_id, total_people, booking_time, booking_reg_time, state)
+    	VALUES (BOOKING_PK.NEXTVAL, #{userId}, #{storeId}, #{totalPeople}, #{bookingTime}, SYSDATE, #{state})
 	</insert>
 	
 	<insert id="saveBookingMenuInfo" parameterType="BookingMenu">
@@ -32,5 +31,8 @@
     	VALUES (BOOKING_MENU_PK.NEXTVAL, #{bookingId}, #{menuId}, #{quantity})
 	</insert>
 	
+	<select id="getBookingId" resultType="int">
+		SELECT BOOKING_PK.CURRVAL FROM dual
+	</select>
 
 </mapper>

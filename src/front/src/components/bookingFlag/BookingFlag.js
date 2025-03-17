@@ -72,9 +72,11 @@ export default function BookingFlag({ date, deactivateFlag, menu }) {
         
 
         const reservationData = {
+            userId: 1,
             storeId: id,
             totalPeople: countPeople,
             bookingTime: date.toISOString(),
+            state: "CFM",
             menuItems: menu.map((item, index) => ({
                 menuId: item.id,
                 quantity: serving[index]

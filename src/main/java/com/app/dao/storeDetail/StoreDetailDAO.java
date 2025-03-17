@@ -19,7 +19,7 @@ public interface StoreDetailDAO {
 	
 	int saveBookingInfo(Booking booking);
 	int saveBookingMenuInfo(BookingMenu bookingMenu);
-	
+	int getBookingId();
 	
 	
 	

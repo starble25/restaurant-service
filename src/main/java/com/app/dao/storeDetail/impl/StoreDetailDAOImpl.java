@@ -51,6 +51,12 @@ public class StoreDetailDAOImpl implements StoreDetailDAO {
 		int result = sqlSessionTemplate.insert("storeDetail_mapper.saveBookingMenuInfo", bookingMenu);
 		return result;
 	}
+
+	@Override
+	public int getBookingId() {
+		int result = sqlSessionTemplate.selectOne("storeDetail_mapper.getBookingId");
+		return result;
+	}
 	
 	
 
