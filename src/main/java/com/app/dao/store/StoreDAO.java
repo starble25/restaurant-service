@@ -34,4 +34,6 @@ public interface StoreDAO {
 	public Store findStoreNameById(int id);
 	
 	public Store findStoreById(int id);
+	
+	public int modifyStoreByUserId(Store store);
 }
