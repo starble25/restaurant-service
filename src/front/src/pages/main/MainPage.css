@@ -314,6 +314,8 @@
 .text-reveal-container h2 {
     font-size: 5rem;
     font-weight: bold;
+    margin-top: 400px;
+    margin-bottom: 400px;
 }
 
 .text-line {
@@ -331,13 +333,15 @@
 
 .magazine-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 50px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
 }
 
 .magazine-title {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -347,6 +351,7 @@
     color: #546475;
     cursor: pointer;
     font-size: 16px;
+    margin-left: auto;
 }
 
 .more-button:hover {
