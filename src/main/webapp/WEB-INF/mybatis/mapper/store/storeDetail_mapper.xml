@@ -39,4 +39,5 @@
 	<select id="getBookingId" resultType="int">
 		SELECT BOOKING_PK.CURRVAL FROM dual
 	</select>
+	
 </mapper>

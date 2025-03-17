@@ -4,6 +4,7 @@ import { faCalendar, faClock, faPhone } from "@fortawesome/free-solid-svg-icons"
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faSquareInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import DetailReview from '../../detailReview/DetailReview';
 
 
 export default function StoreInfoMain({ store, storeDetail, menu }) {
@@ -138,8 +139,7 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
 
             <div className='storeInfo_main_reviewCon'>
                 <div>
-                    <div>리뷰</div>
-                    <div>유저별 리뷰 정보</div>
+                    <DetailReview/>
                 </div>
             </div>
 
