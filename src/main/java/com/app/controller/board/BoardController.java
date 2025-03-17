@@ -17,14 +17,14 @@ public class BoardController {
     private BoardService boardService;
 
     // 게시글 목록 조회
-    @GetMapping("/list")
+    @GetMapping("/board")
     public ResponseEntity<List<Board>> getBoardList() {
         List<Board> boardList = boardService.getBoardList();
         return ResponseEntity.ok(boardList);
     }
 
     // 게시글 상세 조회
-    @GetMapping("/detail/{id}")
+    @GetMapping("/board/{id}")
     public ResponseEntity<Board> getBoardDetail(@PathVariable int id) {
         Board board = boardService.getBoardById(id);
         if (board != null) {
@@ -38,12 +38,13 @@ public class BoardController {
     // @GetMapping("/write")는 삭제
 
     // 게시글 저장
-    @PostMapping("/write")
+    @PostMapping("/board/write")
     public ResponseEntity<?> write(@RequestBody Board board) {
         try {
             boardService.insertBoard(board);
             return ResponseEntity.ok(board); // 저장된 board 객체 반환
         } catch (Exception e) {
+        	e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\": \"게시글 저장 실패\"}");
         }
     }
@@ -52,7 +53,7 @@ public class BoardController {
     // @GetMapping("/edit/{id}")는 삭제
 
     // 게시글 수정
-    @PutMapping("/edit/{id}")
+    @PutMapping("/board/edit/{id}")
     public ResponseEntity<?> edit(@PathVariable int id, @RequestBody Board board) {
         try {
             board.setId(id); // ID를 명시적으로 설정
@@ -64,7 +65,7 @@ public class BoardController {
     }
 
     // 게시글 삭제
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/board/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable int id) {
         try {
             boardService.deleteBoard(id);

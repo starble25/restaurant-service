@@ -4,4 +4,5 @@ body {
 
 .storeInfo-content-container {
     display: flex;
+    width: 80%;
 }

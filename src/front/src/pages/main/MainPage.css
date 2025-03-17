@@ -138,8 +138,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url(/restaurant-service/restaurant-service/src/front/public/images/redspoonlogo.png) no-repeat;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('/images/redspoonlogo.png') no-repeat; */
     background-size: contain;
     background-position: center;
 }
@@ -572,7 +572,7 @@
 .listing-container {
     position: relative;
     height: 100vh;
-    background: url('/restaurant-service/restaurant-service/src/front/public/images/cookermain') no-repeat center center/cover ;
+    /* background: url('/images/cookermain') no-repeat center center/cover ; */
 }
 
 /* Overlay style */

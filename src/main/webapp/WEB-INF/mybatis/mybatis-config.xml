@@ -20,6 +20,7 @@
 		<typeAlias type="com.app.dto.booking.BookingMenu" alias="BookingMenu" />
 		<typeAlias type="com.app.dto.users.Users" alias="Users" />
 		<typeAlias type="com.app.dto.file.ImageFile" alias="ImageFile" />
+		<typeAlias type="com.app.dto.board.Board" alias="Board" />
 	</typeAliases>
 </configuration>
 
