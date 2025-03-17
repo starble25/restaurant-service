@@ -19,4 +19,6 @@ public interface StoreDetailService {
 	int saveBookingInfo(Booking booking);
 	int saveBookingMenuInfo(BookingMenu bookingMenu);
 	int getBookingId();
+	
+	public StoreDetail findStoreDetailByStoreId(Store store);
 }

@@ -1,6 +1,5 @@
 package com.app.service.storeDetail.impl;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +55,11 @@ public class StoreDetailServiceImpl implements StoreDetailService {
 		return result;
 	}
 
-	
-	
-	
-	
+	@Override
+	public StoreDetail findStoreDetailByStoreId(Store store) {
+		int storeId = store.getId();
+		StoreDetail storeDetail = storeDetailDAO.findStoreDetailByStoreId(storeId);
+		return storeDetail;
+	}
+
 }

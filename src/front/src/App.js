@@ -16,8 +16,8 @@ function App() {
       <Route path='/main/store' element={<SubmainPage />} />
       <Route path='/main/store/:id' element={<StoreDetail />} />
       {/* <MainPage /> */}
-      {/* <Customer /> */}
-      <Company />
+      <Route path='/customer/mypage' element={<Customer />} />
+      <Route path='/store/mypage' element={<Company/>} />
     </Routes>
   );
 }

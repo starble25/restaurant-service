@@ -21,6 +21,8 @@ public interface StoreDetailDAO {
 	int saveBookingMenuInfo(BookingMenu bookingMenu);
 	int getBookingId();
 	
+	public StoreDetail findStoreDetailByStoreId(int storeId);
+	
 	
 	
 }
