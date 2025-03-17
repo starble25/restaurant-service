@@ -70,15 +70,14 @@
 /* input 스타일 */
 .inputModalContainer .inputWrap {
     width: 100%;
-    height: 40px;
-    margin-top: 20px;
     padding: 0;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 
 .inputWrap .inputContainer {
     width: 97%;
-    height: 100%;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,4 +105,14 @@
     display: flex;
     align-items: center;
     padding-left: 10px;
+}
+
+.inputModalContainer .submitButtonWrap {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
