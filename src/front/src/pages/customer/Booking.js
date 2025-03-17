@@ -20,7 +20,7 @@ function Booking({ myInfo }) {
             return;
         }
     
-        axios.post('api/booking/find-booking', myInfo)
+        axios.post('/api/booking/find-booking', myInfo)
             .then(async (res) => {
                 console.log('find-booking 요청성공:', res.data);
     
@@ -30,7 +30,7 @@ function Booking({ myInfo }) {
                 const updatedBookingInfo = await Promise.all(
                     bookingData.map(async (item) => {
                         console.log('storeId : ' + item.storeId);
-                        const storeResponse = await axios.post('api/booking/store-name', { storeId: item.storeId });
+                        const storeResponse = await axios.post('/api/booking/store-name', { storeId: item.storeId });
                         return { 
                             ...item, 
                             storeName: storeResponse.data.storeName 

@@ -13,7 +13,7 @@ const useFetchBooking = ( user ) => {
             try {
                 console.log('=========');
                 console.log(user);
-                const res = await axios.post('api/booking/find-booking', user);
+                const res = await axios.post('/api/booking/find-booking', user);
                 setBookingData(res.data);
                 console.log('find-booking 요청성공' + res);
             } catch (error) {

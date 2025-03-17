@@ -2,6 +2,7 @@ import CustomBtn from '../../components/common/CustomBtn';
 import './StoreInfo.css';
 import { useState } from 'react';
 import { Activity, ActContainer } from './Activity';
+import InputModal from './InputModal';
 
 function StoreInfo({ store }) {
     const [edit, setEdit] = useState(false);
@@ -36,6 +37,7 @@ function StoreInfo({ store }) {
             <div className='buttonWrap'>
                 <CustomBtn>수정하기</CustomBtn>
             </div>
+            <InputModal />
         </div>
     )
 }

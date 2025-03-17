@@ -7,7 +7,7 @@ import FileUpload from "../../components/fileUpload/FileUpload";
 // 내 정보
 function MyInfo({ id, myInfo, setMyInfo, isEditing, setIsEditing }) {
     const [reservation, setReservation] = useState(true);
-    const uploadUrl = 'api/users/save-profile';
+    const uploadUrl = '/api/users/save-profile';
     const [profileImagePath, setProfileImagePath] = useState('/profile/profileImage.jpg');
 
     useEffect(() => {
@@ -15,7 +15,7 @@ function MyInfo({ id, myInfo, setMyInfo, isEditing, setIsEditing }) {
             return;
         }
 
-        axios.post('api/users/find-user', { id })
+        axios.post('/api/users/find-user', { id })
             .then( res => {
                 const data = res.data;
                 setMyInfo({ ...data, password: null }); // password는 null로 세팅
@@ -23,7 +23,7 @@ function MyInfo({ id, myInfo, setMyInfo, isEditing, setIsEditing }) {
             .catch( error => console.error(error) )
     }, [id, myInfo]);
 
-    axios.post('api/users/find-profile', { id })
+    axios.post('/api/users/find-profile', { id })
     .then ( res => {
         setProfileImagePath(res.data);
         console.log(res);
@@ -117,7 +117,7 @@ function ModifyMyInfo({ myInfo, setMyInfo, setIsEditing }) {
         }
         //모든 검증 완료
 
-        axios.put('api/users/modify-user', modifyInfo)
+        axios.put('/api/users/modify-user', modifyInfo)
             .then( res => {
                 console.log("정보 업데이트 성공:", res.data);
                 window.location.reload();

@@ -5,7 +5,7 @@ import './StoreDetailInfo.css';
 
 function StoreDetailInfo({ store }) {
     console.log('store : ' + store);
-    const storeDetail = usePost('api/storeDetail/find-detail', store);
+    const storeDetail = usePost('/api/storeDetail/find-detail', store);
     console.log(storeDetail);
 
     function formatTime(time) {
