@@ -1,13 +1,11 @@
-
 // 게시판 목록 조회
 export async function fetchBoardList() {
     try {
-        const response = await fetch(`/list`);
+        const response = await fetch("/api/board/list");
         if (!response.ok) {
             throw new Error("게시판 목록을 가져오는 데 실패했습니다.");
         }
-        let data = await response.json();
-
+        const data = await response.json();
         return data;
     } catch (error) {
         console.error("Error fetching board list:", error);
@@ -15,17 +13,14 @@ export async function fetchBoardList() {
     }
 }
 
-
 // 게시글 상세 조회
 export async function fetchBoardDetail(boardId) {
     try {
-        const response = await fetch(`/detail/${boardId}`);
+        const response = await fetch(`/api/board/detail/${boardId}`);
         if (!response.ok) {
             throw new Error("게시글 정보를 가져오는 데 실패했습니다.");
         }
         return await response.json();
-
-        
     } catch (error) {
         console.error("Error fetching board detail:", error);
         return null;
@@ -36,7 +31,8 @@ export async function fetchBoardDetail(boardId) {
 export async function saveBoard(board) {
     try {
         const method = board.id ? "PUT" : "POST";
-        const response = await fetch(`/write`, {
+        const url = board.id ? `/api/board/edit/${board.id}` : "/api/board/write";
+        const response = await fetch(url, {
             method: method,
             headers: {
                 "Content-Type": "application/json",
@@ -58,7 +54,7 @@ export async function saveBoard(board) {
 // 게시글 삭제
 export async function deleteBoard(boardId) {
     try {
-        const response = await fetch(`/delete/${boardId}`, {
+        const response = await fetch(`/api/board/delete/${boardId}`, {
             method: "DELETE",
         });
 

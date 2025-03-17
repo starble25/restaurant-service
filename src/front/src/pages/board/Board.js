@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchBoardList, fetchBoardDetail, saveBoard, deleteBoard } from "../../api/boardApi"; // API 호출 함수 import
+import { fetchBoardList, fetchBoardDetail, saveBoard, deleteBoard } from "../../api/boardApi";
 import "./Board.css";
 
 function BoardList({ setCurrentPage, setSelectedBoardId, boardList }) {
@@ -28,9 +28,10 @@ function BoardList({ setCurrentPage, setSelectedBoardId, boardList }) {
                                     <td>
                                         <a
                                             href="#!"
-                                            onClick={() => {
+                                            onClick={(e) => {
+                                                e.preventDefault();
                                                 setSelectedBoardId(board.id);
-                                                setCurrentPage('detail');
+                                                setCurrentPage("detail");
                                             }}
                                         >
                                             {board.title}
@@ -48,7 +49,7 @@ function BoardList({ setCurrentPage, setSelectedBoardId, boardList }) {
                     )}
                 </tbody>
             </table>
-            <button onClick={() => setCurrentPage('write')}>글 작성하기</button>
+            <button onClick={() => setCurrentPage("write")}>글 작성하기</button>
         </div>
     );
 }
@@ -58,18 +59,20 @@ function BoardDetail({ setCurrentPage, boardId, refreshBoardList }) {
 
     useEffect(() => {
         if (boardId) {
-            fetchBoardDetail(boardId).then(setBoard); // 게시글 데이터 가져오기
+            fetchBoardDetail(boardId)
+                .then((data) => setBoard(data))
+                .catch((error) => console.error("상세 조회 실패:", error));
         }
     }, [boardId]);
 
-    if (!board) return <p>Loading...</p>;
+    if (!board) return <p>게시글 데이터를 불러오는 중...</p>;
 
     const handleDelete = async () => {
         if (window.confirm("삭제하시겠습니까?")) {
             const success = await deleteBoard(boardId);
             if (success) {
-                refreshBoardList(); // 삭제 후 목록 갱신
-                setCurrentPage('list'); // 목록으로 돌아가기
+                refreshBoardList();
+                setCurrentPage("list");
             } else {
                 alert("게시글 삭제에 실패했습니다.");
             }
@@ -84,8 +87,8 @@ function BoardDetail({ setCurrentPage, boardId, refreshBoardList }) {
             <hr />
             <p>{board.content}</p>
             <hr />
-            <button onClick={() => setCurrentPage('list')}>목록으로</button>
-            <button onClick={() => setCurrentPage('edit')}>수정</button>
+            <button onClick={() => setCurrentPage("list")}>목록으로</button>
+            <button onClick={() => setCurrentPage("edit")}>수정</button>
             <button onClick={handleDelete}>삭제</button>
         </div>
     );
@@ -117,12 +120,12 @@ function App() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            const savedBoard = await saveBoard(board); // API 호출
+            const savedBoard = await saveBoard(board);
             if (savedBoard) {
                 await refreshBoardList();
                 setCurrentPage("list");
+                setBoard({ title: "", writer: "", content: "" }); // 폼 초기화
             } else {
                 alert("게시글 저장에 실패했습니다.");
             }
@@ -134,21 +137,39 @@ function App() {
 
     useEffect(() => {
         if (currentPage === "edit" && selectedBoardId) {
-            fetchBoardDetail(selectedBoardId).then(setBoard); // 수정 페이지로 들어가면 기존 게시글 정보 가져오기
+            fetchBoardDetail(selectedBoardId).then(setBoard);
         }
     }, [currentPage, selectedBoardId]);
 
     return (
         <div>
-            {currentPage === "list" && <BoardList setCurrentPage={setCurrentPage} setSelectedBoardId={setSelectedBoardId} boardList={boardList} />}
-            {currentPage === "detail" && <BoardDetail setCurrentPage={setCurrentPage} boardId={selectedBoardId} refreshBoardList={refreshBoardList} />}
+            {currentPage === "list" && (
+                <BoardList
+                    setCurrentPage={setCurrentPage}
+                    setSelectedBoardId={setSelectedBoardId}
+                    boardList={boardList}
+                />
+            )}
+            {currentPage === "detail" && (
+                <BoardDetail
+                    setCurrentPage={setCurrentPage}
+                    boardId={selectedBoardId}
+                    refreshBoardList={refreshBoardList}
+                />
+            )}
             {currentPage === "write" && (
                 <div className="board-container">
                     <h2>게시글 작성</h2>
                     <form onSubmit={handleSubmit}>
-                        <p>제목: <input type="text" name="title" value={board.title} onChange={handleChange} required /></p>
-                        <p>작성자: <input type="text" name="writer" value={board.writer} onChange={handleChange} required /></p>
-                        <p>내용: <textarea name="content" rows="5" value={board.content} onChange={handleChange} required /></p>
+                        <p>
+                            제목: <input type="text" name="title" value={board.title} onChange={handleChange} required />
+                        </p>
+                        <p>
+                            작성자: <input type="text" name="writer" value={board.writer} onChange={handleChange} required />
+                        </p>
+                        <p>
+                            내용: <textarea name="content" rows="5" value={board.content} onChange={handleChange} required />
+                        </p>
                         <button type="submit">저장</button>
                         <button type="button" onClick={() => setCurrentPage("list")}>취소</button>
                     </form>
@@ -158,9 +179,15 @@ function App() {
                 <div className="board-container">
                     <h2>게시글 수정</h2>
                     <form onSubmit={handleSubmit}>
-                        <p>제목: <input type="text" name="title" value={board.title} onChange={handleChange} required /></p>
-                        <p>작성자: <input type="text" name="writer" value={board.writer} onChange={handleChange} required /></p>
-                        <p>내용: <textarea name="content" rows="5" value={board.content} onChange={handleChange} required /></p>
+                        <p>
+                            제목: <input type="text" name="title" value={board.title} onChange={handleChange} required />
+                        </p>
+                        <p>
+                            작성자: <input type="text" name="writer" value={board.writer} onChange={handleChange} required />
+                        </p>
+                        <p>
+                            내용: <textarea name="content" rows="5" value={board.content} onChange={handleChange} required />
+                        </p>
                         <button type="submit">수정</button>
                         <button type="button" onClick={() => setCurrentPage("list")}>취소</button>
                     </form>
