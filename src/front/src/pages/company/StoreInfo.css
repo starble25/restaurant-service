@@ -1,0 +1,68 @@
+.storeInfoContainer {
+    width: 100%;
+    height: 100%;
+    padding: 20px 10px 10px 10px;
+
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+/* 기업정보 제목 */
+.storeInfoContainer .containerTitle {
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid #c9c9c9;
+}
+
+.storeInfoContainer .containerTitle h3 {
+    padding-left: 20px;
+    font-family: NanumGothic;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* 기업정보 본문 */
+.storeInfoContainer .storeInfo {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+}
+
+.storeInfo .infoBox {
+    min-height: 70px;
+    padding: 10px;
+
+    display: flex;
+    flex: 1;
+}
+
+/* box 제목 */
+.infoBox .infoTitle {
+    padding-left: 10px;
+    flex: 0.6;
+    display: flex;
+    align-items: center;
+
+    font-family: NanumGothic, sans-serif;
+    font-weight: bold;
+}
+
+/* box 내용 */
+.infoBox .infoContent {
+    padding-left: 10px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    font-family: NanumGothic, sans-serif;
+}
+
+.storeInfoContainer .buttonWrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px;
+}

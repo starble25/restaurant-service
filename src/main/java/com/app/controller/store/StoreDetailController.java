@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +19,8 @@ import com.app.dto.store.Store;
 import com.app.dto.store.StoreDetail;
 import com.app.dto.store.StoreInfo;
 import com.app.service.storeDetail.StoreDetailService;
+import com.app.service.store.StoreDetailService;
+
 
 @RestController
 public class StoreDetailController {
@@ -83,5 +88,19 @@ public class StoreDetailController {
 		} else {
 			return "예약 저장 실패";
 		}
+	}
+	
+	@PostMapping("api/storeDetail/find-detail")
+	public ResponseEntity<?> findStoreDetail(@RequestBody Store store) {
+		if( store == null || store.getId() == 0 ) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request : 파라미터 없음");
+		}
+		
+		StoreDetail storeDetail = storeDetailService.findStoreDetailByStoreId(store);
+	    if (storeDetail != null) {
+	        return ResponseEntity.ok(storeDetail);
+	    } else {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Store detail not Found");
+	    }
 	}
 }

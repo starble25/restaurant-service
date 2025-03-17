@@ -106,6 +106,15 @@ CREATE TABLE booking_menu (
   quantity NUMBER
 );
 
+CREATE TABLE USER_PROFILE_IMAGE (
+  id NUMBER PRIMARY KEY, 
+  user_id NUMBER, --UNIQUE, 
+  file_name VARCHAR2(256),
+  original_file_name VARCHAR2(256), 
+  file_path VARCHAR2(256), 
+  url_file_path VARCHAR2(256)
+);
+
 --
 --
 --
@@ -156,6 +165,11 @@ START WITH 1
 INCREMENT BY 1
 NOCYCLE;
 
+CREATE SEQUENCE USER_PROFILE_IMAGE_PK
+START WITH 1
+INCREMENT BY 1
+NOCYCLE;
+
 
 
 -- users 테이블 조회
@@ -180,3 +194,5 @@ SELECT * FROM review;
 SELECT * FROM review_image;
 -- booking_menu 테이블 조회
 SELECT * FROM booking_menu;
+
+SELECT * FROM USER_PROFILE_IMAGE;

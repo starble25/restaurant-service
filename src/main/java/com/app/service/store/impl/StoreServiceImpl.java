@@ -70,10 +70,11 @@ public class StoreServiceImpl implements StoreService {
 		return storeList;
 	}
 
-	
 
+	@Override
+	public Store findStoreById(int id) {
+		Store store = storeDAO.findStoreById(id);
+		return store;
+	}
 	
-	
-	
-
 }

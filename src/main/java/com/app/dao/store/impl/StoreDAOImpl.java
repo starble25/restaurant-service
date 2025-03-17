@@ -13,6 +13,7 @@ import com.app.dto.store.Store;
 import com.app.dto.store.StoreDetail;
 import com.app.dto.store.StoreFilter;
 
+
 @Repository
 public class StoreDAOImpl implements StoreDAO {
 
@@ -91,4 +92,23 @@ public class StoreDAOImpl implements StoreDAO {
 		return storeList;
 	}
 
+	@Override
+	public Store findStoreByUserId(int id) {
+		Store store = sqlSessionTemplate.selectOne("store_mapper.findStoreByUserId", id);
+		return store;
+	}
+
+	@Override
+	public Store findStoreNameById(int id) {
+		Store store = sqlSessionTemplate.selectOne("store_mapper.findStoreNameById", id);
+		return store;
+	}
+
+	@Override
+	public Store findStoreById(int id) {
+		Store store = sqlSessionTemplate.selectOne("store_mapper.findStoreById", id);
+		return store;
+	}
+	
+	
 }

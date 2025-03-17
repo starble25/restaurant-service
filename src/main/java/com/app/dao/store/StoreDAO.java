@@ -27,6 +27,11 @@ public interface StoreDAO {
 	
 	List<StoreFilter>findMenu();
 	List<Store> findFilteredTotalStore(Map<String, Object> params);
+
+
+	public Store findStoreByUserId(int id);
 	
+	public Store findStoreNameById(int id);
 	
+	public Store findStoreById(int id);
 }

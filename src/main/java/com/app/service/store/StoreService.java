@@ -21,4 +21,7 @@ public interface StoreService {
 	int findTotalStore();
 	List<StoreFilter>findMenu();
 	List<Store> findFilteredTotalStore(Map<String, Object> params);
+	
+	public Store findStoreById(int id);
+	
 }
