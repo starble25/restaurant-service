@@ -2,10 +2,18 @@ import CustomBtn from '../../components/common/CustomBtn';
 import './StoreInfo.css';
 import { useState } from 'react';
 import { Activity, ActContainer } from './Activity';
-import InputModal from './InputModal';
+import { InputModal, Title, Content, Input } from './InputModal';
 
 function StoreInfo({ store }) {
     const [edit, setEdit] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <div className='storeInfoContainer'>
@@ -35,9 +43,19 @@ function StoreInfo({ store }) {
                 </div>
             </div>
             <div className='buttonWrap'>
-                <CustomBtn>수정하기</CustomBtn>
+                <CustomBtn onClick={openModal}>수정하기</CustomBtn>
             </div>
-            <InputModal />
+            {isModalOpen && 
+                <InputModal closeModal={closeModal}>
+                    <Title>사업자 정보</Title>
+                    <Content>
+                        <Input>상호명</Input>
+                        <Input>주소</Input>
+                        <Input>대표자명</Input>
+                        <Input>사업자등록번호</Input>
+                    </Content>
+                </InputModal>
+            }
         </div>
     )
 }
