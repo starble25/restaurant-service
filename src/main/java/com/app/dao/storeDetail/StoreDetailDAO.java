@@ -23,6 +23,6 @@ public interface StoreDetailDAO {
 	
 	public StoreDetail findStoreDetailByStoreId(int storeId);
 	
-	
+	public int modifyStoreDetailByStoreId(StoreDetail storeDetail);
 	
 }

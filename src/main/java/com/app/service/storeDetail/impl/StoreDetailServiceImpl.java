@@ -62,4 +62,20 @@ public class StoreDetailServiceImpl implements StoreDetailService {
 		return storeDetail;
 	}
 
+	@Override
+	public StoreDetail modifyStoreDetailByStoreId(StoreDetail storeDetail) {
+		int result = storeDetailDAO.modifyStoreDetailByStoreId(storeDetail);
+		
+		if( result > 0 ) {
+			Store store = new Store();
+			store.setId(storeDetail.getStoreId());
+			
+			StoreDetail updatedStoreDetail = findStoreDetailByStoreId(store);
+			return updatedStoreDetail;			
+		} else {
+			System.out.println("modifyStoreDetailByStoreId 업데이트 실패");
+			return null;
+		}
+	}
+
 }

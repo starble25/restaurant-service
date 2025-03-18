@@ -44,3 +44,13 @@ VALUES (
     '오마카세급 일식 전문. 제주도에서 직접 공수한 최고급 품질만 사용합니다.', 
     '/images/store_main.jpg' 
 );
+
+
+INSERT INTO menu (id, store_id, menu_name, price, description, menu_type, state) 
+VALUES (menu_pk.nextval, 1, '매콤우동', 8000, '매콤한 일본식 우동', '일식', 'SALE');
+
+INSERT INTO menu (id, store_id, menu_name, price, description, menu_type, state) 
+VALUES (menu_pk.nextval, 1, '새우튀김', 7500, '제주도산 바삭바삭한 킹새우튀김', '일식', 'SALE');
+
+INSERT INTO menu (id, store_id, menu_name, price, description, menu_type, state) 
+VALUES (menu_pk.nextval, 1, '초밥', 15000, '제철 생선으로 만드는 초밥', '일식', 'SALE');

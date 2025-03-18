@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="menu_mapper">
+	
+	<select id="findMenu" parameterType="Integer" resultType="Menu">
+		SELECT * 
+		FROM menu
+		WHERE store_id = #{storeId}
+	</select>
+	
+<!-- 	<update id="modifyStoreByUserId" parameterType="Store"> -->
+<!-- 		UPDATE store -->
+<!-- 		SET  -->
+<!-- 			store_name = #{storeName}, -->
+<!-- 			address = #{address}, -->
+<!-- 			ceo_name = #{ceoName}, -->
+<!-- 			license_number = #{licenseNumber} -->
+<!-- 		WHERE user_id = #{userId} -->
+<!-- 	</update> -->
+	
+</mapper>

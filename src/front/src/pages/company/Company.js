@@ -8,6 +8,7 @@ import useFetchUser from '../../hooks/useFetchUser';
 import StoreInfo from './StoreInfo';
 import BookingStore from './BookingStore';
 import StoreDetailInfo from './StoreDetailInfo';
+import Menu from './Menu';
 
 function Company() {
     const storeId = 1;
@@ -42,6 +43,10 @@ function Company() {
 
             <div className='storeDetailWrapper'>
                 <StoreDetailInfo store={storeData} />
+            </div>
+
+            <div className='menuWrapper'>
+                <Menu store={storeData}/>
             </div>
 
             <div className='activityWrapper'>

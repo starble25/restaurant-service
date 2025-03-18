@@ -15,6 +15,12 @@
     align-items: center;
     padding: 15px;
 
+    & h2 {
+        font-family: NanumGothic !important;
+        font-weight: bolder !important;
+        font-size: 38px;
+    }
+
     & span {
         color: #3152c0;
     }

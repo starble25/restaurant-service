@@ -39,4 +39,18 @@
 	<select id="getBookingId" resultType="int">
 		SELECT BOOKING_PK.CURRVAL FROM dual
 	</select>
+	
+	
+	<update id="modifyStoreDetailByStoreId" parameterType="StoreDetail">
+		UPDATE store_detail
+		SET
+			tel = #{tel}, 
+			address_info = #{addressInfo}, 
+			open_time = #{openTime}, 
+			close_time = #{closeTime}, 
+			menu_desc = #{menuDesc}, 
+			note = #{note}
+		WHERE store_id = #{storeId}
+	</update>
+	
 </mapper>

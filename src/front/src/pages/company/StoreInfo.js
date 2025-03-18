@@ -75,10 +75,10 @@ function StoreInfo({ store }) {
                 >
                     <Title>사업자 정보</Title>
                     <Content>
-                        <Input name='storeName' initValue='달식당'>상호명</Input>
-                        <Input name='address' initValue='충청남도 천안시 동남구 대흥로 215'>주소</Input>
-                        <Input name='ceoName' initValue='박철수'>대표자명</Input>
-                        <Input name='licenseNumber' initValue='1234567890'>사업자등록번호</Input>
+                        <Input name='storeName'>상호명</Input>
+                        <Input name='address'>주소</Input>
+                        <Input name='ceoName'>대표자명</Input>
+                        <Input name='licenseNumber'>사업자등록번호</Input>
                     </Content>
                 </InputModal>
             }

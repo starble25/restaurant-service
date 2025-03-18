@@ -90,8 +90,9 @@ public class StoreDetailController {
 	
 	@PostMapping("api/storeDetail/find-detail")
 	public ResponseEntity<?> findStoreDetail(@RequestBody Store store) {
-		if( store == null || store.getId() == 0 ) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request : 파라미터 없음");
+		System.out.println("find-detail request");
+		if( store == null || store.getId() <= 0 ) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request : Store is null");
 		}
 		
 		StoreDetail storeDetail = storeDetailService.findStoreDetailByStoreId(store);
@@ -101,4 +102,20 @@ public class StoreDetailController {
 	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Store detail not Found");
 	    }
 	}
+	
+	@PostMapping("api/store/modify-detail")
+	public ResponseEntity<?> modifyStoreDetail(@RequestBody StoreDetail storeDetail) {
+		System.out.println("modify-detail request");
+		if( storeDetail == null || storeDetail.getId() <= 0 ) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request : StoreDetail is null");
+		}
+		
+		StoreDetail updatedStoreDetail = storeDetailService.modifyStoreDetailByStoreId(storeDetail);
+	    if (updatedStoreDetail != null) {
+	        return ResponseEntity.ok(updatedStoreDetail);
+	    } else {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Store detail update 실패");
+	    }
+	}
+	
 }
