@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
 import './DetailReview.css';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
-export default function DetailReview() {
+export default function DetailReview({ id }) {
 
     const [ reviewDataList, setReviewDataList ] = useState([]);
-    const { storeId } = useParams();  // storeId를 URL 파라미터로 받아옵니다.
 
     useEffect(() => {
-        console.log('storeId : ' + storeId);
-        // storeId가 변경될 때마다 다시 데이터를 요청
-        axios.get(`/main/store/review/${storeId}`)
+        console.log('storeId : ' + id); //storeId가져온지 디버깅
+
+        axios.get(`/main/store/review/${id}`)
             .then(response => {
                 setReviewDataList(response.data);
                 console.log(response.data);
@@ -19,20 +17,27 @@ export default function DetailReview() {
             .catch(error => {
                 console.error("Error fetching review data:", error);
             });
-    }, [ storeId ]);
+    }, [ id ]);
 
 
 
 
     return (
 
-        <div>
+        <div className='storeInfo-reviewContent'>
             {
                 reviewDataList.map((item, index) => (
-                    <div>
-                        <h3>{item.review.title}</h3>
-                        <p>{item.review.content}</p>
-                        <div>Rating: {item.review.rate}</div>
+                    <div className='storeInfo-reviewSection'>
+                        <div className='storeInfo-revivewHeader'>
+                            <div>
+                                유저 아이디 : {item.review.userId}
+                            </div>
+                            <div>
+                                평점: {item.review.rate}점
+                            </div>
+                        </div>
+
+                        <div>후기 : {item.review.content}</div>
                     </div>
                 ))
             }

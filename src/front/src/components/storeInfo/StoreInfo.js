@@ -4,13 +4,13 @@ import StoreInfoSub from './sub/StoreInfoSub';
 
 
 
-export default function StoreInfo({ store, storeDetail, menu }) {
+export default function StoreInfo({ store, storeDetail, menu, id }) {
 
     return (
 
         <div className='storeInfo-content-container'>
 
-            <StoreInfoMain store={store} storeDetail={storeDetail} menu={menu} />
+            <StoreInfoMain store={store} storeDetail={storeDetail} menu={menu} id={id}/>
             <StoreInfoSub store={store} storeDetail={storeDetail} menu={menu} storeAddress={store.address} />
 
         </div>

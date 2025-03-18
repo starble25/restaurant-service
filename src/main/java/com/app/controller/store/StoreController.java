@@ -16,7 +16,6 @@ import com.app.dto.store.Store;
 import com.app.dto.store.StoreData;
 import com.app.dto.store.StoreDetail;
 import com.app.dto.store.StoreFilter;
-
 import com.app.service.store.StoreService;
 
 @RestController

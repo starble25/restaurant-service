@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Customer from './pages/customer/Customer';
 import Company from './pages/company/Company';
+import StoreInfoMain from './components/storeInfo/main/StoreInfoMain';
 
 function App() {
 
