@@ -153,11 +153,11 @@ export default function StoreInfoMain({ store, storeDetail, menu, id }) {
                     </div>
                     
                     {
-                        isReviewModal && <ReviewModal closeReviewModal={closeReviewModal} />
+                        isReviewModal && <ReviewModal closeReviewModal={closeReviewModal} storeId={id} />
                     }
                     
                     <div>
-                        <div onClick={openReviewModal}>리뷰작성하러 가기</div>
+                        <div className='storeInfo-reviewGO' onClick={openReviewModal}>리뷰작성하러 가기</div>
                     </div>
                     <DetailReview id={id} />
 

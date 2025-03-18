@@ -28,9 +28,18 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewImgList;
 	}
 
-	
+	@Override
+	public int saveFileInfo(ReviewImage reviewImage) {
+		int result = reviewDAO.saveFileInfo(reviewImage);
+		return result;
+	}
 
-	
+	@Override
+	public int saveReviewInfo(Review review) {
+		int result = reviewDAO.saveReviewInfo(review);
+		return result;
+	}
+
 	
 	
 }

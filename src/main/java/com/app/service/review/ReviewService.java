@@ -9,4 +9,8 @@ public interface ReviewService {
 
 	List<Review>findReviewByStoreId(int storeIdInt);
 	List<ReviewImage>findReviewImageByReviewId(int reviewId);
+	
+	int saveFileInfo(ReviewImage reviewImage);
+	int saveReviewInfo(Review review);
+	
 }

@@ -28,6 +28,18 @@ public class ReviewDAOImpl implements ReviewDAO {
 		List<ReviewImage> reviewImgList = sqlSessionTemplate.selectList("review_mapper.findReviewImageByReviewId", reviewId);
 		return reviewImgList;
 	}
+
+	@Override
+	public int saveFileInfo(ReviewImage reviewImage) {
+		int result = sqlSessionTemplate.insert("file_mapper.saveFileInfo", reviewImage);
+		return result;
+	}
+
+	@Override
+	public int saveReviewInfo(Review review) {
+		int result = sqlSessionTemplate.insert("file_mapper.saveReviewInfo", review);
+		return result;
+	}
 	
 	
 }

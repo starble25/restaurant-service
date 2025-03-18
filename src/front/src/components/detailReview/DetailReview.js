@@ -5,6 +5,8 @@ import axios from 'axios';
 export default function DetailReview({ id }) {
 
     const [ reviewDataList, setReviewDataList ] = useState([]);
+    const userName = "customer";
+
 
     useEffect(() => {
         console.log('storeId : ' + id); //storeId가져온지 디버깅
@@ -30,14 +32,27 @@ export default function DetailReview({ id }) {
                     <div className='storeInfo-reviewSection'>
                         <div className='storeInfo-revivewHeader'>
                             <div>
-                                유저 아이디 : {item.review.userId}
+                                유저 아이디 : {userName}
                             </div>
                             <div>
                                 평점: {item.review.rate}점
                             </div>
                         </div>
 
-                        <div>후기 : {item.review.content}</div>
+                        {
+                            item.reviewImages && item.reviewImages.length > 0 && (
+                                <div className='reviewImages'>
+                                    {item.reviewImages.map((image, imageIndex) => (
+                                        <img className='reviewImage'
+                                            src={`${image.urlFilePath}/${image.fileName}`} />
+                                    ))}
+                                </div>
+                            )
+                        }
+
+
+                        <div>{item.review.content}</div>
+
                     </div>
                 ))
             }
