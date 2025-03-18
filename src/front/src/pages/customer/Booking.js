@@ -102,13 +102,6 @@ function Booking({ myInfo }) {
                         <div className='listStyle titleStyle'>예약 인원</div>
                         <div className='listStyle titleStyle'>분류</div>
                     </li>
-                    <li className='listContainer listContent'>
-                        <div className='listStyle contentStyle'>1</div>
-                        <div className='listStyle contentStyle'>달식당</div>
-                        <div className='listStyle contentStyle'>3명</div>
-                        <div className='listStyle contentStyle'>22:00</div>
-                        <div className='listStyle contentStyle'>예약완료</div>
-                    </li>
                     <ListContent />
                 </ol>
             </div>

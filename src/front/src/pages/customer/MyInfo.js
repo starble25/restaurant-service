@@ -46,7 +46,7 @@ function MyInfo({ id, myInfo, setMyInfo, isEditing, setIsEditing }) {
                     </div>
                     <div className='activity'>
                         <div>예약 횟수</div>
-                        <div className="status">2</div>
+                        <div className="status">4</div>
                     </div>
                     <div className='activity'>
                         <div>리뷰 수</div>

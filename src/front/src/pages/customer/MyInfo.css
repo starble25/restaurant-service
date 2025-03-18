@@ -121,6 +121,14 @@
         display: flex;
         align-items: center;
         border-right: 2px solid #998aa0;
+        color: #4d1470;
+
+        font-family: NanumGothic;
+        font-weight: bold;
+        /* color: #EF618C;
+        color: #8236EC;
+        color: #3884FF;
+        color: #FFBE0B; */
     }
 
     & .typeValue {
