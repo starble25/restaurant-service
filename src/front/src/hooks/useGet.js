@@ -47,6 +47,8 @@ export default function useGet(initialSpoonCount, initialRateValue, initialLocat
         // setCurrentPage(page);
 
         fetchStoreData(spoon, rateValue, locationParam, foodType, page, pageSize);
+
+        window.scrollTo(0,0);
     }, [ search ]);
 
 

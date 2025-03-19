@@ -1,16 +1,4 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'GmarketSansMedium', sans-serif;
-}
 
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 /* 상단 네비게이션 바 */
 .login_info {
@@ -19,6 +7,12 @@
     margin-right: 20px;
 }
 
+
+.register-container {
+    background-color: white;
+	margin-left: 0;
+    margin-right: 0;
+}
 
 .login_menus {
     font-size: 0.7rem;
@@ -89,7 +83,6 @@
 	flex-direction: column;
 	justify-content: center; /* 세로 중앙 정렬 */
 	align-items: center; /* 가로 중앙 정렬 */
-	margin-top: 20px;
 }
 
 .registerAgreeBox {

@@ -39,7 +39,7 @@ function LoginPage() {
     };
 
     return (
-        <div className="container">
+        <div className="login-container">
             <form onSubmit={handleSubmit} className="mainBox">
                 <h2 className="h2T">로그인</h2>
                 

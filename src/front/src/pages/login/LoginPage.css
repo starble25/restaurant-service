@@ -1,25 +1,11 @@
-* {
+
+.login-container {
+	background-color: white;
 	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'GmarketSansMedium', sans-serif;
+	height: 100vh;
+	
 }
 
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Ownglyph_wiseelist-Rg';
-    src:
-    url('https://fastly.jsdelivr.net/gh/projectnoonnu/2501-1@1.1/Ownglyph_wiseelist-Rg.woff2')
-    format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
 
 /* 카테고리 */
 .category-menu {
@@ -75,7 +61,6 @@
 	flex-direction: column;
 	justify-content: center; /* 세로 중앙 정렬 */
 	align-items: center; /* 가로 중앙 정렬 */
-	margin-top: 20px;
 }
 
 .btn {
@@ -181,6 +166,7 @@
 }
 
 .labelT {
+	margin-top: 10px;
 	font-size: 14px;
 	font-weight: bold;
 	display: flex;

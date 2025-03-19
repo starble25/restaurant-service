@@ -99,7 +99,7 @@ function RegisterPage() {
     };
 
     return (
-        <div className="container">
+        <div className="register-container">
             <form onSubmit={handleSubmit}>
                 <div className="mainBox">
                     <h2 className="h2T">개인 회원가입</h2>

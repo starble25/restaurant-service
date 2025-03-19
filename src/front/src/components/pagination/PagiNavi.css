@@ -6,30 +6,30 @@
 
 /* 페이지 링크 스타일 */
 .pagination .page-link {
-    background-color: #ffe6eb !important;
-    color: #ff4d6a !important;
-    font-weight: bold !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 8px 16px !important;
-    margin: 0 3px !important;
+    background-color: #ffe6eb;
+    color: #ff4d6a;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 16px;
+    margin: 0 3px;
 }
 
 /* 활성화된 페이지 링크 */
 .pagination .page-item.active .page-link {
-    background-color: #ff4d6a !important;
-    font-weight: bold !important;
-    color: white !important;
+    background-color: #ff4d6a;
+    font-weight: bold;
+    color: white;
 }
 
 /* hover 상태 페이지 링크 */
 .pagination .page-link:hover {
-    background-color: #ff6f84 !important;
-    color: white !important;
+    background-color: #ff6f84;
+    color: white;
 }
 
 /* 비활성화된 페이지 링크 */
 .pagination .page-item.disabled .page-link {
-    background-color: #f1f1f1 !important;
-    color: #bbb !important;
+    background-color: #f1f1f1;
+    color: #bbb;
 }

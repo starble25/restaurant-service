@@ -6,8 +6,8 @@
     text-align: center;
     padding: 1.5rem;
     margin-top: auto;
-    position: relative;
-    transform: translateY(100%);
+    width: 100%;
+    /* transform: translateY(100%); */
 }
 
 .footer .links {
