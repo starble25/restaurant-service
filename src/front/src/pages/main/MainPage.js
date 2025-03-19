@@ -22,9 +22,9 @@ export default function RedSpoon() {
         { name: "레드스푼 맛집", count: 150, icon: "🥄" },
         { name: "음식 종류별 검색", count: 214, icon: "🍱" },
         { name: "지역별 검색", count: 185, icon: "🌍" },
-        { name: "스토어", count: 200, icon: "🛒" },
         { name: "공지사항", count: 120, icon: "📌" },
         { name: "독자 게시판", count: 120, icon: "💬" },
+        { name: "리뷰 게시판", count: 120, icon: "💬" }
     ];
 
     // 매거진 데이터 (이미지에 맞게 4개씩 표시하도록 수정)
@@ -124,13 +124,13 @@ export default function RedSpoon() {
                         <a href="#" title="지역별 검색" className="collapsed">지역별 검색</a>
                     </li>
                     <li className=''>
-                        <a href="#" title="스토어" className="collapsed">스토어</a>
+                        <a href="#" title="스토어" className="collapsed">공지사항</a>
                     </li>
                     <li className=''>
-                        <a href="#" title="공지사항" className="collapsed">공지사항</a>
+                        <a href="#" title="공지사항" className="collapsed">독자 게시판</a>
                     </li>
                     <li className=''>
-                        <a href="#" title="독자 게시판" className="collapsed">독자 게시판</a>
+                        <a href="#" title="독자 게시판" className="collapsed">리뷰 게시판</a>
                     </li>
                 </nav>
                 <div className="user-menu-container">

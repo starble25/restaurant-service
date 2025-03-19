@@ -1,7 +1,7 @@
 // 게시판 목록 조회
 export async function fetchBoardList() {
     try {
-        const response = await fetch("/api/board/board");
+        const response = await fetch("/api/board");
         if (!response.ok) {
             throw new Error("게시판 목록을 가져오는 데 실패했습니다.");
         }
@@ -16,7 +16,7 @@ export async function fetchBoardList() {
 // 게시글 상세 조회
 export async function fetchBoardDetail(boardId) {
     try {
-        const response = await fetch(`/api/board/board/${boardId}`);
+        const response = await fetch(`/api/board/detail/${boardId}`);
         if (!response.ok) {
             throw new Error("게시글 정보를 가져오는 데 실패했습니다.");
         }
@@ -31,11 +31,7 @@ export async function fetchBoardDetail(boardId) {
 export async function saveBoard(board) {
     try {
         const method = board.id ? "PUT" : "POST";
-        const url = board.id ? `/api/board/board/edit/${board.id}` : "/api/board/board/write"; // 경로 수정
-        
-        // 서버로 전송하는 board 객체 로그 추가
-        console.log("Sending board data:", board);
-        
+        const url = board.id ? `/api/board/edit/${board.id}` : "/api/board/write";
         const response = await fetch(url, {
             method: method,
             headers: {
@@ -58,7 +54,7 @@ export async function saveBoard(board) {
 // 게시글 삭제
 export async function deleteBoard(boardId) {
     try {
-        const response = await fetch(`/api/board/board/delete/${boardId}`, {  // 경로 수정
+        const response = await fetch(`/api/board/delete/${boardId}`, {
             method: "DELETE",
         });
 

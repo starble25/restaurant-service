@@ -11,7 +11,7 @@ import com.app.dto.board.Board;
 import com.app.service.board.BoardService;
 
 @RestController
-@RequestMapping("/api/board") // API 경로 추가
+@RequestMapping("/api") // API 경로 추가
 public class BoardController {
     @Autowired
     private BoardService boardService;
@@ -24,7 +24,7 @@ public class BoardController {
     }
 
     // 게시글 상세 조회
-    @GetMapping("/board/{id}")
+    @GetMapping("/board/detail/{id}")
     public ResponseEntity<Board> getBoardDetail(@PathVariable int id) {
         Board board = boardService.getBoardById(id);
         if (board != null) {
