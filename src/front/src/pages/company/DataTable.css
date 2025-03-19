@@ -1,0 +1,48 @@
+.myReviewListWrapper {
+    width: 100%;
+    height: 90%;
+}
+
+.myReviewListWrapper ol {
+    list-style-type: none;
+}
+
+/* row 전체 스타일 */
+.myReviewListWrapper ol .listContainer {
+    width: 100%;
+    display: flex;
+}
+
+/* row 제목 스타일 */
+.myReviewListWrapper ol .listTitle {
+    background-color: #cde3ff;
+    font-family: NanumGothic;
+    font-weight: bold;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #9eb5d3;
+}
+
+/* row 내용 스타일 */
+.myReviewListWrapper ol .listContent {
+    background-color: #f8f8f8;
+    font-family: Roboto;
+    font-weight: 300;
+    border: 1px solid #9eb5d3;
+    border-top: none;
+}
+
+.myReviewListWrapper ol .listContent:hover {
+    background-color: #dee9f7;
+}
+
+/* row밑에 각 div 전체 스타일 */
+.listContainer .listStyle {
+    /* width: 20%; */
+    height: 60px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}

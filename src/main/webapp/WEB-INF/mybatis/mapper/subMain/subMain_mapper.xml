@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="subMain_mapper">
+
+
+	<select id="findStoreWithFilters" resultType="Store"
+		parameterType="hashmap">
+		SELECT * FROM STORE s
+		<where>
+			<if test="spoon != null">
+				AND s.spoon = #{spoon}
+			</if>
+
+			<if test="rateValue != null">
+				<if test="rateValue == 0">
+					AND ((s.rate_count = 0	AND s.rate_total = 0)
+					OR (s.rate_count > 0 AND s.rate_total / s.rate_count &lt; 1))
+				</if>
+
+				<if test="rateValue >= 1">
+					AND s.rate_count > 0
+					AND FLOOR(s.rate_total / s.rate_count) = #{rateValue}
+				</if>
+			</if>
+			
+			<if test="location != null">
+				AND s.address LIKE '%' || #{location} || '%'
+			</if>
+			
+			<if test="foodType != null">
+				AND EXISTS (
+					SELECT 1
+					FROM menu m
+					WHERE m.store_id = s.id
+					AND m.menu_type = #{foodType}
+				)
+			</if>
+		</where>
+		ORDER BY s.id
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
+	</select>
+
+	<select id="findStoreDetailWithFilters" resultType="StoreDetail"
+		parameterType="hashmap">
+		SELECT * FROM STORE_DETAIL sd
+		<where>
+			<if test="spoon != null">
+				AND sd.store_id IN (
+				SELECT s.id FROM STORE s
+				WHERE s.spoon = #{spoon}
+				)
+			</if>
+
+			<if test="rateValue != null">
+				<if test="rateValue == 0">
+					AND sd.store_id IN (
+						SELECT s.id FROM STORE s
+						WHERE
+							((s.rate_count = 0 AND s.rate_total = 0)
+						OR (s.rate_count > 0 AND s.rate_total / s.rate_count &lt; 1))
+					)
+				</if>
+
+				<if test="rateValue >= 1">
+					AND sd.store_id IN (
+					SELECT s.id FROM STORE s
+					WHERE
+					s.rate_count > 0
+					AND FLOOR(s.rate_total / s.rate_count) = #{rateValue}
+					)
+				</if>
+			</if>
+			
+			<if test="location != null">
+				AND sd.store_id IN (
+					SELECT s.id FROM STORE s
+					WHERE s.address LIKE '%' || #{location} || '%'
+				)
+			</if>
+			
+			<if test="foodType != null">
+				AND EXISTS (
+					SELECT 1
+					FROM menu m
+					WHERE m.store_id = sd.store_id
+					AND m.menu_type = #{foodType}
+				)
+			</if>
+		</where>
+		ORDER BY sd.id
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
+	</select>
+
+	<select id="findMenuWithFilters" resultType="Menu"
+		parameterType="hashmap">
+		SELECT * FROM MENU m
+		<where>
+			<if test="spoon != null">
+				AND m.store_id IN (
+				SELECT s.id FROM STORE s WHERE s.spoon
+				= #{spoon}
+				)
+			</if>
+			
+			<if test="rateValue != null">
+				<if test="rateValue == 0">
+					AND m.store_id IN (
+					SELECT s.id FROM STORE s
+					WHERE
+						((s.rate_count = 0	AND s.rate_total = 0)
+					OR(s.rate_count > 0	AND s.rate_total / s.rate_count &lt; 1))
+					)
+				</if>
+
+				<if test="rateValue >= 1">
+					AND m.store_id IN (
+					SELECT s.id FROM STORE s
+					WHERE
+					s.rate_count > 0
+					AND FLOOR(s.rate_total / s.rate_count) =
+					#{rateValue}
+					)
+				</if>
+			</if>
+			
+			<if test="location != null">
+				AND m.store_id IN (
+					SELECT s.id FROM STORE s
+					WHERE s.address LIKE '%' || #{location} || '%'
+				)
+			</if>
+			
+			<if test="foodType != null">
+				m.menu_type = #{foodType}
+			</if>
+		</where>
+		ORDER BY m.id
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
+	</select>
+
+	
+	<select id="findFilteredTotalStore" resultType="Store"
+		parameterType="hashmap">
+		SELECT * FROM STORE s
+		<where>
+			<if test="spoon != null">
+				AND s.spoon = #{spoon}
+			</if>
+
+			<if test="rateValue != null">
+				<if test="rateValue == 0">
+					AND ((s.rate_count = 0	AND s.rate_total = 0)
+					OR (s.rate_count > 0 AND s.rate_total / s.rate_count &lt; 1))
+				</if>
+
+				<if test="rateValue >= 1">
+					AND s.rate_count > 0
+					AND FLOOR(s.rate_total / s.rate_count) = #{rateValue}
+				</if>
+			</if>
+			
+			<if test="location != null">
+				AND s.address LIKE '%' || #{location} || '%'
+			</if>
+			
+			<if test="foodType != null">
+				AND EXISTS (
+					SELECT 1
+					FROM menu m
+					WHERE m.store_id = s.id
+					AND m.menu_type = #{foodType}
+				)
+			</if>
+		</where>
+	</select>
+
+
+
+
+	<select id="findSpoonNum" resultType="StoreFilter">
+		SELECT spoon, COUNT(*) AS
+		count
+		FROM STORE
+		GROUP BY spoon
+		ORDER BY spoon
+	</select>
+	
+	
+	<select id="findRateCount" resultType="StoreFilter">
+	    SELECT 
+	        CASE
+	            WHEN rate_total / rate_count &lt; 1 THEN 0
+	            WHEN rate_total / rate_count BETWEEN 1 AND 1.99 THEN 1
+	            WHEN rate_total / rate_count BETWEEN 2 AND 2.99 THEN 2
+	            WHEN rate_total / rate_count BETWEEN 3 AND 3.99 THEN 3
+	            WHEN rate_total / rate_count BETWEEN 4 AND 4.99 THEN 4
+	            ELSE 5
+	        END AS rate,
+	        COUNT(*) AS rateCount
+	    FROM STORE
+	    GROUP BY 
+	        CASE
+	            WHEN rate_total / rate_count &lt; 1 THEN 0
+	            WHEN rate_total / rate_count BETWEEN 1 AND 1.99 THEN 1
+	            WHEN rate_total / rate_count BETWEEN 2 AND 2.99 THEN 2
+	            WHEN rate_total / rate_count BETWEEN 3 AND 3.99 THEN 3
+	            WHEN rate_total / rate_count BETWEEN 4 AND 4.99 THEN 4
+	            ELSE 5
+	        END
+	    ORDER BY rate
+	</select>
+	
+
+
+	<select id="findTotalStore" resultType="int">
+		SELECT COUNT(*)
+		totalStore FROM STORE
+	</select>
+	
+	
+	<select id="findMenu" resultType="StoreFilter">
+		SELECT menu_type, Count(*) AS menu_count
+		FROM menu
+		GROUP BY menu_type
+	</select>
+	
+	
+	
+
+</mapper>

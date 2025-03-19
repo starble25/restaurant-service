@@ -1,0 +1,49 @@
+.menuContainer {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.menuContainer .menuListContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 15px 0 15px 0;
+    gap: 15px;
+}
+
+/* 빈 공간을 채우기 위한 가상 요소 : 마지막 box 홀수일 때 왼쪽정렬 */
+.menuListContainer::after {
+    content: "";
+    width: 50%;
+}
+
+/* 메뉴 아이템 기본 스타일 */
+.menuListContainer .menu {
+    width: calc(50% - 15px); /* gap만큼 빼주기 */
+    min-height: 250px;
+    
+    border: 1px solid #00000000;
+    background-color: #efdfff;
+    border-radius: 10px;
+    transition: box-shadow 0.1s ease, border 0.1s ease;
+
+    &:hover {
+        border: 1px solid #e2c2ff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.1); /* shadow 추가 */
+    }
+}
+
+.menu .menuButton {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15px;
+
+    background-color: #dbbef8;
+    border-radius: 10px;
+
+    &:hover {
+        
+    }
+}

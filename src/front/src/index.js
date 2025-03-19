@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './pages/main/Header';
+import Footer from './pages/main/Footer';
+import ScrollToTop from './pages/main/ScrollToTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
+      <ScrollToTop/>
+      <Header/>
       <App />
+      <Footer/>
     </React.StrictMode>
   </BrowserRouter>
 );

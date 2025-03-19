@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user_profile_mapper">
+	
+	<insert id="saveProfileImage" parameterType="ImageFile">
+		INSERT INTO user_profile_image 
+		VALUES (
+			user_profile_image_pk.nextval, 
+			#{refId}, 
+			#{fileName}, 
+			#{originalFileName}, 
+			#{filePath}, 
+			#{urlFilePath}
+		)
+	</insert>
+	
+	<select id="findProfileImageByUserId" parameterType="Integer" resultType="ImageFile">
+		SELECT * 
+		FROM user_profile_image
+		WHERE user_id = #{id}
+	</select>
+	
+	<update id="modifyProfileImageByUserId" parameterType="ImageFile">
+		UPDATE user_profile_image
+		SET 
+		    user_id = #{refId},
+			file_name = #{fileName}, 
+			original_file_name = #{originalFileName}, 
+			file_path = #{filePath}, 
+			url_file_path = #{urlFilePath}
+		WHERE user_id = #{refId}
+	</update>
+	
+</mapper>
