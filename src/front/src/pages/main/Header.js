@@ -9,33 +9,36 @@ export default function Header() {
 
     const [ isOpen, setIsOpen ] = useState(false);
 
+    const handlePrepare = () => {
+        alert("서비스 준비중입니다.");
+    }
 
 
     return (
 
 
         <header className="header">
-            <a href="#" className="logo">
+            <a href="/main" className="logo">
                 <img src="/images/redspoonlogo.png" alt="레드스푼 로고"></img>
             </a>
             <nav className="navbar">
                 <li className=''>
-                    <a href="#" title="레드스푼 맛집" className="collapsed">레드스푼 맛집</a>
+                    <a href="/main/store?spoon=3&rateValue=5" title="레드스푼 맛집" className="collapsed">레드스푼 맛집</a>
                 </li>
                 <li className=''>
-                    <a href="#" title="음식 종류별 검색" className="collapsed">음식 종류별 검색</a>
+                    <a href="/main/store?foodType=한식" title="음식 종류별 검색" className="collapsed">음식 종류별 검색</a>
                 </li>
                 <li className=''>
-                    <a href="#" title="지역별 검색" className="collapsed">지역별 검색</a>
+                    <a href="/main/store?location=대구광역시" title="지역별 검색" className="collapsed">지역별 검색</a>
                 </li>
                 <li className=''>
-                    <a href="#" title="스토어" className="collapsed">공지사항</a>
+                    <a href="/board" title="공지사항" className="collapsed">공지사항</a>
                 </li>
                 <li className=''>
-                    <a href="#" title="공지사항" className="collapsed">독자 게시판</a>
+                    <a href="/board" title="독자 게시판" className="collapsed">독자 게시판</a>
                 </li>
                 <li className=''>
-                    <a href="#" title="독자 게시판" className="collapsed">리뷰 게시판</a>
+                    <a href="/board" title="리뷰 게시판" className="collapsed">리뷰 게시판</a>
                 </li>
             </nav>
             <div className="user-menu-container">
@@ -46,11 +49,11 @@ export default function Header() {
                     <div className="user-menu-modal">
                         <p className="menu-title">장바구니가 비어 있습니다.</p>
                         <ul className="menu-list">
-                            <li className="menu-item">
+                            <li className="menu-item" onClick={handlePrepare}>
                                 <FontAwesomeIcon icon={faCartShopping} />
                                 <span>장바구니</span>
                             </li>
-                            <li className="menu-item">
+                            <li className="menu-item" onClick={handlePrepare}>
                                 <FontAwesomeIcon icon={faGift} />
                                 <span>주문 내역</span>
                             </li>

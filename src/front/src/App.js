@@ -15,13 +15,12 @@ function App() {
 
   return (
     <Routes>
-      {/* <MainPage /> */}
+      <Route path='/main' element={<MainPage />} />
+      <Route path='/board' element={<Board />} />
       <Route path='/main/store' element={<SubmainPage />} />
       <Route path='/main/store/:id' element={<StoreDetail />} />
       <Route path='/customer/mypage' element={<Customer />} />
       <Route path='/store/mypage' element={<Company/>} />
-      <Route path='/main' element={<MainPage />} />
-      <Route path='/board' element={<Board />} />
       <Route path='/reviewboard' element={<ReviewBoard />} />
     </Routes>
   );

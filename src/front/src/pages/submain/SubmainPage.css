@@ -88,11 +88,12 @@
 
 /* 우측 소분류 필터 */
 .tab-content {
-    width: 75%;
+    width: 80%;
     padding: 16px;
     gap: 10px;
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .tab-content::after {

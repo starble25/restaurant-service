@@ -289,7 +289,7 @@ function BoardDetail({ setCurrentPage, boardId, refreshBoardList }) {
     );
 }
 
-export default function App() {
+export default function Test() {
     const [currentPage, setCurrentPage] = useState("list");
     const [selectedBoardId, setSelectedBoardId] = useState(null);
     const [boardList, setBoardList] = useState([]);

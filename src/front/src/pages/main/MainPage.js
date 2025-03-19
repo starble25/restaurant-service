@@ -2,6 +2,9 @@ import './MainPage.css';
 import { useState, useEffect } from "react";
 import { faUser, faCartShopping, faGift } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
+
+
 
 export default function RedSpoon() {
     const [ searchTerm, setSearchTerm ] = useState("");
@@ -11,6 +14,9 @@ export default function RedSpoon() {
     const [ showAll, setShowAll ] = useState(false); // 더보기 상태 관리
     const [ scrollProgress, setScrollProgress ] = useState(0); // 스크롤 진행률 상태
 
+    const navigate = useNavigate();
+    
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -19,12 +25,12 @@ export default function RedSpoon() {
     };
 
     const categories = [
-        { name: "레드스푼 맛집", count: 150, icon: "🥄" },
-        { name: "음식 종류별 검색", count: 214, icon: "🍱" },
-        { name: "지역별 검색", count: 185, icon: "🌍" },
-        { name: "공지사항", count: 120, icon: "📌" },
-        { name: "독자 게시판", count: 120, icon: "💬" },
-        { name: "리뷰 게시판", count: 120, icon: "💬" }
+        { name: "레드스푼 맛집", count: 150, icon: "🥄" , path: "/main/store?spoon=3&rateValue=5"},
+        { name: "음식 종류별 검색", count: 214, icon: "🍱" , path: "/main/store?foodType=한식"},
+        { name: "지역별 검색", count: 185, icon: "🌍" , path: `/main/store?location=대구광역시`},
+        { name: "공지사항", count: 120, icon: "📌" , path: "/board"},
+        { name: "독자 게시판", count: 120, icon: "💬" , path: "/board"},
+        { name: "리뷰 게시판", count: 120, icon: "💬" , path: "/board"}
     ];
 
     // 매거진 데이터 (이미지에 맞게 4개씩 표시하도록 수정)
@@ -105,7 +111,10 @@ export default function RedSpoon() {
 
     // 전체 글자 수 계산 (두 줄 합쳐서)
     const totalChars = text1Array.length + text2Array.length;
-
+    
+    
+        
+    
     return (
         <div className="maincontainer">
             {/* 헤더 바 */}
@@ -121,7 +130,7 @@ export default function RedSpoon() {
                     </div>
                     <div className="category-grid">
                         {categories.map((cat, index) => (
-                            <div key={index} className="category-card">
+                            <div key={index} className="category-card" onClick={()=> navigate(cat.path)}>
                                 <div className="category-icon">{cat.icon}</div>
                                 <h3 className="category-name">{cat.name}</h3>
                                 <p className="category-count">{cat.count} listings</p>
