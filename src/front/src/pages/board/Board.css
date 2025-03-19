@@ -26,7 +26,7 @@ table {
     margin-bottom: 30px;
 }
 
-th, td {
+.board-container th, td {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: center;
@@ -46,9 +46,10 @@ td {
 /* Button Styles */
 button, .write-btn {
     margin: 10px;
+    margin-left: 700px;
     padding: 12px 18px;
     border: none;
-    background-color: #007bff;
+    background-color: #917c7c;
     color: white;
     font-size: 16px;
     border-radius: 8px;
@@ -57,7 +58,7 @@ button, .write-btn {
 }
 
 button:hover, .write-btn:hover {
-    background-color: #0056b3;
+    background-color: #4f5862;
 }
 
 button:active, .write-btn:active {
@@ -66,18 +67,26 @@ button:active, .write-btn:active {
 
 /* Board Detail */
 .board-detail-container {
+    width: 60%;
+    max-width: 700px;
     padding: 30px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
 .board-meta {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     font-size: 14px;
     color: #777;
+    width: 100%;
 }
 
 .board-content {
@@ -85,11 +94,14 @@ button:active, .write-btn:active {
     line-height: 1.6;
     color: #444;
     margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
 }
 
 .board-actions {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 /* Form Styles (게시글 작성) */
