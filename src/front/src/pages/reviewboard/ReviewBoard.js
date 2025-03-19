@@ -1,102 +1,75 @@
-import React, { useState, useEffect } from "react";
-import { 
-    fetchReviewBoardList, 
-    fetchReviewBoardDetail, 
-    saveReviewBoard, 
-    deleteReviewBoard 
-} from "../../api/reviewBoardApi";
-import "./ReviewBoard.css";
+import React from 'react';
+import './ReviewBoard.css';
 
-function ReviewBoardList({ setCurrentPage, setSelectedBoardId, boardList }) {
-    if (!boardList || !Array.isArray(boardList)) {
-        return <p>리뷰 게시판 데이터를 불러오는 중...</p>;
-    }
-
+const ReviewBoard = () => {
     return (
-        <div className="board-container">
-            <h2>리뷰 게시판</h2>
+        <div className="review-board">
+            <h1>공지사항</h1>
             <table>
                 <thead>
                     <tr>
-                        <th>번호</th>
                         <th>제목</th>
-                        <th>작성자</th>
                         <th>작성일</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {boardList.length > 0 ? (
-                        boardList.map((board) =>
-                            board ? (
-                                <tr key={board.id}>
-                                    <td>{board.id}</td>
-                                    <td>
-                                        <a
-                                            href="#!"
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                setSelectedBoardId(board.id);
-                                                setCurrentPage("detail");
-                                            }}
-                                        >
-                                            {board.title}
-                                        </a>
-                                    </td>
-                                    <td>{board.writer}</td>
-                                    <td>{board.regDate}</td>
-                                </tr>
-                            ) : null
-                        )
-                    ) : (
-                        <tr>
-                            <td colSpan="4">등록된 게시글이 없습니다.</td>
-                        </tr>
-                    )}
+                    <tr>
+                        <td>카드결제방지 서비스 제공 안내</td>
+                        <td>2025.03.13</td>
+                    </tr>
+                    <tr>
+                        <td>선불충전 보조지 안내</td>
+                        <td>2025.03.11</td>
+                    </tr>
+                    <tr>
+                        <td>대출심사 애트 딩함 안내</td>
+                        <td>2025.02.28</td>
+                    </tr>
+                    <tr>
+                        <td>모스프라임 혜택 안내</td>
+                        <td>2025.02.27</td>
+                    </tr>
+                    <tr>
+                        <td>위치기반서비스 이용약관 변경 안내</td>
+                        <td>2025.02.25</td>
+                    </tr>
+                    <tr>
+                        <td>토스증권 사옥 점검으로 인한 토스증권 웹 사용 중단 안내</td>
+                        <td>2025.02.21</td>
+                    </tr>
+                    <tr>
+                        <td>토스증권 생년 월일 변경 안내</td>
+                        <td>2025.02.20</td>
+                    </tr>
+                    <tr>
+                        <td>토스증권 사옥 점검으로 인한 토스증권 앱 버그 해결 안내</td>
+                        <td>2025.02.18</td>
+                    </tr>
+                    <tr>
+                        <td>서비스 이용약관 개정 안내</td>
+                        <td>2025.02.12</td>
+                    </tr>
+                    <tr>
+                        <td>대출심사 애트 딩함 안내</td>
+                        <td>2025.02.03</td>
+                    </tr>
                 </tbody>
             </table>
-            <button onClick={() => setCurrentPage("write")}>글 작성하기</button>
+            <div className="pagination">
+                <span>«</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>...</span>
+                <span>30</span>
+                <span>»</span>
+            </div>
         </div>
     );
-}
+};
 
-function ReviewBoardDetail({ setCurrentPage, boardId, refreshBoardList }) {
-    const [board, setBoard] = useState(null);
-
-    useEffect(() => {
-        if (boardId) {
-            fetchReviewBoardDetail(boardId)
-                .then((data) => setBoard(data))
-                .catch((error) => console.error("상세 조회 실패:", error));
-        }
-    }, [boardId]);
-
-    if (!board) return <p>게시글 데이터를 불러오는 중...</p>;
-
-    const handleDelete = async () => {
-        if (window.confirm("삭제하시겠습니까?")) {
-            const success = await deleteReviewBoard(boardId);
-            if (success) {
-                refreshBoardList();
-                setCurrentPage("list");
-            } else {
-                alert("게시글 삭제에 실패했습니다.");
-            }
-        }
-    };
-
-    return (
-        <div className="board-container">
-            <h2>{board.title}</h2>
-            <p>작성자: {board.writer}</p>
-            <p>작성일: {board.regDate}</p>
-            <hr />
-            <p>{board.content}</p>
-            <hr />
-            <button onClick={() => setCurrentPage("list")}>목록으로</button>
-            <button onClick={() => setCurrentPage("edit")}>수정</button>
-            <button onClick={handleDelete}>삭제</button>
-        </div>
-    );
-}
-
-export default ReviewBoardList;
+export default ReviewBoard;
