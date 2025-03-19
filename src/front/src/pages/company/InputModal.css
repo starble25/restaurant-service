@@ -1,0 +1,135 @@
+/* 배경 */
+.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 9;
+}
+
+/* 모달 컨테이너 */
+.inputModalContainer {
+    width: 900px;
+    height: 700px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    background-color: white;
+    border: 2px solid #bbbbbb;
+    border-radius: 15px;
+}
+
+/* 닫기버튼 */
+.inputModalContainer .closeModalButton {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 45px;
+    height: 45px;
+
+    font-size: 40px;
+    padding: 0;
+    padding-left: 1px;
+    line-height: 0.9;
+
+    background-color: hsla(214, 79%, 35%, 0.50);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    &:hover {
+        background-color: hsla(214, 79%, 35%, 0.90);
+    }
+}
+
+/* 제목, 구분선 */
+.inputModalContainer .titleWrap .modalTitle {
+    width: 100%;
+    height: 55px;
+    font-family: NanumGothic, sans-serif;
+    font-weight: bolder;
+    font-size: 24px;
+    padding-left: 35px;
+    margin: 0px;
+
+    display: flex;
+    align-items: center;
+}
+
+.inputModalContainer .titleWrap hr {
+    flex: 0;
+    margin: 0px;
+    margin-left: 15px;
+    width: 97%;
+    height: 2px;
+    background-color: #000000;
+    opacity: none;
+    border: 0;
+}
+
+
+/* input 스타일 */
+.inputModalContainer .inputWrap {
+    width: 100%;
+    padding: 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.inputWrap .inputContainer {
+    width: 97%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+.inputWrap .inputContainer .inputTitle {
+    height: 100%;
+    flex: 1;
+    font-family: NanumGothic;
+    font-weight: bold;
+    color: #666666;
+
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+
+}
+
+.inputWrap .inputContainer .inputContent {
+    height: 100%;
+    flex: 3;
+
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+
+    &:focus {
+        border: 2px solid #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    }
+}
+
+.inputModalContainer .submitButtonWrap {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

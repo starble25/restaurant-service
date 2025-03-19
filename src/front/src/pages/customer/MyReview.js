@@ -25,6 +25,20 @@ function MyReview({ myInfo }) {
                         <div className='listStyle contentStyle'>가끔갑니다</div>
                         <div className='listStyle contentStyle'>5</div>
                     </li>
+                    <li className='listContainer listContent'>
+                        <div className='listStyle contentStyle'>2</div>
+                        <div className='listStyle contentStyle'>달식당</div>
+                        <div className='listStyle contentStyle'>리뷰남겨요</div>
+                        <div className='listStyle contentStyle'>우동이 맛있어요</div>
+                        <div className='listStyle contentStyle'>4</div>
+                    </li>
+                    <li className='listContainer listContent'>
+                        <div className='listStyle contentStyle'>3</div>
+                        <div className='listStyle contentStyle'>달식당</div>
+                        <div className='listStyle contentStyle'>리뷰작성</div>
+                        <div className='listStyle contentStyle'>점심 할인이 좋네요</div>
+                        <div className='listStyle contentStyle'>4.5</div>
+                    </li>
                 </ol>
             </div>
         </div>

@@ -20,7 +20,7 @@ function Booking({ myInfo }) {
             return;
         }
     
-        axios.post('api/booking/find-booking', myInfo)
+        axios.post('/api/booking/find-booking', myInfo)
             .then(async (res) => {
                 console.log('find-booking 요청성공:', res.data);
     
@@ -30,7 +30,7 @@ function Booking({ myInfo }) {
                 const updatedBookingInfo = await Promise.all(
                     bookingData.map(async (item) => {
                         console.log('storeId : ' + item.storeId);
-                        const storeResponse = await axios.post('api/booking/store-name', { storeId: item.storeId });
+                        const storeResponse = await axios.post('/api/booking/store-name', { storeId: item.storeId });
                         return { 
                             ...item, 
                             storeName: storeResponse.data.storeName 
@@ -101,13 +101,6 @@ function Booking({ myInfo }) {
                         <div className='listStyle titleStyle'>식당 이름</div>
                         <div className='listStyle titleStyle'>예약 인원</div>
                         <div className='listStyle titleStyle'>분류</div>
-                    </li>
-                    <li className='listContainer listContent'>
-                        <div className='listStyle contentStyle'>1</div>
-                        <div className='listStyle contentStyle'>달식당</div>
-                        <div className='listStyle contentStyle'>3명</div>
-                        <div className='listStyle contentStyle'>22:00</div>
-                        <div className='listStyle contentStyle'>예약완료</div>
                     </li>
                     <ListContent />
                 </ol>

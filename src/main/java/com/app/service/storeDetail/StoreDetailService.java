@@ -21,4 +21,6 @@ public interface StoreDetailService {
 	int getBookingId();
 	
 	public StoreDetail findStoreDetailByStoreId(Store store);
+	
+	public StoreDetail modifyStoreDetailByStoreId(StoreDetail storeDetail);
 }

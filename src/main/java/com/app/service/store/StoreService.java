@@ -24,4 +24,6 @@ public interface StoreService {
 	
 	public Store findStoreById(int id);
 	
+	public int modifyStoreByUserId(Store store);
+	
 }

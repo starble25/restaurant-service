@@ -7,7 +7,8 @@ const useFetchUser = (userId) => {
     useEffect(() => {
         const fetchUser = async (id) => {
             try {
-                const res = await axios.post('api/users/find-user', { id });
+                console.log('/api/users/find-user request');
+                const res = await axios.post('/api/users/find-user', { id });
                 setUserData(res.data);
                 console.log('find-user 요청성공' + res);
             } catch (error) {
