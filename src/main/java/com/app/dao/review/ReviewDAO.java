@@ -1,5 +1,6 @@
 package com.app.dao.review;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.app.dto.review.Review;
@@ -12,5 +13,9 @@ public interface ReviewDAO {
 	
 	int saveFileInfo(ReviewImage reviewImage);
 	int saveReviewInfo(Review review);
+	
+	int updateStoreRate(HashMap<String, Object> params);
+	
+	
 	
 }

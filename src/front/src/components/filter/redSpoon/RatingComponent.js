@@ -3,6 +3,11 @@
 export default function RatingComponent( {totalStore, rateCountList, handleRatingClick, resetFilters} ) {
 
 
+    const handlePrepare = () => {
+        alert('서비스 준비중입니다.');
+    };
+
+
     return (
         <>
             <ul>
@@ -14,8 +19,8 @@ export default function RatingComponent( {totalStore, rateCountList, handleRatin
                         )
                     })
                 }
-                <li>주목할 만한 새 맛집 (준비중)</li>
-                <li>구독자들의 추천 맛집 (준비중)</li>
+                <li onClick={handlePrepare}>주목할 만한 새 맛집</li>
+                <li onClick={handlePrepare}>구독자 추천 맛집</li>
             </ul>
         </>
     )

@@ -6,6 +6,11 @@
     text-overflow: ellipsis;
     margin-bottom: 40px;
     padding: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.store-card:hover {
+    transform: scale(1.01);
 }
 
 .store-image {

@@ -1,6 +1,7 @@
 package com.app.controller.review;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,21 +56,8 @@ public class ReviewController {
 		if(reviewImgRequestForm == null) {
 			return "review Data없음";
 		}
-		
-		System.out.println("userId : " + reviewImgRequestForm.getUserId());
-		System.out.println("storeId : " + reviewImgRequestForm.getStoreId());
-		System.out.println("Title: " + reviewImgRequestForm.getTitle());
-		System.out.println("Content: " + reviewImgRequestForm.getContent());
-	    System.out.println("Rate: " + reviewImgRequestForm.getRate());
-	    System.out.println("File Name: " + reviewImgRequestForm.getImage());
-		
-	    
+	   
 		MultipartFile file = reviewImgRequestForm.getImage();
-		
-		System.out.println("fileName: " + file.getName());
-	    System.out.println("original Filename: " + file.getOriginalFilename());
-	    System.out.println("Content: " + file.getContentType());
-	    System.out.println("File Size: " + file.getSize());
 	    
 	    try {
 	    	ReviewImage reviewImage = ReviewFileManager.storeFile(file);
@@ -81,29 +69,37 @@ public class ReviewController {
     		review.setContent(reviewImgRequestForm.getContent());
     		review.setRate(reviewImgRequestForm.getRate());
     		
+    		//리뷰 정보 저장
     		int result = reviewService.saveReviewInfo(review);
     		
     		if(result > 0) {
     			
     			int reviewId = review.getId();
-    			
     			reviewImage.setReviewId(reviewId);
     			
+    			//파일 경로 저장
     			int result2 = reviewService.saveFileInfo(reviewImage);
     			
     			if(result2 > 0) {
+    				//store테이블 평점 컬럼 데이터 수정
+        			HashMap<String, Object> params = new HashMap<>();
+        			params.put("storeId", review.getStoreId());
+        			params.put("rate", review.getRate());
+        			
+        			int result3 = reviewService.updateStoreRate(params);
+        			
+        			if(result3 > 0) {
+        				return "Review & Image & rate 저장 완료";
+        			}
+        			
     				return "Review & Image 저장완료";
     			}
-    		}	    	
-	    	
+    		}	    	 	
 	    } catch (Exception e) {
 	    	e.printStackTrace();
 	    	return "Error 남";
 	    }
-		
 		return "저장실패";
-		
-		
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.app.service.review.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int saveReviewInfo(Review review) {
 		int result = reviewDAO.saveReviewInfo(review);
+		return result;
+	}
+
+	@Override
+	public int updateStoreRate(HashMap<String, Object> params) {
+		int result = reviewDAO.updateStoreRate(params);
 		return result;
 	}
 

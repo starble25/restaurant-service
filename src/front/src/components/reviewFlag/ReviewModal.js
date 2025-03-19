@@ -46,10 +46,15 @@ export default function ReviewModal({ closeReviewModal, storeId }) {
                 },
             });
 
-            console.log(response.data);
             setFormData({ title: '', rate: '', content: '' });
             setFileName(null);
             closeReviewModal();
+            alert("리뷰 작성이 완료되었습니다!");
+
+            //리뷰 완료후 페이지 새로고침
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
 
         } catch (error) {
             console.error("리뷰 제출 실패:", error);

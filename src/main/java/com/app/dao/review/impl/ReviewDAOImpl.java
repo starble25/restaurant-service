@@ -1,5 +1,6 @@
 package com.app.dao.review.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -38,6 +39,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public int saveReviewInfo(Review review) {
 		int result = sqlSessionTemplate.insert("file_mapper.saveReviewInfo", review);
+		return result;
+	}
+
+	@Override
+	public int updateStoreRate(HashMap<String, Object> params) {
+		int result = sqlSessionTemplate.update("review_mapper.updateStoreRate", params);
 		return result;
 	}
 	

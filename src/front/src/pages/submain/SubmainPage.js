@@ -34,7 +34,6 @@ export default function SubmainPage() {
                         <Tab>레드스푼</Tab>
                         <Tab>지역</Tab>
                         <Tab>음식종류</Tab>
-                        <Tab>특징</Tab>
                     </TabList>
 
                     {/* 레드스푼 필터 */}
