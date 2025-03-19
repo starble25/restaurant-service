@@ -21,6 +21,7 @@
 		<typeAlias type="com.app.dto.users.Users" alias="Users" />
 		<typeAlias type="com.app.dto.file.ImageFile" alias="ImageFile" />
 		<typeAlias type="com.app.dto.board.Board" alias="Board" />
+		<typeAlias type="com.app.dto.review.Review" alias="Review" />
 	</typeAliases>
 </configuration>
 
