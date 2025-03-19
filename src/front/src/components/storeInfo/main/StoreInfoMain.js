@@ -4,9 +4,17 @@ import { faCalendar, faClock, faPhone } from "@fortawesome/free-solid-svg-icons"
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faSquareInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import DetailReview from '../../detailReview/DetailReview';
+import { useState } from 'react';
+import ReviewModal from '../../reviewFlag/ReviewModal';
 
 
-export default function StoreInfoMain({ store, storeDetail, menu }) {
+export default function StoreInfoMain({ store, storeDetail, menu, id }) {
+
+    const [isReviewModal, setIsReviewModal] = useState(false);
+
+    const openReviewModal = () => setIsReviewModal(true);
+    const closeReviewModal = () => setIsReviewModal(false);
 
 
     const storeFoodImgPath = "/store/sample.jpg";
@@ -47,11 +55,13 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
         return stars;
     }
 
+    
+
     //메뉴섹션 리팩토링
     const menuMap = (key) => {
         return menu.map((item, index) => (
             <div key={index}>
-                {key == "price" ? item[key].toLocaleString() : item[key]}
+                {key == "price" ? item[ key ].toLocaleString() : item[ key ]}
             </div>
         ))
     }
@@ -138,8 +148,20 @@ export default function StoreInfoMain({ store, storeDetail, menu }) {
 
             <div className='storeInfo_main_reviewCon'>
                 <div>
-                    <div>리뷰</div>
-                    <div>유저별 리뷰 정보</div>
+                    <div className='storeInfo_main_reviewCon_header'>
+                        레드스푼 구독자들의 리뷰
+                    </div>
+                    
+                    {
+                        isReviewModal && <ReviewModal closeReviewModal={closeReviewModal} storeId={id} />
+                    }
+                    
+                    <div>
+                        <div className='storeInfo-reviewGO' onClick={openReviewModal}>리뷰작성하러 가기</div>
+                    </div>
+                    <DetailReview id={id} />
+
+
                 </div>
             </div>
 

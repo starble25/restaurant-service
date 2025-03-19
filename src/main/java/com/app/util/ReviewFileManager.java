@@ -7,30 +7,31 @@ import java.util.UUID;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.file.FileInfo;
+import com.app.dto.review.ReviewData;
+import com.app.dto.review.ReviewImage;
 
-public class FileManager {
+public class ReviewFileManager {
 
-	static final String FILE_DIRECTORY_PATH = "e:/fileStorage";
+	static final String FILE_DIRECTORY_PATH = "d:/fileStorage/";
 	static final String FILE_URL_PATH = "/fileStorage";
 	
-	public static FileInfo storeFile(MultipartFile file) throws IllegalStateException, IOException {
+	public static ReviewImage storeFile(MultipartFile file) throws IllegalStateException, IOException {
 		
 		//파일 폴더 저장 -> 파일에 대한 정보를 기반 -> DB 저장
+		ReviewImage reviewImage = new ReviewImage();
 		
-		FileInfo fileInfo = new FileInfo();
-		
-		fileInfo.setOriginalFileName(file.getOriginalFilename());
-		fileInfo.setFilePath(FILE_DIRECTORY_PATH);
-		fileInfo.setUrlFilePath(FILE_URL_PATH);
+		reviewImage.setOriginalFileName(file.getOriginalFilename());
+		reviewImage.setFilePath(FILE_DIRECTORY_PATH);
+		reviewImage.setUrlFilePath(FILE_URL_PATH);
 		
 		String extension = extractExtension(file.getOriginalFilename());
 		String fileName = createFileName(extension);
 			
-		fileInfo.setFileName(fileName);
+		reviewImage.setFileName(fileName);
 		
-		file.transferTo( new File(fileInfo.getFilePath() + fileInfo.getFileName()) );
+		file.transferTo( new File(reviewImage.getFilePath() + reviewImage.getFileName()) );
 		
-		return fileInfo;
+		return reviewImage;
 	}
 	
 	//png	dasfiauhfiowehr.png

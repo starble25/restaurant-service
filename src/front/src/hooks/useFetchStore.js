@@ -7,7 +7,7 @@ const useFetchStore = (storeId) => {
     useEffect(() => {
         const fetchStore = async (id) => {
             try {
-                const res = await axios.post('api/store/find-store', { id });
+                const res = await axios.post('/api/store/find-store', { id });
                 setStoreData(res.data);
                 console.log('find-store 요청성공' + res);
             } catch (error) {

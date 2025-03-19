@@ -3,13 +3,13 @@
     height: 85vh;
     padding: 0 7% 0 7%;
     display: flex;
-    background-color: #eeeeee;
+    background: linear-gradient(135deg, #f7f9fc, #ddeaf0);
 }
 
 .cusContainer .side {
     padding-top: 5%;
     width: 25%;
-    border: 1px solid red;
+    background-color: #e0e9f5;
 }
 
 .cusContainer .side .sideMenu {
@@ -17,19 +17,33 @@
     height: 60px;
     padding: 15px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    font-family: NanumGothic, sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+    margin: 15px 0 15px 0;
 
-    border: 1px solid cyan;
+    background-color: #c8d6e7;
+    border: 1px solid #b7c8dd;
+    border-radius: 10px;
 
     &:hover {
-        background-color: gray;
+        cursor: pointer;
+        background-color: #b1c6df;
+        border: 1px solid #91a9c7;
+    }
+
+    &.active {
+        background-color: #246dc7;
+        border: 1px solid #0e4e9c;
+        color: white;
     }
 }
 
 .cusContainer .content {
     width: 75%;
     padding: 5%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 /* 버튼 스타일 */

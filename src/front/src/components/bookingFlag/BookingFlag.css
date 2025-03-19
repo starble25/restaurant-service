@@ -10,8 +10,6 @@
 
 .totalPeople-header {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 10px;
     margin-top: 10px;
 }
@@ -27,6 +25,9 @@
     font-weight: bold;
     border: #f0f0f3;
     cursor: pointer;
+    width: 30px;
+    align-items: center;
+    justify-content: center;
 }
 
 .totalPeople-section {

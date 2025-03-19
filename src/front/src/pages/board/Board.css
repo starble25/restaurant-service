@@ -1,22 +1,20 @@
 /* General Styles */
-body {
+/* body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+} */
 
 /* Board Container */
 .board-container {
-    width: 80%;
+    width: 100vw;
+    /* min-height: calc(100vh - 265px); */
     max-width: 900px;
-    margin: 30px auto;
+    margin: 50px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
+    height: 44vh;
 }
 
 /* Table Styles */
@@ -44,7 +42,7 @@ td {
 }
 
 /* Button Styles */
-button, .write-btn {
+.write-btn {
     margin: 10px;
     margin-left: 700px;
     padding: 12px 18px;
@@ -57,11 +55,11 @@ button, .write-btn {
     transition: background-color 0.3s ease;
 }
 
-button:hover, .write-btn:hover {
-    background-color: #4f5862;
+.write-btn:hover {
+    background-color: #0056b3;
 }
 
-button:active, .write-btn:active {
+.write-btn:active {
     background-color: #00408d;
 }
 
@@ -105,7 +103,7 @@ button:active, .write-btn:active {
 }
 
 /* Form Styles (게시글 작성) */
-form {
+/* form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -161,13 +159,13 @@ button[type="button"] {
 
 button[type="button"]:hover {
     background-color: #e53935;
-}
+} */
 
 /* Focus Styling */
-input:focus, textarea:focus {
+/* input:focus, textarea:focus {
     border-color: #4CAF50;
     outline: none;
-}
+} */
 
 /* Additional Styles */
 h2 {

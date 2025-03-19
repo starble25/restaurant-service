@@ -63,6 +63,12 @@ public class StoreDetailDAOImpl implements StoreDetailDAO {
 		StoreDetail storeDetail = sqlSessionTemplate.selectOne("storeDetail_mapper.findStoreDetailByStoreId", storeId);
 		return storeDetail;
 	}
+
+	@Override
+	public int modifyStoreDetailByStoreId(StoreDetail storeDetail) {
+		int result = sqlSessionTemplate.update("storeDetail_mapper.modifyStoreDetailByStoreId", storeDetail);
+		return result;
+	}
 	
 	
 

@@ -38,7 +38,6 @@ export default function StoreDetail() {
 
     return (
         <>
-            <div className='testNav'>NAV</div>
 
             <div className='storeInfo-container'>
                 {
@@ -46,7 +45,7 @@ export default function StoreDetail() {
                         <Spinner />
                     ) : (
                         store.map((item, index) => {
-                            return <StoreInfo store={item} storeDetail={storeDetail[0]} menu={menu} />
+                            return <StoreInfo store={item} storeDetail={storeDetail[0]} menu={menu} id={id} />
                         })
                     )
                 }

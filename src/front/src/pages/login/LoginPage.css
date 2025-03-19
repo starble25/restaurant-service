@@ -1,0 +1,263 @@
+
+.login-container {
+	background-color: white;
+	margin: 0;
+	height: 100vh;
+	
+}
+
+
+/* 카테고리 */
+.category-menu {
+    display: none; 
+    position: absolute;
+    top: 85px;
+    right: 0;
+    width: 15%;
+    height: 400px;
+    background: black;
+    opacity: 0.6;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.category-menu.active {
+    display: flex;
+}
+
+.menu-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.menu-list {
+    padding: 50px 30px;
+}
+
+.menu-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-list li {
+    margin: 50px 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menu-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.menu-list a:hover {
+    color:  rgb(255, 71, 82);
+}
+
+.mainBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* 세로 중앙 정렬 */
+	align-items: center; /* 가로 중앙 정렬 */
+}
+
+.btn {
+	border: none;
+	border-radius: 10px;
+	box-sizing: border-box;
+	cursor: pointer;
+	height: 52px;
+	justify-content: center;
+	padding: 0;
+	text-decoration: none;
+	width: 40%;
+	margin: 5px;
+}
+
+.loginT {
+	background-color: #fff;
+	color: #8b8b8b;
+	padding: 0 8px;
+	z-index: 1;
+	font-size: 15px;
+	font-weight: 400;
+	margin-bottom: 16px
+}
+
+.kakaobtn {
+	background: #ffde00;
+	color: #3c1e1e;
+}
+
+.kakaoT {
+	background: #ffde00;
+	color: #3c1e1e;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.naverbtn {
+	background: #00c73c;
+	color: #fff;
+}
+
+.naverT {
+	background: #00c73c;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.applebtn {
+	background: #000;
+	color: #fff;
+}
+
+.appleT {
+	background: #000;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.facebookbtn {
+	background: #1877f2;
+	color: #fff;
+}
+
+.facebookT {
+	background: #1877f2;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.googlebtn {
+	background: #fff;
+	color: #0000008f;
+	border: 1px solid rgba(0, 0, 0, .16);
+}
+
+.googleT {
+	background: #fff;
+	color: #0000008f;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.emailbtn {
+	background: #e3f0ff;
+	color: #1d8bff;
+}
+
+.emailT {
+	background: #e3f0ff;
+	color: #1d8bff;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.h2T {
+	margin-bottom: 15px;
+	text-align: left;
+	justify-content: left;
+}
+
+.labelT {
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	display: flex;
+	margin-bottom: 5px;
+	justify-content: left;
+	text-align: left;
+	width: 40%;
+}
+
+.input-group {
+	padding: 15px;
+	border-radius: 15px;
+	box-sizing: border-box;
+	height: 52px;
+	text-decoration: none;
+	width: 40%;
+	margin: 5px;
+	background-color: #ebebeb;
+	border: 1.5px solid #ebebeb;
+}
+
+.input-group:hover {
+	background-color: #c0c0c0;
+	border: 1.5px solid #c0c0c0;
+}
+
+.input-login {
+	border-radius: 10px;
+	box-sizing: border-box;
+	height: 52px;
+	justify-content: center;
+	padding: 5px;
+	width: 40%;
+	margin: 5px;
+	background-color: #1d8bff;
+	border: 1.5px solid #c0c0c0;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	color: #fff;
+}
+
+.subBox {
+	width: 40%;
+	align-items: center;
+	display: flex;
+	height: 18px;
+	justify-content: space-between;
+}
+
+.resetT {
+	color: #999;
+	text-decoration: underline;
+	background: transparent;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.registerBox {
+	display: flex;
+	margin-top: 30px;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.registerT1 {
+	color: #0000007a;
+	margin-bottom: 5px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.registerT2 {
+	background: transparent;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 19.09px;
+}
+
+/* 오류 메시지 스타일 */
+.error-msg {
+	color: red;
+	font-size: 12px;
+	margin-top: 5px;
+	display: block;
+}
+
+.error-msg1 {
+	color: red;
+	font-size: 12px;
+}

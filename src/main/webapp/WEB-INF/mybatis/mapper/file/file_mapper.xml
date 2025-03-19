@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="file_mapper">
+
+
+	<insert id="saveReviewInfo" parameterType="Review">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT REVIEW_PK.NEXTVAL FROM DUAL
+        </selectKey>
+		INSERT INTO review (id, user_id, store_id, title, content, rate, creation_date, state)
+		VALUES (#{id}, #{userId}, #{storeId}, #{title}, #{content}, #{rate}, SYSDATE, 'ACTIVE')
+	</insert>
+	
+	
+	<insert id="saveFileInfo" parameterType="ReviewImage">
+		INSERT INTO review_image (id, file_name, original_file_name, file_path, url_file_path, review_id)
+		VALUES (REVIEW_IMG_PK.NEXTVAL, #{fileName}, #{originalFileName}, #{filePath}, #{urlFilePath}, #{reviewId})
+	</insert>	
+		
+</mapper>

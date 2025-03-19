@@ -10,7 +10,7 @@ import axios from "axios";
  */
 const verifyPassword = async (info) => {
     try {
-        const res = await axios.post('api/users/verify-password', info);
+        const res = await axios.post('/api/users/verify-password', info);
         console.log("비밀번호 검증 성공:", res.data);
         return true;
     } catch (error) {
