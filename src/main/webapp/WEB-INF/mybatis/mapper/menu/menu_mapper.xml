@@ -7,16 +7,35 @@
 		SELECT * 
 		FROM menu
 		WHERE store_id = #{storeId}
+		ORDER BY id ASC
 	</select>
 	
-<!-- 	<update id="modifyStoreByUserId" parameterType="Store"> -->
-<!-- 		UPDATE store -->
-<!-- 		SET  -->
-<!-- 			store_name = #{storeName}, -->
-<!-- 			address = #{address}, -->
-<!-- 			ceo_name = #{ceoName}, -->
-<!-- 			license_number = #{licenseNumber} -->
-<!-- 		WHERE user_id = #{userId} -->
-<!-- 	</update> -->
+	<insert id="saveMenu" parameterType="Menu">
+		INSERT INTO menu
+		VALUES (
+			menu_pk.nextval, 
+			#{storeId}, 
+			#{menuName}, 
+			#{price}, 
+			#{description}, 
+			#{menuType}, 
+			'SALE'
+		)
+	</insert>
+	
+	<update id="modifyMenu" parameterType="Menu">
+		UPDATE menu
+		SET
+			menu_name = #{menuName}, 
+			price = #{price}, 
+			description = #{description}, 
+			menu_type = #{menuType}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteMenu" parameterType="Integer">
+		DELETE FROM menu
+		WHERE id = #{id} 
+	</delete>
 	
 </mapper>

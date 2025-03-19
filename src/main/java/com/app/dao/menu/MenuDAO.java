@@ -8,4 +8,10 @@ public interface MenuDAO {
 
 	List<Menu> findMenu(int storeId);
 	
+	int saveMenu(Menu menu);
+	
+	int modifyMenu(Menu menu);
+	
+	int deleteMenu(int id);
+	
 }
