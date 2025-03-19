@@ -1,11 +1,7 @@
 /* General Styles */
-body {
+/* body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+} */
 
 /* Board Container */
 .board-container {
@@ -44,7 +40,7 @@ td {
 }
 
 /* Button Styles */
-button, .write-btn {
+.write-btn {
     margin: 10px;
     padding: 12px 18px;
     border: none;
@@ -56,11 +52,11 @@ button, .write-btn {
     transition: background-color 0.3s ease;
 }
 
-button:hover, .write-btn:hover {
+.write-btn:hover {
     background-color: #0056b3;
 }
 
-button:active, .write-btn:active {
+.write-btn:active {
     background-color: #00408d;
 }
 
@@ -93,7 +89,7 @@ button:active, .write-btn:active {
 }
 
 /* Form Styles (게시글 작성) */
-form {
+/* form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -149,13 +145,13 @@ button[type="button"] {
 
 button[type="button"]:hover {
     background-color: #e53935;
-}
+} */
 
 /* Focus Styling */
-input:focus, textarea:focus {
+/* input:focus, textarea:focus {
     border-color: #4CAF50;
     outline: none;
-}
+} */
 
 /* Additional Styles */
 h2 {

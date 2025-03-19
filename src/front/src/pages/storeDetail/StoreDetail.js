@@ -38,7 +38,6 @@ export default function StoreDetail() {
 
     return (
         <>
-            <div className='testNav'>NAV</div>
 
             <div className='storeInfo-container'>
                 {

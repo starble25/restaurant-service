@@ -25,7 +25,6 @@ export default function SubmainPage() {
 
     return (
         <>
-            <h1 style={{ height: '150px' }}>submainPage</h1>
 
             <div className="submain-container">
                 <Tabs>
@@ -66,6 +65,7 @@ export default function SubmainPage() {
             <div className="pagiNav-container">
                 <PagiNavi totalPages={totalPages} currentPage={currentPage} />
             </div>
+
         </>
     );
 }
