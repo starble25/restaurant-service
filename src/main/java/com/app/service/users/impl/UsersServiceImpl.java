@@ -44,16 +44,46 @@ public class UsersServiceImpl implements UsersService {
 		return result;
 	}
 
+
+	public int saveUser(Users users) {
+
+		int result = usersDAO.saveUser(users);
+		
+		System.out.println(users);
+
+		return result;
+	}
+
 	@Override
 	public int deleteUser(Users user) {
 	    // 삭제 전 비밀번호 한번 더 검증
-	    if ( !verifyPassword(user) ) {
-	    	return -99;
-	    }
+		if ( !verifyPassword(user) ) {
+			return -99;
+		}
 		
 		int result = usersDAO.deleteUser(user);
 		System.out.println("delete result : " + result);
 		return result;
+	}
+
+
+
+	public Users findUserByUserName(String UserName) {
+
+		Users users = usersDAO.findUserByUserName(UserName);
+
+		return users;
+	}
+
+	@Override
+	public Users checkUserLogin(Users users) {
+
+		// 1) 서비스 자체에서 로직을 수행
+
+		Users loginUser = usersDAO.checkUserLogin(users);
+
+		return loginUser;
+
 	}
 
 	@Override
@@ -121,4 +151,10 @@ public class UsersServiceImpl implements UsersService {
 		return modifiedFilePaths;
 	}
 
+	public int removeUser(Users users) {
+
+		int result = usersDAO.removeUser(users);
+
+		return result;
+	}
 }

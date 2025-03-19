@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.users.Users;
+import com.app.dto.users.Users;
 
 public interface UsersService {
 	
@@ -21,5 +22,12 @@ public interface UsersService {
 	public String findProfileImageByUserId(int id);
 	
 	public List<String> modifyProfileImageByUserId(MultipartFile[] files, int id);
+	int saveUser(Users users);
+
+	Users checkUserLogin(Users users);
+	
+	Users findUserByUserName(String UserName);
+
+	int removeUser(Users users);
 
 }
