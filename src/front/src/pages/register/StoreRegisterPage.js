@@ -102,7 +102,7 @@ function RegisterPage() {
         <div className="container">
             <form onSubmit={handleSubmit}>
                 <div className="mainBox">
-                    <h2 className="h2T">개인 회원가입</h2>
+                    <h2 className="h2T">기업 회원가입</h2>
 
                     <label className="labelT">아이디</label>
                     <input type="text" name="userName" className="input-group" value={formData.userName} onChange={handleChange} required />
@@ -116,10 +116,10 @@ function RegisterPage() {
                     <input type="password" name="passwordConfirm" className="input-group" value={formData.passwordConfirm} onChange={handleChange} required />
                     {errors.passwordConfirm && <p className="error-msg1">{errors.passwordConfirm}</p>}
 
-                    <label className="labelT">이름</label>
+                    <label className="labelT">회사명</label>
                     <input type="text" name="name" className="input-group" value={formData.name} onChange={handleChange} required />
 
-                    <label className="labelT">핸드폰 번호</label>
+                    <label className="labelT">담당자 번호</label>
                     <input type="tel" name="tel" className="input-group" value={formData.tel} onChange={handleChange} required />
 
                     {/* 체크박스 */}

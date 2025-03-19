@@ -1,20 +1,56 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './LoginPage.css';
+import axios from "axios";
 
 function LoginPage() {
-    const [loginError, setLoginError] = useState('');
-    
+    const [formData, setFormData] = useState({
+        userName: "",
+        password: "",
+    });
+
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("/login", formData, { withCredentials: true });
+
+            if (response.status === 200) {
+                alert("로그인 성공!");
+                sessionStorage.setItem("loginUser", JSON.stringify(response.data.userName));
+                // 세션에 로그인 정보가 저장되므로, 페이지 이동
+                navigate("/main"); // 메인 페이지로 이동
+            }
+        } catch (error) {
+            setError("아이디 또는 비밀번호가 잘못되었습니다.");
+            console.error("로그인 실패:", error);
+        }
+    };
+
     return (
         <div className="container">
-            <form action="" method="post" className="mainBox">
+            <form onSubmit={handleSubmit} className="mainBox">
                 <h2 className="h2T">로그인</h2>
-                <div className="labelT">아이디</div>
-                <input type="text" name="id" id="nickname" className="input-group" />
                 
-                <div className="labelT">비밀번호</div>
-                <input type="password" name="password" id="password" className="input-group" />
+                <label className="labelT">아이디</label>
+                <input type="text" name="userName" className="input-group" value={formData.userName} onChange={handleChange} required />
 
-                {loginError && <p id="errorMessage" className="error-msg">{loginError}</p>}
+                <label className="labelT">비밀번호</label>
+                <input type="password" name="password" className="input-group" value={formData.password} onChange={handleChange} required />
+
+                {error && <p className="error-msg">{error}</p>}
+
                 <br />
                 <div className="subBox">
                     <div>
@@ -34,7 +70,7 @@ function LoginPage() {
                         <i className="fa-solid fa-right-to-bracket"></i> 개인회원으로 가입하기
                     </div>
                 </button>
-                <button className="emailbtn btn" onClick={() => window.location.href = '/login/register'}>
+                <button className="emailbtn btn" onClick={() => window.location.href = '/login/Storeregister'}>
                     <div className="emailT">
                         <i className="fa-solid fa-right-to-bracket"></i> 기업회원으로 가입하기
                     </div>

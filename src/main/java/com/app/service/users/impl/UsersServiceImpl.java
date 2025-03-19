@@ -36,14 +36,9 @@ public class UsersServiceImpl implements UsersService {
 
 		// 1) 서비스 자체에서 로직을 수행
 
-		Users loginUser = usersDAO.findUserByUserName(users.getUserName());
+		Users loginUser = usersDAO.checkUserLogin(users);
 
-		if (loginUser != null && users.getPassword().equals(loginUser.getPassword())) { // 비밀번호 맞다!
-
-			return loginUser;
-		}
-
-		return null;
+		return loginUser;
 
 	}
 

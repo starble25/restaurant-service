@@ -31,7 +31,7 @@
 		parameterType="Users">
 		select *
 		from USERS
-		where userName = #{userName} AND
+		where user_name = #{userName} AND
 		password =
 		#{password}
 	</select>

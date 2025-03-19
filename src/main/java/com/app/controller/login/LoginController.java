@@ -3,10 +3,11 @@ package com.app.controller.login;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.users.Users;
@@ -18,38 +19,29 @@ public class LoginController {
     @Autowired
     UsersService userService;
 
+    // 로그인 페이지를 호출하는 GET 요청 (React에서 필요 없을 수도 있음)
     @GetMapping("/login")
-    public String login() {
-        return "login/login";
+    public ResponseEntity<String> login() {
+        return new ResponseEntity<>("Login endpoint hit", HttpStatus.OK);
     }
 
+    // 로그인 인증을 처리하는 POST 요청
     @PostMapping("/login")
-    public String loginAction(Users users, HttpSession session, Model model) {
-
-        // user id pw 화면으로부터 전달
-        // name userType : null
-
-        // user 로그인 할 수 있게 정보가 들어있는지! 확인!
+    public ResponseEntity<?> loginAction(@RequestBody Users users, HttpSession session) {
+        // 사용자 로그인 확인
         Users loginUser = userService.checkUserLogin(users);
 
-        if (loginUser == null) { // 아이디X? 아이디O&비번X null
+        if (loginUser == null) { // 아이디 또는 비밀번호가 잘못된 경우
+            return new ResponseEntity<>("아이디 또는 비밀번호가 잘못 되었습니다.", HttpStatus.UNAUTHORIZED);
+        } else { // 로그인 성공
+            // 세션에 로그인한 사용자 정보 저장
+            session.setAttribute("loginUserId", loginUser.getUserName()); // loginUser 객체 전체를 세션에 저장
 
-            model.addAttribute("loginError", "아이디 또는 비밀번호가 잘못 되었습니다. 아이디와 비밀번호를 정확히 입력해 주세요.");
+            // 세션에 저장된 데이터 확인 (디버깅용)
+            System.out.println("세션에 저장된 사용자: " + session.getAttribute("loginUserId"));
 
-            return "login/login";
-
-        } else { // 아이디&비번이 맞으면 loginUser
-            // 로그인 정보가 맞아서 로그인 성공
-
-            session.setAttribute("loginUserId", loginUser);
-
-            return "redirect:/main";
+            // 로그인 성공 시 사용자를 위한 응답 반환
+            return new ResponseEntity<>(loginUser, HttpStatus.OK); // 로그인한 사용자 정보를 반환
         }
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/main";
     }
 }
