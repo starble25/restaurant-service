@@ -13,9 +13,11 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <ScrollToTop />
-      <Header />
-      <App />
-      <Footer />
+      <div style={ {display: 'flex', flexDirection:'column', minHeight:'100vh'}}>
+        <Header />
+        <App />
+        <Footer />
+      </div>
     </React.StrictMode>
   </BrowserRouter>
 );

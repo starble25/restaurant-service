@@ -18,6 +18,7 @@ import com.app.dto.store.Store;
 import com.app.dto.store.StoreData;
 import com.app.dto.store.StoreDetail;
 import com.app.dto.store.StoreFilter;
+import com.app.service.api.DaegufoodService;
 import com.app.service.store.StoreService;
 
 @RestController
@@ -25,6 +26,9 @@ public class StoreController {
 	
 	@Autowired
 	StoreService storeService;
+	
+//	@Autowired
+//	DaegufoodService daegufoodService;
 	
 	@GetMapping("/main/store")
 	public StoreData getStoreData(@RequestParam(required = false) Integer spoon,
@@ -34,6 +38,7 @@ public class StoreController {
 									@RequestParam(defaultValue = "1") Integer page,
 									@RequestParam(defaultValue = "5") Integer pageSize) {	
 		
+//		daegufoodService.saveDaegufoodStores();
 				
 		//db에서 spoon개수별 총 튜플개수 조회
 		List<StoreFilter>spoonList = storeService.findSpoonNum();
