@@ -87,7 +87,7 @@ export default function BookingFlag({ date, deactivateFlag, menu }) {
 
         if (!confirmBooking) {
             window.location.reload();
-            return; //위 내용 취소시 종료
+            return; //위 내용 취소시 종료 
         }
 
 
