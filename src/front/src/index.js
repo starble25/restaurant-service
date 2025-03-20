@@ -13,7 +13,7 @@ root.render(
   <BrowserRouter>
     <React.StrictMode>
       <ScrollToTop />
-      <div style={ {display: 'flex', flexDirection:'column', minHeight:'100vh'}}>
+      <div style={ {display: 'flex', flexDirection: 'column', minHeight: '100vh'}}>
         <Header />
         <App />
         <Footer />

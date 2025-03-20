@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { fetchBoardList, fetchBoardDetail, saveBoard, deleteBoard } from "../../api/boardApi";
 import "./Board.css";
 
+
+
 function BoardList({ setCurrentPage, setSelectedBoardId, boardList }) {
     return (
         <div className="board-container">
