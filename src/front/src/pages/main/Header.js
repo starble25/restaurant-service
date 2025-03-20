@@ -2,15 +2,35 @@ import './MainPage.css';
 import { faUser, faCartShopping, faGift } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Header() {
 
 
     const [ isOpen, setIsOpen ] = useState(false);
+    const navigate = useNavigate();
+
 
     const handlePrepare = () => {
-        alert("서비스 준비중입니다.");
+        setIsOpen(false);
+        setTimeout(() => {
+            alert("서비스 준비중입니다.");
+        }, 100);
+    }
+
+    const handleRegister = () => {
+        setIsOpen(false);
+        setTimeout(() => {
+            navigate("/login/register");
+        }, 100);
+    }
+
+    const handleLogin = () => {
+        setIsOpen(false);
+        setTimeout(() => {
+            navigate("/login");
+        }, 100);
     }
 
 
@@ -57,11 +77,11 @@ export default function Header() {
                                 <FontAwesomeIcon icon={faGift} />
                                 <span>주문 내역</span>
                             </li>
-                            <li className="menu-item">
+                            <li className="menu-item"  onClick={handleRegister}>
                                 <FontAwesomeIcon icon={faUser} />
                                 <span>회원가입</span>
                             </li>
-                            <li className="menu-item">
+                            <li className="menu-item"  onClick={handleLogin}>
                                 <FontAwesomeIcon icon={faUser} />
                                 <span>로그인</span>
                             </li>
