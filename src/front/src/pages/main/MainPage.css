@@ -314,7 +314,7 @@
 /*스크롤 색 변화 관련 섹션*/
 .text-reveal-container {
     text-align: center;
-    padding: 30px 20px;
+    padding: 50px 50px;
     max-width: 1200px;
 }
 
@@ -395,7 +395,7 @@
 }
 
 .magazine-image {
-    height: 250px;
+    height: 220px;
     background: #d1d5db;
     margin-bottom: 8px;
     background-size: cover;
@@ -405,11 +405,11 @@
 .magazine-article-title {
     font-weight: bold;
     margin-bottom: 4px;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .magazine-description {
-    font-size: 14px;
+    font-size: 10px;
     color: #6b7280;
 }
 
@@ -497,7 +497,7 @@
 .listing-container {
     position: relative;
     height: 100vh;
-    /* background: url('../../../../main/webapp/resources/images/cookermain') no-repeat center center/cover ; */
+    background: url('../../../../../src/main/webapp/resources/images/cookermain')  no-repeat center center/cover;
 }
 
 /* Overlay style */

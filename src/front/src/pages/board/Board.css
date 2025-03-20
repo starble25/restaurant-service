@@ -6,7 +6,6 @@
 /* Board Container */
 .board-container {
     width: 100vw;
-    /* min-height: calc(100vh - 265px); */
     max-width: 900px;
     margin: 50px auto;
     padding: 20px;
@@ -14,6 +13,81 @@
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+.board-detail-container > h2 {
+    margin-bottom: 30px;
+}
+
+/* Heading Styles */
+
+.board-container p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.board-container input,
+.board-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.board-container textarea {
+    resize: none;
+}
+
+/* 버튼 공통 스타일 */
+.board-container button,
+.write-btn,
+.board-actions button {
+    padding: 8px 14px; 
+    font-size: 14px; 
+    border-radius: 6px; 
+    min-width: 80px; 
+    border: none;
+    background-color: #917c7c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 5px;
+}
+
+.board-container button:hover,
+.write-btn:hover,
+.board-actions button:hover {
+    background-color: #00408d;
+}
+
+.write-btn {
+    margin-left: auto;
+    display: block;
+}
+
+/* 저장 & 취소 버튼 컨테이너 */
+.button-container,
+.board-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap:10px;
+    justify-content: flex-end;
+}
+
+/* Write Button Container */
+.write-btn-container {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    margin-top: 10px;
+}
+/* 버튼 간격 조정 */
+.board-actions button {
+    margin: 0 5px; /* 버튼 사이 여백 추가 */
 }
 
 /* Table Styles */
@@ -40,33 +114,10 @@ td {
     background-color: #fff;
 }
 
-/* Button Styles */
-.write-btn {
-    margin: 10px;
-    margin-left: 700px;
-    padding: 12px 18px;
-    border: none;
-    background-color: #917c7c;
-    color: white;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.write-btn:hover {
-    background-color: #0056b3;
-}
-
-.write-btn:active {
-    background-color: #00408d;
-}
-
 /* Board Detail */
 .board-detail-container {
-    width: 60%;
-    max-width: 700px;
-    padding: 30px;
+    width: 700px;
+    padding: 40px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -74,32 +125,58 @@ td {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 50px 50px;
+}
+
+.board-detail-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
 .board-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     font-size: 14px;
     color: #777;
     width: 100%;
+    border-bottom: 1px solid #00408d;
+}
+
+.board-meta h2 {
+    color: black;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.board-meta-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.board-meta-content > div {
+    width: 100%;
+    text-align: left;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .board-content {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 5;
     color: #444;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
 
-.board-actions {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
+
+
+
+
 
 /* Form Styles (게시글 작성) */
 /* form {
@@ -167,12 +244,6 @@ button[type="button"]:hover {
 } */
 
 /* Additional Styles */
-h2 {
-    text-align: center;
-    font-size: 26px;
-    color: #333;
-    margin-bottom: 20px;
-}
 
 a {
     color: #007bff;
