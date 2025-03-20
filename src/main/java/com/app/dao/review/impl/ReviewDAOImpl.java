@@ -48,5 +48,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return result;
 	}
 	
+	@Override
+	public List<Review> findReviewByUserId(int userId) {
+		List<Review> reviewList = sqlSessionTemplate.selectList("review_mapper.findReviewByUserId", userId);
+		return reviewList;
+	}
 	
 }

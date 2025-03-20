@@ -12,7 +12,7 @@ function usePost( url, param ) {
 
         axios.post(url, param)
         .then( res => {
-            console.log(`usePose 요청 성공 : ${url} `);
+            console.log(`usePost 요청 성공 : ${url} `);
             console.log(res);
             setData(res.data);
         })

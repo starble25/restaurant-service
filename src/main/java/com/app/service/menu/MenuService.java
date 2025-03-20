@@ -9,4 +9,10 @@ public interface MenuService {
 	
 	List<Menu> findMenu(Store store);
 	
+	int saveMenu(Menu menu);
+	
+	int modifyMenu(Menu menu);
+	
+	int deleteMenu(int id);
+	
 }

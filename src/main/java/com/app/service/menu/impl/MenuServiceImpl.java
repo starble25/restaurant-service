@@ -23,5 +23,27 @@ public class MenuServiceImpl implements MenuService {
 		
 		return menuList;
 	}
+
+	@Override
+	public int saveMenu(Menu menu) {
+		int result = menuDAO.saveMenu(menu);
+		return result;
+	}
+
+	@Override
+	public int modifyMenu(Menu menu) {
+		if(menu.getId() <= 0) {
+			return 0;
+		}
+		
+		int result = menuDAO.modifyMenu(menu);
+		return result;
+	}
+	
+	@Override
+	public int deleteMenu(int id) {
+		int result = menuDAO.deleteMenu(id);
+		return result;
+	}
 	
 }

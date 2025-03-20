@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.app.dao.review.ReviewDAO;
 import com.app.dto.review.Review;
 import com.app.dto.review.ReviewImage;
+import com.app.dto.users.Users;
 import com.app.service.review.ReviewService;
 
 @Service
@@ -48,5 +49,9 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	
+	public List<Review> findReviewByUserId(Users user) {
+		List<Review> reviewList = reviewDAO.findReviewByUserId(user.getId());
+		return reviewList;
+	}
 	
 }

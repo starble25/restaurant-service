@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,8 +25,15 @@ import com.app.dto.review.ReviewImgRequestForm;
 import com.app.service.review.ReviewService;
 import com.app.util.ReviewFileManager;
 
+import com.app.dto.review.Review;
+import com.app.dto.users.Users;
+import com.app.service.review.ReviewService;
+
 @RestController
 public class ReviewController {
+	
+	@Autowired
+	ReviewService reviewService;
 
 	@Autowired
 	ReviewService reviewService;
@@ -102,4 +114,20 @@ public class ReviewController {
 		return "저장실패";
 	}
 
+	@PostMapping("/api/review/find-review")
+	public ResponseEntity<?> findReviewByUserId(@RequestBody Users user) {
+		System.out.println("find-review request");
+		
+		if( user == null || user.getId() <= 0 ) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("잘못된 요청 : user is null");
+		}
+		
+		List<Review> reviewList = reviewService.findReviewByUserId(user);
+		if( reviewList!= null ) {
+			return ResponseEntity.ok(reviewList);
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("내부 서버 오류");
+		}
+		
+	}
 }

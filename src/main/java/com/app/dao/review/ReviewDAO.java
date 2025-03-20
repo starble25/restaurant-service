@@ -15,7 +15,6 @@ public interface ReviewDAO {
 	int saveReviewInfo(Review review);
 	
 	int updateStoreRate(HashMap<String, Object> params);
-	
-	
-	
+	List<Review> findReviewByUserId(int userId);
 }
+

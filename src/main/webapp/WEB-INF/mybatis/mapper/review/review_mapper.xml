@@ -26,4 +26,11 @@
 	
 	
 
+	
+	<select id="findReviewByUserId" parameterType="Integer" resultType="Review">
+		SELECT * 
+		FROM review
+		WHERE user_id = #{userId}
+	</select>
+	
 </mapper>

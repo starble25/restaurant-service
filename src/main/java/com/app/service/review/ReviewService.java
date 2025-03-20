@@ -6,6 +6,8 @@ import java.util.List;
 import com.app.dto.review.Review;
 import com.app.dto.review.ReviewImage;
 
+import com.app.dto.users.Users;
+
 public interface ReviewService {
 
 	List<Review>findReviewByStoreId(int storeIdInt);
@@ -16,4 +18,6 @@ public interface ReviewService {
 	
 	
 	int updateStoreRate(HashMap<String, Object> params);
+
+	public List<Review> findReviewByUserId(Users user);
 }

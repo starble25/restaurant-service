@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Booking.css';
 import axios from 'axios';
+import CustomBtn from '../../components/common/CustomBtn';
 
 function Booking({ myInfo }) {
 
@@ -43,6 +44,14 @@ function Booking({ myInfo }) {
             .catch((error) => console.error(error));
     }, [myInfo]);
     
+    function convertButton( text ) {
+        if( text === '정상종료' ) {
+            return <CustomBtn label={'정상종료'}/>
+        }
+        if( text === '예약됨' ) {
+            return <CustomBtn label={'예약됨'} color='#157514' hover='#2da52c' active='#085108'/>
+        }
+    }
 
     const ListContent = () => {
         //예약 기록 없을시
@@ -72,7 +81,7 @@ function Booking({ myInfo }) {
                         </div>
                         <div className='listStyle contentStyle'>{item.storeName}</div>
                         <div className='listStyle contentStyle'>{item.totalPeople}명</div>
-                        <div className='listStyle contentStyle'>{item.state}</div>
+                        <div className='listStyle contentStyle'>{convertButton(item.state)}</div>
                     </li>
                 );
             })
