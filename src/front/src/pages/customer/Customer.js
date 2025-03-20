@@ -1,5 +1,4 @@
 import './Customer.css';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import MyInfo from './MyInfo';
 import Withdraw from './Withdraw';

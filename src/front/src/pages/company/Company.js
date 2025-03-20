@@ -17,13 +17,36 @@ function Company() {
     const {userData} = useFetchUser(id);
     const {storeData} = useFetchStore(storeId);
     const {bookingData} = useFetchBooking(userData);
-    console.table(userData);
-    console.table(bookingData);
-    console.table(storeData);
+    // console.table(userData);
+    // console.table(bookingData);
+    // console.table(storeData);
 
-    function renderContent() {
+    // 오늘과 내일의 날짜 계산
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    const startOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+    const endOfToday = startOfToday + 24 * 60 * 60 * 1000 - 1;
+
+    const startOfTomorrow = endOfToday + 1;
+    const endOfTomorrow = startOfTomorrow + 24 * 60 * 60 * 1000 - 1;
+
+    // 오늘과 내일의 예약 수 계산
+    const todayBooking = bookingData && bookingData.filter(
+        (booking) => booking.bookingTime >= startOfToday && booking.bookingTime <= endOfToday
+    ).length;
+
+    const tomorrowBooking = bookingData && bookingData.filter(
+        (booking) => booking.bookingTime >= startOfTomorrow && booking.bookingTime <= endOfTomorrow
+    ).length;
+
+    console.log(`오늘 예약 수: ${todayBooking}`);
+    console.log(`내일 예약 수: ${tomorrowBooking}`);
+
+    // function renderContent() {
         
-    }
+    // }
 
     return (
         <div className='compContainer'>
@@ -51,9 +74,13 @@ function Company() {
 
             <div className='activityWrapper'>
                 <Activity>
-                    <ActContainer title={'오늘 예약'} text={'3개'} />
-                    <ActContainer title={'내일 예약'} text={'5개'} />
-                    <ActContainer title={'예약 상태'} text={'가능'} />
+                    <ActContainer title={'오늘 예약'} text={todayBooking+'개'} />
+                    <ActContainer title={'내일 예약'} text={tomorrowBooking+'개'} />
+                    <ActContainer 
+                        title={'예약 상태'} 
+                        text={'가능'} 
+                        onClick={console.log(123)}
+                    />
                 </Activity>
             </div>
             <div className='bookingStoreWrapper'>

@@ -112,18 +112,23 @@ function Menu({ store }) {
     const editMenu = (item) => {
         return (
             <>
-                <Row><Col title='메뉴이름' content={<input className='meneInput' type='text' name='menuName' value={item.menuName} onChange={editInputChange} />} /></Row>
-                <Row><Col title='가격' content={<input className='meneInput' type='text' name='price' value={item.price} onChange={editInputChange} />} /></Row>
-                <Row><Col title='종류' content={<input className='meneInput' type='text' name='menuType' value={item.menuType} onChange={editInputChange} />} /></Row>
-                <Row><Col title='메뉴설명' content={<input className='meneInput' type='text' name='description' value={item.description} onChange={editInputChange} />} /></Row>
+                <Row><Col title='메뉴이름' content={<input className='meneInput' type='text' name='menuName' value={editInput.menuName} onChange={editInputChange} />} /></Row>
+                <Row><Col title='가격' content={<input className='meneInput' type='text' name='price' value={editInput.price} onChange={editInputChange} />} /></Row>
+                <Row><Col title='종류' content={<input className='meneInput' type='text' name='menuType' value={editInput.menuType} onChange={editInputChange} />} /></Row>
+                <Row><Col title='메뉴설명' content={<input className='meneInput' type='text' name='description' value={editInput.description} onChange={editInputChange} />} /></Row>
                 <button className='menuBtn menuButton' onClick={() => submitEditMenu(editInput)}>수정확인</button>
             </>
         )
     }
 
+    const startEditing = (item) => {
+        setEditting(item.id);
+        setEditInput({ ...item });
+    };
+
     const editInputChange = (e) => {
         const { name, value } = e.target;
-        setNewMenu(prevState => ({
+        setEditInput(prevState => ({
             ...prevState,
             [name]: value
         }));
@@ -136,6 +141,7 @@ function Menu({ store }) {
             setNewMenu({ ...Menu, menuName:'', price:'', menuType:'', description:''});
             setRenderMenu(false);
             updateMenu(store);
+            setEditting(0);
         })
         .catch( error => {
             console.log('메뉴추가실패 : ' + error);
@@ -163,7 +169,7 @@ function Menu({ store }) {
                                         <Row><Col title='가격' content={item.price} /></Row>
                                         <Row><Col title='종류' content={item.menuType} /></Row>
                                         <Row><Col title='메뉴설명' content={item.description} /></Row>
-                                        <button className='menuBtn menuButton' onClick={() => setEditting(item.id)}>메뉴수정</button>
+                                        <button className='menuBtn menuButton' onClick={() => startEditing(item)}>메뉴수정</button>
                                         <button 
                                             className='menuBtn menuDelete' 
                                             onClick={() => deleteMenu(item.id)}

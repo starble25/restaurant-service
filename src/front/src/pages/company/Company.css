@@ -1,8 +1,7 @@
 .compContainer {
     width: 100%;
     height: 100%;
-    
-    background-color: #eeeeee;
+    background: linear-gradient(135deg, #f7f9fc, #ddeaf0);
     padding-left: 15%;
     padding-right: 15%;
 }

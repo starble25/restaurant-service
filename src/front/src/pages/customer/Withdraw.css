@@ -3,8 +3,9 @@
 }
 
 .withdrawContainer h3 {
-    font-size: 22px;
     height: 50px;
+    font-size: 26px;
+    font-weight: bold;
 }
 
 .withdrawContainer .inputContainer {
@@ -16,21 +17,24 @@
     width: 25%;
     color: #666666;
     font-weight: bold;
-
     display: flex;
     align-items: center;
 }
 
 .withdrawContainer .inputContainer .inputWrapper {
     width: 75%;
-
     display: flex;
     align-items: center;
+}
 
-    & input {
-        width: 100%;
-        height: 35px;
-        padding-left: 10px;
+.withdrawContainer .inputContainer .inputWrapper input {
+    width: 100%;
+    height: 35px;
+    padding-left: 10px;
+
+    &:focus {
+        border: 2px solid #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
     }
 }
 

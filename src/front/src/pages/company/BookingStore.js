@@ -18,7 +18,7 @@ function BookingStore({ booking }) {
             return <CustomBtn label={'정상종료'}/>
         }
         if( text === '예약됨' ) {
-            return <CustomBtn label={'예약됨'}/>
+            return <CustomBtn label={'예약됨'} color='#157514' hover='#2da52c' active='#085108'/>
         }
     }
 

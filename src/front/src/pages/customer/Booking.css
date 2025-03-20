@@ -9,8 +9,9 @@
 }
 
 .bookingContainer .titleWrapper h3 {
-    font-size: 22px;
     height: 50px;
+    font-size: 26px;
+    font-weight: bold;
 }
 
 /* booking list 전체 컨테이너 */
@@ -20,6 +21,7 @@
 }
 
 .bookingListWrapper ol {
+    padding: 0;
     list-style-type: none;
 }
 

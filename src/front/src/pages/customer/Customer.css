@@ -11,6 +11,7 @@
     padding-top: 5%;
     width: 25%;
     background-color: #e0e9f5;
+    box-shadow: 8px 4px 10px #c4cdda;
 }
 
 .cusContainer .side .sideMenu {
@@ -23,6 +24,8 @@
     font-weight: bold;
     font-size: 17px;
     margin: 15px 0 15px 0;
+    box-shadow: 0px 2px 5px #b7c8dd, /* 아래 그림자 */
+                0px -2px 5px #b7c8dd; /* 위 그림자 */
 
     background-color: #c8d6e7;
     border: 1px solid #b7c8dd;
