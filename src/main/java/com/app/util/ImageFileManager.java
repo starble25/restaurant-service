@@ -10,7 +10,7 @@ import com.app.dto.file.ImageFile;
 
 public class ImageFileManager {
 
-    static final String FILE_DIRECTORY_PATH = "e:/imageStorage";
+    static final String FILE_DIRECTORY_PATH = "d:/imageStorage";
     static final String FILE_URL_PATH = "/imageStorage";
     
     // FILE_DIRECTORY_PATH에 폴더 없으면 폴더생성

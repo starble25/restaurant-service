@@ -92,7 +92,7 @@ export default function BookingFlag({ date, deactivateFlag, menu }) {
 
 
         const reservationData = {
-            userId: 2,
+            userId: 1,
             storeId: id,
             totalPeople: countPeople,
             bookingTime: date.toISOString(),

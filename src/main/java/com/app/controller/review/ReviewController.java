@@ -5,38 +5,29 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.app.dto.file.FileInfo;
 import com.app.dto.review.Review;
 import com.app.dto.review.ReviewData;
 import com.app.dto.review.ReviewImage;
 import com.app.dto.review.ReviewImgRequestForm;
-import com.app.service.review.ReviewService;
-import com.app.util.ReviewFileManager;
-
-import com.app.dto.review.Review;
 import com.app.dto.users.Users;
 import com.app.service.review.ReviewService;
+import com.app.util.ReviewFileManager;
 
 @RestController
 public class ReviewController {
 	
 	@Autowired
 	ReviewService reviewService;
-
-	@Autowired
-	ReviewService reviewService;
+	
 
 	@GetMapping("/main/store/review/{storeId}")
 	public List<ReviewData> getReviewData(@PathVariable String storeId) {
