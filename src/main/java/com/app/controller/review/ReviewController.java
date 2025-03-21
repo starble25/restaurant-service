@@ -53,6 +53,7 @@ public class ReviewController {
 	
 	@PostMapping("/main/store/review/{storeId}")
 	public String storeImgAction(ReviewImgRequestForm reviewImgRequestForm, @PathVariable String storeId) {
+		System.out.println("storeImgAction request");
 		
 		int storeIdInt = Integer.parseInt(storeId);
 		
