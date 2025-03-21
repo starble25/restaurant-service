@@ -33,6 +33,22 @@ export default function Header() {
         }, 100);
     }
 
+    const handleCusMyPage = () => {
+        setIsOpen(false);
+        setTimeout(() => {
+            navigate("/customer/mypage");
+        }, 100);
+    }
+
+    const handleStoreMyPage = () => {
+        setIsOpen(false);
+        setTimeout(() => {
+            navigate("/store/mypage");
+        }, 100);
+    }
+
+
+
 
     return (
 
@@ -84,6 +100,14 @@ export default function Header() {
                             <li className="menu-item"  onClick={handleLogin}>
                                 <FontAwesomeIcon icon={faUser} />
                                 <span>로그인</span>
+                            </li>
+                            <li className="menu-item"  onClick={handleCusMyPage}>
+                                <FontAwesomeIcon icon={faUser} />
+                                <span>개인 마이페이지</span>
+                            </li>
+                            <li className="menu-item"  onClick={handleStoreMyPage}>
+                                <FontAwesomeIcon icon={faUser} />
+                                <span>기업 마이페이지</span>
                             </li>
                         </ul>
                     </div>
