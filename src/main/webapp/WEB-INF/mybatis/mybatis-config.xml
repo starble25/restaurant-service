@@ -23,6 +23,7 @@
 		<typeAlias type="com.app.dto.board.Board" alias="Board" />
 		<typeAlias type="com.app.dto.review.Review" alias="Review" />
 		<typeAlias type="com.app.dto.review.ReviewImage" alias="ReviewImage" />
+		
 	</typeAliases>
 </configuration>
 

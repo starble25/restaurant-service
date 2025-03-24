@@ -1,9 +1,4 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'GmarketSansMedium', sans-serif;
-}
+
 
 @font-face {
     font-family: 'GmarketSansMedium';
@@ -78,7 +73,7 @@
 	margin-top: 20px;
 }
 
-.btn {
+.btn1 {
 	border: none;
 	border-radius: 10px;
 	box-sizing: border-box;
@@ -196,7 +191,7 @@
 	box-sizing: border-box;
 	height: 52px;
 	text-decoration: none;
-	width: 40%;
+	width: 40% !important;
 	margin: 5px;
 	background-color: #ebebeb;
 	border: 1.5px solid #ebebeb;

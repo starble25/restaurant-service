@@ -65,42 +65,42 @@ function LoginPage() {
                 <br />
                 <div className="registerT1">계정이 없으신가요?</div>
 
-                <button className="emailbtn btn" onClick={() => window.location.href = '/login/register'}>
+                <button className="emailbtn btn1" onClick={() => window.location.href = '/login/register'}>
                     <div className="emailT">
                         <i className="fa-solid fa-right-to-bracket"></i> 개인회원으로 가입하기
                     </div>
                 </button>
-                <button className="emailbtn btn" onClick={() => window.location.href = '/login/Storeregister'}>
+                <button className="emailbtn btn1" onClick={() => window.location.href = '/login/Storeregister'}>
                     <div className="emailT">
                         <i className="fa-solid fa-right-to-bracket"></i> 기업회원으로 가입하기
                     </div>
                 </button>
 
-                <button className="kakaobtn btn">
+                <button className="kakaobtn btn1">
                     <div className="kakaoT">
                         <i className="fa-solid fa-comment"></i> 카카오로 가입하기
                     </div>
                 </button>
 
-                <button className="naverbtn btn">
+                <button className="naverbtn btn1">
                     <div className="naverT">
                         <i className="fa-solid fa-n"></i> 네이버로 가입하기
                     </div>
                 </button>
 
-                <button className="applebtn btn">
+                <button className="applebtn btn1">
                     <div className="appleT">
                         <i className="fa-brands fa-apple"></i> Apple로 가입하기
                     </div>
                 </button>
 
-                <button className="facebookbtn btn">
+                <button className="facebookbtn btn1">
                     <div className="facebookT">
                         <i className="fa-brands fa-facebook"></i> 페이스북으로 가입하기
                     </div>
                 </button>
 
-                <button className="googlebtn btn">
+                <button className="googlebtn btn1">
                     <div className="googleT">
                         <i className="fa-brands fa-google" style={{ color: '#e60000' }}></i> 구글로 가입하기
                     </div>
